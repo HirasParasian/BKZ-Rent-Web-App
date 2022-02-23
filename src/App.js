@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import Login from './pages/Login'
-import Button2 from './components/Button2'
+import Hompage from './pages/Homepage'
+import History from './pages/History'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export default class App extends Component {
   render() {
     return (
-      <Login />
-
-      // <div className='vh-100 d-flex justify-content-center align-item-center'>
-      //   <div >
-      //     <Button2 />
-      //   </div>
-      // </div>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Hompage />} />
+          <Route path='/history' element={<History />} />
+          <Route path='/' element={<History />} />
+        </Routes>
+      </BrowserRouter>
     )
   }
 }

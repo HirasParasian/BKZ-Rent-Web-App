@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import logo from '../assets/images/logo-bkz.png'
+import { Link } from 'react-router-dom'
+
 
 export default class Navbar extends Component {
     render() {
         return (
             <nav className="navbar ms-auto navbar-expand-lg navbar-light bg-transparent">
                 <div className="container ">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="#">
                         <img src={logo} alt="Avatar Logo"
                             className="w-25 logo-bkz rounded-pill" />
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -20,16 +22,16 @@ export default class Navbar extends Component {
                                 <a className="nav-link active" aria-current="page" href="../views/index.html">Home</a>
                             </li>
                             <li className="nav-item nav-menu-before">
-                                <a className="nav-link" href="../views/history.html">History</a>
+                                <a className="nav-link" href="/history">History</a>
                             </li>
                             <li className="nav-item dropdown nav-menu-before">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Vehicle Type
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="../views/vehicles-type.html">Bike</a></li>
-                                    <li><a className="dropdown-item" href="#">Motorbike</a></li>
+                                    <li><Link className="dropdown-item" to="../views/vehicles-type.html">Bike</Link></li>
+                                    <li><Link className="dropdown-item" to="#">Motorbike</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>

@@ -1,125 +1,129 @@
 import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import history1 from "../assets/images/history1.png"
+import history2 from '../assets/images/history2.png'
+import car2 from '../assets/images/car2.png'
+import car3 from '../assets/images/car3.png'
 
 export default class history extends Component {
     render() {
         return (
             <>
                 <Navbar />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-9">
-                            <div class="d-flex">
-                                <div class="input-group mb-3 rounded mx-auto button-type-name2 ">
-                                    <input type="text" class=" form-control bg-transparent " placeholder="Search History" />
-                                    <button class="btn " type="button" id="button-addon2"><i
-                                        class="fa-solid fa-magnifying-glass"></i></button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-9">
+                            <div className="d-flex">
+                                <div className="input-group mb-3 rounded mx-auto button-type-name2 ">
+                                    <input type="text" className=" form-control bg-transparent " placeholder="Search History" />
+                                    <button className="btn " type="button" id="button-addon2"><i
+                                        className="fa-solid fa-magnifying-glass"></i></button>
 
                                 </div>
-                                <div class="mb-3 cover-filter rounded">
-                                    <a class="nav-link filter-history" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <div className="mb-3 cover-filter rounded">
+                                    <a className="nav-link filter-history" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        Filter <i class="arrow-filter fa-solid fa-angle-down"></i>
+                                        Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
                                     </a>
-                                    <ul class="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Type</a></li>
-                                        <hr class="dropdown-divider" />
-                                        <li><a class="dropdown-item" href="#">Date Added</a></li>
+                                    <ul className="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
+                                        <li><a className="dropdown-item" href="#">Type</a></li>
+                                        <hr className="dropdown-divider" />
+                                        <li><a className="dropdown-item" href="#">Date Added</a></li>
                                         <li>
-                                            <hr class="dropdown-divider" />
+                                            <hr className="dropdown-divider" />
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Name</a></li>
+                                        <li><a className="dropdown-item" href="#">Name</a></li>
                                         <li>
-                                            <hr class="dropdown-divider" />
+                                            <hr className="dropdown-divider" />
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Favorite Product</a></li>
+                                        <li><a className="dropdown-item" href="#">Favorite Product</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
+                            <div className="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
                                 <p>Today</p>
                             </div>
-                            <div class="my-3 mx-5 d-flex">
-                                <div class="mx-auto for-text-history border-bottom border-secondary d-flex ">
-                                    <p class="">Please finish your payment for vespa for Vespa Rental Jogja </p>
-                                    <i class=" ms-auto fa-solid fa-chevron-right"></i>
+                            <div className="my-3 mx-5 d-flex">
+                                <div className="mx-auto for-text-history border-bottom border-secondary d-flex ">
+                                    <p className="">Please finish your payment for vespa for Vespa Rental Jogja </p>
+                                    <i className=" ms-auto fa-solid fa-chevron-right"></i>
                                 </div>
-                                <div class=" d-flex for-check-history">
-                                    <input class="form-check-input" type="checkbox" />
-                                </div>
-                            </div>
-                            <div class="my-3 mx-5 d-flex">
-                                <div class="mx-auto for-text-history border-bottom border-secondary d-flex ">
-                                    <p class="">Your payment has been confirmed! </p>
-                                    <i class=" ms-auto fa-solid fa-chevron-right"></i>
-                                </div>
-                                <div class=" d-flex for-check-history">
-                                    <input class="form-check-input" type="checkbox" />
+                                <div className=" d-flex for-check-history">
+                                    <input className="form-check-input" type="checkbox" />
                                 </div>
                             </div>
-                            <div class="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
+                            <div className="my-3 mx-5 d-flex">
+                                <div className="mx-auto for-text-history border-bottom border-secondary d-flex ">
+                                    <p className="">Your payment has been confirmed! </p>
+                                    <i className=" ms-auto fa-solid fa-chevron-right"></i>
+                                </div>
+                                <div className=" d-flex for-check-history">
+                                    <input className="form-check-input" type="checkbox" />
+                                </div>
+                            </div>
+                            <div className="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
                                 <p>A Week Ago</p>
                             </div>
-                            <div class="my-3 mx-5 d-flex ">
-                                <div class="ms-3 width-img-history for-img-history d-flex ">
-                                    <img src="../assets/images/history1.png" alt="" class="src" />
+                            <div className="my-3 mx-5 d-flex ">
+                                <div className="ms-3 width-img-history for-img-history d-flex ">
+                                    <img src={history1} alt="" className="src" />
                                 </div>
-                                <div class="mx-auto for-medium-history-text">
+                                <div className="mx-auto for-medium-history-text">
                                     <p><b>Vespa Matic</b></p>
                                     <p>Jan 18 to 21 2021</p>
                                     <p><b>Prepayment : Rp. 245.000</b></p>
-                                    <p class="text-success">Has been returned</p>
+                                    <p className="text-success">Has been returned</p>
                                 </div>
-                                <div class=" d-flex for-check-history mt-5">
-                                    <input class="form-check-input" type="checkbox" />
+                                <div className=" d-flex for-check-history mt-5">
+                                    <input className="form-check-input" type="checkbox" />
                                 </div>
                             </div>
-                            <div class="my-3 mx-5 d-flex ">
-                                <div class="ms-3 width-img-history for-img-history d-flex ">
-                                    <img src="../assets/images/history2.png" alt="" class="src" />
+                            <div className="my-3 mx-5 d-flex ">
+                                <div className="ms-3 width-img-history for-img-history d-flex ">
+                                    <img src={history2} alt="" className="src" />
                                 </div>
-                                <div class="mx-auto for-medium-history-text">
+                                <div className="mx-auto for-medium-history-text">
                                     <p><b>Vespa Matic</b></p>
                                     <p>Jan 18 to 21 2021</p>
                                     <p><b>Prepayment : Rp. 245.000</b></p>
-                                    <p class="text-success">Has been returned</p>
+                                    <p className="text-success">Has been returned</p>
                                 </div>
-                                <div class=" d-flex for-check-history mt-5">
-                                    <input class="form-check-input" type="checkbox" />
+                                <div className=" d-flex for-check-history mt-5">
+                                    <input className="form-check-input" type="checkbox" />
                                 </div>
                             </div>
-                            <div class="my-5 mx-5 d-flex ">
-                                <div class="mx-auto">
-                                    <button class="btn bg-brown bg-brown-size"><b>Delete selected item</b></button>
+                            <div className="my-5 mx-5 d-flex ">
+                                <div className="mx-auto">
+                                    <button className="btn bg-brown bg-brown-size"><b>Delete selected item</b></button>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="col-xl-3 mb-5 d-none d-xl-block d-xxl-block">
-                            <div class="border border-2 border-secondary text-center pt-4 ">
-                                <h5 class="text-center pb-4">New Arrival</h5>
-                                <div class=" mb-4">
-                                    <div class="position-relative">
-                                        <img src="../assets/images/car2.png" alt="" class="src img-arrival rounded" />
-                                        <form class="text-img-2">
-                                            <button type="submit" class="btn head">Lamborghini </button>
-                                            <button type="submit" class="btn">South Jakarta</button>
+                        <div className="col-xl-3 mb-5 d-none d-xl-block d-xxl-block">
+                            <div className="border border-2 border-secondary text-center pt-4 ">
+                                <h5 className="text-center pb-4">New Arrival</h5>
+                                <div className=" mb-4">
+                                    <div className="position-relative">
+                                        <img src={car3} alt="" className="src img-arrival rounded" />
+                                        <form className="text-img-2">
+                                            <button type="submit" className="btn head">Lamborghini </button>
+                                            <button type="submit" className="btn">South Jakarta</button>
                                         </form>
                                     </div>
                                 </div>
-                                <div class="mb-4">
-                                    <div class="position-relative">
-                                        <img src="../assets/images/car3.png" alt="" class="src img-arrival rounded" />
-                                        <form class="text-img-2">
-                                            <button type="submit" class="btn head">White Jeep </button>
-                                            <button type="submit" class="btn">Kalimantan</button>
+                                <div className="mb-4">
+                                    <div className="position-relative">
+                                        <img src={car2} alt="" className="src img-arrival rounded" />
+                                        <form className="text-img-2">
+                                            <button type="submit" className="btn head">White Jeep </button>
+                                            <button type="submit" className="btn">Kalimantan</button>
                                         </form>
                                     </div>
                                 </div>
-                                <div class="text-center">
+                                <div className="text-center">
                                     <h5>View More</h5>
-                                    <i class="fa-solid fa-angle-down fa-2xl"></i>
+                                    <i className="fa-solid fa-angle-down fa-2xl"></i>
                                 </div>
                             </div>
                         </div>
