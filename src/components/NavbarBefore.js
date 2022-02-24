@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import logo from '../assets/images/logo-bkz.png'
 import { Link } from 'react-router-dom'
 
+
 export default class Navbar extends Component {
     render() {
         return (
             <nav className="navbar ms-auto navbar-expand-lg navbar-light bg-transparent">
                 <div className="container ">
-                    <Link className="navbar-brand" to="/">
+                    <Link className="navbar-brand" to="#">
                         <img src={logo} alt="Avatar Logo"
                             className="w-25 logo-bkz rounded-pill" />
                     </Link>
@@ -15,44 +16,35 @@ export default class Navbar extends Component {
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="center-navbar collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="collapse center-navbar navbar-collapse" id="navbarSupportedContent">
                         <ul className=" navbar-nav ms-auto mb-lg-0">
                             <li className="nav-item nav-menu-before">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <a className="nav-link active" aria-current="page" href="../views/index.html">Home</a>
                             </li>
                             <li className="nav-item nav-menu-before">
-                                <Link className="nav-link" to="/">History</Link>
+                                <a className="nav-link" href="/history">History</a>
                             </li>
                             <li className="nav-item dropdown nav-menu-before">
-                                <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link dropdown-toggle" to="/VehicleType" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Vehicle Type
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="/">Vehicle Type</Link></li>
-                                    <li><Link className="dropdown-item" to="/">View More Detail</Link></li>
+                                    <li><Link className="dropdown-item" to="/Bike">Bike</Link></li>
+                                    <li><Link className="dropdown-item" to="/Motorbike">Motorbike</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><Link className="dropdown-item" to="/">Reservation</Link></li>
-                                    <li><Link className="dropdown-item" to="/">Payment</Link></li>
+                                    <li><Link className="dropdown-item" to="/Car">Car</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item nav-menu-before">
-                                <Link className="nav-link" to="#" tabIndex="-1">About</Link>
+                                <Link className="nav-link" to="/About" tabindex="-1">About</Link>
                             </li>
                         </ul>
                         <form className="d-flex justify-content-center">
-                            <div className="mail">
-                                <Link className="" to="#">
-                                    <i className="text-warning  fa-solid fa-envelope"></i>
-                                </Link>
-                            </div>
-                            <div className="img-profile-login">
-                                <Link className="" to="/">
-                                    <img src="/" alt="Avatar Logo" className=" rounded-pill" />
-                                </Link>
-                            </div>
+                            <a href="../views/login.html"><button type="button" className="btn-login btn btn-info"> Login</button></a>
+                            <a href="../views/signup.html"><button type="button" className="btn-register btn btn-info">Register</button></a>
                         </form>
                     </div>
                 </div>
