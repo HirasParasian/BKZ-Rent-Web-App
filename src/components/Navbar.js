@@ -30,16 +30,16 @@ export default class Navbar extends Component {
                                     Vehicle Type
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="../views/vehicles-type.html">Bike</Link></li>
-                                    <li><Link className="dropdown-item" to="#">Motorbike</Link></li>
+                                    <li><Link className="dropdown-item" to="/VehicleType">Bike</Link></li>
+                                    <li><Link className="dropdown-item" to="/Motorbike">Motorbike</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><a className="dropdown-item" href="#">Car</a></li>
+                                    <li><Link className="dropdown-item" to="/Car">Car</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item nav-menu-before">
-                                <a className="nav-link" href="#" tabindex="-1">About</a>
+                                <Link className="nav-link" to="/About" tabindex="-1">About</Link>
                             </li>
                         </ul>
                         <form className="d-flex justify-content-center">

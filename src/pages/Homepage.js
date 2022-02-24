@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import item1 from '../assets/images/img1-home.png'
 
+
+
 export default class Homepage extends Component {
   state = {
     item: [
