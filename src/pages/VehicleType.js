@@ -58,11 +58,12 @@ export const CharacterList = () => {
   }
   const onSearch = async (event) => {
     event.preventDefault();
-    const url = (name, gender) => `https://rickandmortyapi.com/api/character?name=${name}&gender=${gender}`
+    const url = (name) => `http://localhost:5000/vehicles?search=${name}`
     const name = event.target.elements["search"].value
-    const gender = event.target.elements["gender"].value
-    setSearchParams({ name, gender })
-    await getNextData(url(name, gender), true)
+    console.log(name)
+    // const gender = event.target.elements["gender"].value
+    setSearchParams({ name })
+    await getNextData(url(name), true)
   }
 
   const goToDetail = (id) => {
@@ -73,11 +74,11 @@ export const CharacterList = () => {
       <header>
         <div className="row">
           <div className="col-xl-12 d-flex for-margin-search ">
-            <div className="input-group mb-3 rounded mx-auto button-type-name ">
-              <input type="text" className="btn-search-type form-control bg-transparent "
+            <form id='search' onSubmit={onSearch} className="input-group mb-3 rounded mx-auto button-type-name ">
+              <input name="search" type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <button className="btn " type="button" id="button-addon2"><i className="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+              <button className="btn " type="submit" id="button-addon2"><i className="fa-solid fa-magnifying-glass"></i></button>
+            </form>
           </div>
         </div>
       </header>
@@ -88,7 +89,7 @@ export const CharacterList = () => {
           <div className="row">
             {popularInTown.map((data, idx) => {
               return (
-                <div onClick={() => goToDetail(data.id)} style={{ cursor: 'pointer' }} key={String(data.id)} className='col-md-3'>
+                <div onClick={() => goToDetail(data.id)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
                   <div className='position-relative mb-2'>
                     <img className='img-fluid' src={defaultvehicle} alt={data.name} />
                     <div className='position-absolute bottom-0 start-0 bg-white px-3 py-2'>
