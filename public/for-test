@@ -1,74 +1,3 @@
-import React, { useState, useEffect } from 'react'
-import Layout from '../components/Layout'
-import { default as axios } from 'axios'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import defaultvehicle from '../assets/images/default.jpeg'
-import qs from 'qs'
-
-export const CharacterList = () => {
-  const [popularInTown, setPopularInTown] = useState([])
-  const [page, setPage] = useState({})
-  const [errorMsg, setErrorMsg] = useState(null)
-
-  const navigate = useNavigate()
-  let [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    const name = searchParams.get('name')
-    const gender = searchParams.get('gender')
-
-    if (name || gender) {
-      const url = (name, gender) => `https://rickandmortyapi.com/api/character?name=${name}&gender=${gender}`
-      document.getElementById('search').elements['search'].value = name
-      document.getElementById('search').elements['gender'].value = gender
-      getNextData(url(name, gender), true)
-    } else {
-      getPopularInTown()
-    }
-  }, [])
-
-  const getPopularInTown = async () => {
-    const { data } = await axios.get('http://localhost:5000/vehicles/popularintown?location')
-    setPopularInTown(data.results)
-    setPage(data.info)
-  }
-
-  const getNextData = async (url, replace = false) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      if (replace) {
-        setPopularInTown(data.results)
-      } else {
-        setPopularInTown([
-          ...popularInTown,
-          ...data.results
-        ])
-      }
-      setPage(data.info)
-    } catch (e) {
-      if (e.message.includes('404')) {
-        setErrorMsg('Data not found!')
-        setPopularInTown([])
-        setPage({
-          next: null
-        })
-      }
-    }
-  }
-  const onSearch = async (event) => {
-    event.preventDefault();
-    const url = (name, gender) => `https://rickandmortyapi.com/api/character?name=${name}&gender=${gender}`
-    const name = event.target.elements["search"].value
-    const gender = event.target.elements["gender"].value
-    setSearchParams({ name, gender })
-    await getNextData(url(name, gender), true)
-  }
-
-  const goToDetail = (id) => {
-    navigate(`/characters/${id}`)
-  }
-  return (
     <>
       <header>
         <div className="row">
@@ -86,19 +15,15 @@ export const CharacterList = () => {
         <div className="popular container">
           <h2><b> Popular in town</b></h2>
           <div className="row">
-            {popularInTown.map((data, idx) => {
-              return (
-                <div onClick={() => goToDetail(data.id)} style={{ cursor: 'pointer' }} key={String(data.id)} className='col-md-3'>
-                  <div className='position-relative mb-2'>
-                    <img className='img-fluid' src={defaultvehicle} alt={data.name} />
-                    <div className='position-absolute bottom-0 start-0 bg-white px-3 py-2'>
-                      <div>{data.name}</div>
-                      <div>{data.location}</div>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+            <div className="col d-none d-xxl-block">
+              <div className="img1">
+                <img src="../assets/images/img3-home.png" className="float-start rounded" />
+                <form className="text-img1">
+                  <button type="submit" className="btn head">Merapi</button>
+                  <button type="submit" className="btn">Yogyakarta</button>
+                </form>
+              </div>
+            </div>
             <div className="col d-none d-xl-block">
               <div className="img1">
                 <img src="../assets/images/img2-home.png" className="float-start rounded" />
@@ -267,7 +192,3 @@ export const CharacterList = () => {
         </div>
       </div>
     </>
-  )
-}
-
-export default CharacterList
