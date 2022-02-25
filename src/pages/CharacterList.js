@@ -40,7 +40,6 @@ export const CharacterList = () => {
                 setCharacter(data.results)
             } else {
                 setCharacter([
-                    ...character,
                     ...data.results
                 ])
             }

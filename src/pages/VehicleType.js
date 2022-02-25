@@ -18,7 +18,7 @@ export const CharacterList = () => {
     const gender = searchParams.get('gender')
 
     if (name || gender) {
-      const url = (name, gender) => `https://rickandmortyapi.com/api/character?name=${name}&gender=${gender}`
+      const url = (name, gender) => `url?name=${name}&gender=${gender}`
       document.getElementById('search').elements['search'].value = name
       document.getElementById('search').elements['gender'].value = gender
       getNextData(url(name, gender), true)
@@ -66,8 +66,8 @@ export const CharacterList = () => {
     await getNextData(url(name), true)
   }
 
-  const goToDetail = (id) => {
-    navigate(`/characters/${id}`)
+  const goToDetail = (vehicleId) => {
+    navigate(`/vehicles/${vehicleId}`)
   }
   return (
     <>
@@ -89,7 +89,7 @@ export const CharacterList = () => {
           <div className="row">
             {popularInTown.map((data, idx) => {
               return (
-                <div onClick={() => goToDetail(data.id)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
                   <div className='position-relative mb-2'>
                     <img className='img-fluid' src={defaultvehicle} alt={data.name} />
                     <div className='position-absolute bottom-0 start-0 bg-white px-3 py-2'>
