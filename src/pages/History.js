@@ -25,7 +25,7 @@ export default class history extends Component {
                                     <a className="nav-link filter-history" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
                                         Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
-                                    </a>
+                                    </a> 
                                     <ul className="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
                                         <li><a className="dropdown-item" href="#">Type</a></li>
                                         <hr className="dropdown-divider" />
