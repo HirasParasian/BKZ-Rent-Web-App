@@ -12,6 +12,7 @@ import CharacterDetail from './pages/CharacterDetail'
 import { createBrowserHistory } from 'history'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+
 export default class App extends Component {
   render() {
     return (

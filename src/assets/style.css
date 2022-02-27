@@ -3,7 +3,9 @@ body {
   background-color:#FFEDDB;
 }
 /***** Forgot *****/
-
+img-vehicle-type-x{
+  height : 300px
+}
 img .logo-bkz{
   width: 100px;
 }
@@ -483,9 +485,13 @@ header.header-home .header-content .search-vehicles{
   width: 120px;
 }
 
+element.style {
+}
+.btn-check:focus+.btn, .btn:focus{
+  box-shadow: unset;
+}
 .main .popular h2{
   font-family: 'Playfair Display', serif;
-  margin-top: 81px;
   margin-bottom: 55px;
 }
 
@@ -493,7 +499,6 @@ header.header-home .header-content .search-vehicles{
   font-family: 'Playfair Display', serif;
   margin-left:144px;
   margin-right: 120px;
-  margin-top: 81px;
   margin-bottom: 55px;
 }
 
@@ -508,11 +513,11 @@ header.header-home .header-content .search-vehicles{
   text-align: center;
   color: white;
 }
-
+.img-001{
+  
+}
 .text-img1{
   position: absolute;
-  width: 129px;
-  top : 250px;
   transform: translate(50%, 50%);
   background-color:#EDCDBB ;
   border-radius: 10px;
@@ -1028,7 +1033,6 @@ display: none;
   }
   .main .popular h2{
     font-family: 'Playfair Display', serif;
-    margin-top: 81px;
     margin-bottom: 55px;
     font-size: 24px;
   }
@@ -1036,7 +1040,6 @@ display: none;
     font-family: 'Playfair Display', serif;
     margin-left:unset;
     margin-right: 120px;
-    margin-top: 81px;
     margin-bottom: 55px;
   }
 }
@@ -1089,7 +1092,6 @@ display: none;
     font-family: 'Playfair Display', serif;
     margin-left:144px;
     margin-right: 300px;
-    margin-top: 81px;
     margin-bottom: 55px;
   }
   .main .popular .row {
