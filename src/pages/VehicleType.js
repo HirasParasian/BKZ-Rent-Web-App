@@ -1,38 +1,64 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../components/Layout'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { default as axios } from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import defaultvehicle from '../assets/images/default.jpeg'
-import qs from 'qs'
+import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+
+
 
 export const CharacterList = () => {
   const [popularInTown, setPopularInTown] = useState([])
+  const [cars, setCars] = useState([])
+  const [motor, setMotor] = useState([])
+  const [bike, setBike] = useState([])
   const [page, setPage] = useState({})
+  const [pageCars, setPageCars] = useState({})
+  const [pageBike, setPageBike] = useState({})
+  const [pageMotor, setPageMotor] = useState({})
   const [errorMsg, setErrorMsg] = useState(null)
-
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const name = searchParams.get('name')
-    const gender = searchParams.get('gender')
+    const type = searchParams.get('type')
 
-    if (name || gender) {
-      const url = (name, gender) => `url?name=${name}&gender=${gender}`
+    if (name || type) {
+      const url = (name, gender) => `url?search=${name}&category=${type}`
       document.getElementById('search').elements['search'].value = name
-      document.getElementById('search').elements['gender'].value = gender
-      getNextData(url(name, gender), true)
+      document.getElementById('type').elements['type'].value = type
+      getNextData(url(name, type), true)
     } else {
       getPopularInTown()
+      getCars()
+      getBike()
+      getMotor()
     }
   }, [])
 
   const getPopularInTown = async () => {
     const { data } = await axios.get('http://localhost:5000/vehicles/popularintown?location')
     setPopularInTown(data.results)
-    setPage(data.info)
+    setPage(data.pageInfo)
+  }
+  const getCars = async () => {
+    const { data } = await axios.get('http://localhost:5000/vehicles?category=3')
+    setCars(data.results)
+    setPageCars(data.pageInfo)
+    console.log(data.results)
   }
 
+  const getBike = async () => {
+    const { data } = await axios.get('http://localhost:5000/vehicles?category=1')
+    setBike(data.results)
+    setPageBike(data.pageInfo)
+  }
+  const getMotor = async () => {
+    const { data } = await axios.get('http://localhost:5000/vehicles?category=2')
+    setMotor(data.results)
+    setPageMotor(data.pageInfo)
+  }
   const getNextData = async (url, replace = false) => {
     try {
       setErrorMsg(null)
@@ -41,11 +67,10 @@ export const CharacterList = () => {
         setPopularInTown(data.results)
       } else {
         setPopularInTown([
-          ...popularInTown,
           ...data.results
         ])
       }
-      setPage(data.info)
+      setPage(data.pageInfo)
     } catch (e) {
       if (e.message.includes('404')) {
         setErrorMsg('Data not found!')
@@ -56,217 +81,218 @@ export const CharacterList = () => {
       }
     }
   }
+  const getNextDataBike = async (url, replace = false) => {
+    try {
+      setErrorMsg(null)
+      const { data } = await axios.get(url)
+      if (replace) {
+        setBike(data.results)
+      } else {
+        setBike([
+          ...data.results
+        ])
+      }
+      setPageBike(data.pageInfo)
+    } catch (e) {
+      if (e.message.includes('404')) {
+        setErrorMsg('Data not found!')
+        setBike([])
+        setPageBike({
+          next: null
+        })
+      }
+    }
+  }
+  const getNextDataMotor = async (url, replace = false) => {
+    try {
+      setErrorMsg(null)
+      const { data } = await axios.get(url)
+      if (replace) {
+        setMotor(data.results)
+      } else {
+        setMotor([
+          ...data.results
+        ])
+      }
+      setPageMotor(data.pageInfo)
+    } catch (e) {
+      if (e.message.includes('404')) {
+        setErrorMsg('Data not found!')
+        setMotor([])
+        setPageMotor({
+          next: null
+        })
+      }
+    }
+  }
+  const getNextDataCars = async (url, replace = false) => {
+    try {
+      setErrorMsg(null)
+      const { data } = await axios.get(url)
+      if (replace) {
+        setCars(data.results)
+      } else {
+        setCars([
+          ...data.results
+        ])
+      }
+      setPageCars(data.pageInfo)
+    } catch (e) {
+      if (e.message.includes('404')) {
+        setErrorMsg('Data not found!')
+        setCars([])
+        setPageCars({
+          next: null
+        })
+      }
+    }
+  }
   const onSearch = async (event) => {
     event.preventDefault();
-    const url = (name) => `http://localhost:5000/vehicles?search=${name}`
+    const url = (name, type) => `http://localhost:5000/vehicles?search=${name}&category=${type}`
     const name = event.target.elements["search"].value
-    console.log(name)
-    // const gender = event.target.elements["gender"].value
-    setSearchParams({ name })
-    await getNextData(url(name), true)
+    const type = event.target.elements["type"].value
+    setSearchParams({ name, type })
+    await getNextData(url(name, type), true)
   }
 
   const goToDetail = (vehicleId) => {
     navigate(`/vehicles/${vehicleId}`)
   }
+
   return (
-    <>
+
+    <><Navbar />
       <header>
         <div className="row">
           <div className="col-xl-12 d-flex for-margin-search ">
             <form id='search' onSubmit={onSearch} className="input-group mb-3 rounded mx-auto button-type-name ">
               <input name="search" type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <button className="btn " type="submit" id="button-addon2"><i className="fa-solid fa-magnifying-glass"></i></button>
+              <select name='type' className='form-select bg-transparent  form-control'>
+                <option value='' style={{ display: 'none' }}>Select a Gender</option>
+                <option value="1">Bike</option>
+                <option value="2">Motorbike</option>
+                <option value="3">Car</option>
+              </select>
+              <button className="btn " type="submit" id="button-addon2"><FaSearch /></button>
             </form>
           </div>
         </div>
       </header>
 
       <div className="main">
-        <div className="popular container">
-          <h2><b> Popular in town</b></h2>
-          <div className="row">
-            {popularInTown.map((data, idx) => {
-              return (
-                <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
-                  <div className='position-relative mb-2'>
-                    <img className='img-fluid' src={defaultvehicle} alt={data.name} />
-                    <div className='position-absolute bottom-0 start-0 bg-white px-3 py-2'>
-                      <div>{data.name}</div>
-                      <div>{data.location}</div>
+        <div className="popular container mt-5">
+          <div className='mt-5'>
+            <div className="row">
+              <div className="col-md-12 d-flex ">
+                <div className='col-md-6'>
+                  <h2><b> Popular in town</b></h2>
+                </div>
+                <div className='col-md-6 d-flex justify-content-end'>
+                  {page.prev !== null && <button onClick={() => getNextData(page.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {page.next !== null && <button onClick={() => getNextData(page.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                </div>
+              </div>
+              {popularInTown.map((data, idx) => {
+                return (
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3'>
+                    <div className='position-relative mb-2 '>
+                      <img className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
+                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                        <div>{data.name}</div>
+                        <div>{data.location}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
-            <div className="col d-none d-xl-block">
-              <div className="img1">
-                <img src="../assets/images/img2-home.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Teluk Bogam</button>
-                  <button type="submit" className="btn">Kalimantan</button>
-                </form>
-              </div>
-            </div>
-            <div className="col d-none d-md-block">
-              <div className="img1 ">
-                <img src="../assets/images/img1-home.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Bromo</button>
-                  <button type="submit" className="btn">Malang</button>
-                </form>
-              </div>
-            </div>
-            <div className="col">
-              <div className="img1">
-                <img src="../assets/images/img4-home.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Malioboro</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
-                <div className="next">
-                  <i className="fa-solid fa-circle-chevron-right"></i>
-                </div>
-              </div>
+                )
+              })}
             </div>
           </div>
-        </div>
 
-        <div className="popular container">
-          <h2><b> Cars</b></h2>
-          <div className="row">
-            <div className="col d-none d-xxl-block">
-              <div className="img1">
-                <img src="../assets/images/car1.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Van</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
+          <div className='mt-5'>
+            <div className="col-md-12 d-flex ">
+              <div className='col-md-6'>
+                <h2><b> Bike</b></h2>
+              </div>
+              <div className='col-md-6 d-flex justify-content-end'>
+                {pageBike.prev !== null && <button onClick={() => getNextDataBike(pageBike.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                {pageBike.next !== null && <button onClick={() => getNextDataBike(pageBike.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
               </div>
             </div>
-            <div className="col d-none d-xl-block">
-              <div className="img1">
-                <img src="../assets/images/car2.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Lamborghini</button>
-                  <button type="submit" className="btn">South Jakarta</button>
-                </form>
-              </div>
-            </div>
-            <div className="col d-none d-md-block">
-              <div className="img1 ">
-                <img src="../assets/images/car3.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Jeep</button>
-                  <button type="submit" className="btn">Malang</button>
-                </form>
-              </div>
-            </div>
-            <div className="col">
-              <div className="img1">
-                <img src="../assets/images/car4.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">White Jeep</button>
-                  <button type="submit" className="btn">Kalimantan</button>
-                </form>
-                <div className="next">
-                  <i className="fa-solid fa-circle-chevron-right"></i>
-                </div>
-              </div>
+            <div className="row">
+              {bike.map((data, idx) => {
+                return (
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div className='position-relative mb-2 '>
+                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                        <div>{data.name}</div>
+                        <div>{data.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </div>
 
-        <div className="popular container">
-          <h2><b> Motorbike</b></h2>
-          <div className="row">
-            <div className="col d-none d-xxl-block">
-              <div className="img1">
-                <img src="../assets/images/motor1.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Vespa</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
+          <div className='mt-5'>
+            <div className="col-md-12 d-flex ">
+              <div className='col-md-6'>
+                <h2><b> Motorbike</b></h2>
+              </div>
+              <div className='col-md-6 d-flex justify-content-end'>
+                {pageMotor.prev !== null && <button onClick={() => getNextDataMotor(pageMotor.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                {pageMotor.next !== null && <button onClick={() => getNextDataMotor(pageMotor.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
               </div>
             </div>
-            <div className="col d-none d-xl-block">
-              <div className="img1">
-                <img src="../assets/images/motor2.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Honda KLX</button>
-                  <button type="submit" className="btn">Kalimantan</button>
-                </form>
-              </div>
-            </div>
-            <div className="col d-none d-md-block">
-              <div className="img1 ">
-                <img src="../assets/images/motor3.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Honda</button>
-                  <button type="submit" className="btn">Malang</button>
-                </form>
-              </div>
-            </div>
-            <div className="col">
-              <div className="img1">
-                <img src="../assets/images/motor4.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Matic Bike</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
-                <div className="next">
-                  <i className="fa-solid fa-circle-chevron-right"></i>
-                </div>
-              </div>
+            <div className="row">
+              {motor.map((data, idx) => {
+                return (
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div className='position-relative mb-2 '>
+                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                        <div>{data.name}</div>
+                        <div>{data.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </div>
-        <div className="popular container">
-          <h2><b> Popular in town</b></h2>
-          <div className="row">
-            <div className="col d-none d-xxl-block">
-              <div className="img1">
-                <img src="../assets/images/bike1.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Fixie</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
+
+          <div className='mt-5'>
+            <div className="col-md-12 d-flex ">
+              <div className='col-md-6'>
+                <h2><b> Cars</b></h2>
+              </div>
+              <div className='col-md-6 d-flex justify-content-end'>
+                {pageCars.prev !== null && <button onClick={() => getNextDataCars(pageCars.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                {pageCars.next !== null && <button onClick={() => getNextDataCars(pageCars.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
               </div>
             </div>
-            <div className="col d-none d-xl-block">
-              <div className="img1">
-                <img src="../assets/images/bike2.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Sport Bike</button>
-                  <button type="submit" className="btn">Kalimantan</button>
-                </form>
-              </div>
-            </div>
-            <div className="col d-none d-md-block">
-              <div className="img1 ">
-                <img src="../assets/images/bike3.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Onthel</button>
-                  <button type="submit" className="btn">Malang</button>
-                </form>
-              </div>
-            </div>
-            <div className="col">
-              <div className="img1">
-                <img src="../assets/images/bike4.png" className="float-start rounded" />
-                <form className="text-img1">
-                  <button type="submit" className="btn head">Fixie Gray</button>
-                  <button type="submit" className="btn">Yogyakarta</button>
-                </form>
-                <div className="next">
-                  <i className="fa-solid fa-circle-chevron-right"></i>
-                </div>
-              </div>
+            <div className="row">
+              {cars.map((data, idx) => {
+                return (
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div className='position-relative mb-2 '>
+                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                        <div>{data.name}</div>
+                        <div>{data.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
