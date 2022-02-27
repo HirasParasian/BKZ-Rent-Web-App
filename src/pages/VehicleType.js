@@ -16,6 +16,7 @@ export const CharacterList = () => {
   const [pageCars, setPageCars] = useState({})
   const [pageBike, setPageBike] = useState({})
   const [pageMotor, setPageMotor] = useState({})
+  // eslint-disable-next-line no-unused-vars
   const [errorMsg, setErrorMsg] = useState(null)
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams();
@@ -36,6 +37,7 @@ export const CharacterList = () => {
       getBike()
       getMotor()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getPopularInTown = async () => {
