@@ -16,7 +16,7 @@ export const VehicleDetail = (props) => {
 
     const getDataComponent = async (vehicleId) => {
         try {
-            const { data } = await getData(`http://localhost:5000/vehicles?search=${vehicleId}`, props.history)
+            const { data } = await getData(`http://localhost:5000/vehicles/id?vehicleId=${vehicleId}`, props.history)
 
             setVehicle(data.results[0])
             console.log(data.results[0])
@@ -29,7 +29,7 @@ export const VehicleDetail = (props) => {
             <div className='container'>
                 <div className='row my-5'>
                     <div className='col-md-4'>
-                        <img className='img-fluid' src={defaultvehicle} alt="charImg" />
+                        <img className='img-fluid' src={vehicle?.image} alt="charImg" />
                     </div>
                     <div className='col-md-8'>
                         <h1>{vehicle?.name}</h1>
