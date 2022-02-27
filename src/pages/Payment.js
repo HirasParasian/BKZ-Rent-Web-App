@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../components/Layout'
+// eslint-disable-next-line no-unused-vars
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
-import { FaPlus, FaMinus, FaHeart } from 'react-icons/fa'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -12,6 +11,7 @@ export const Payment = (props) => {
 
     useEffect(() => {
         getDataComponent(vehicleId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const getDataComponent = async (vehicleId) => {

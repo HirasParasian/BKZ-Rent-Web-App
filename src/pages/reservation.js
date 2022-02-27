@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../components/Layout'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
@@ -13,6 +12,7 @@ export const Reservation = (props) => {
 
     useEffect(() => {
         getDataComponent(vehicleId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const getDataComponent = async (vehicleId) => {
@@ -79,7 +79,7 @@ export const Reservation = (props) => {
                     </div>
                     <div className="col-xl-12">
                         <div className='d-grid gap-2'>
-                            <button  onClick={() => goToDetail(vehicleId)}  type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
+                            <button onClick={() => goToDetail(vehicleId)} type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
                         </div>
                     </div>
                 </div>

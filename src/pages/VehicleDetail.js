@@ -12,6 +12,7 @@ export const VehicleDetail = (props) => {
 
     useEffect(() => {
         getDataComponent(vehicleId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const getDataComponent = async (vehicleId) => {

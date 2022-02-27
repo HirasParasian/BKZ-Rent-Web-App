@@ -10,6 +10,7 @@ import Reservation from './pages/Reservation'
 import VehicleDetail from './pages/VehicleDetail'
 import CharacterList from './pages/CharacterList'
 import CharacterDetail from './pages/CharacterDetail'
+// eslint-disable-next-line no-unused-vars
 import { createBrowserHistory } from 'history'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 

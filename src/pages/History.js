@@ -61,22 +61,22 @@ export const History = () => {
 
                             </div>
                             <div className="mb-3 cover-filter rounded">
-                                <a className="nav-link filter-history" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <a className="nav-link filter-history" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul className="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Type</a></li>
+                                    <li><a className="dropdown-item" href="/">Type</a></li>
                                     <hr className="dropdown-divider" />
-                                    <li><a className="dropdown-item" href="#">Date Added</a></li>
+                                    <li><a className="dropdown-item" href="/">Date Added</a></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><a className="dropdown-item" href="#">Name</a></li>
+                                    <li><a className="dropdown-item" href="/">Name</a></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><a className="dropdown-item" href="#">Favorite Product</a></li>
+                                    <li><a className="dropdown-item" href="/">Favorite Product</a></li>
                                 </ul>
                             </div>
                         </div>
