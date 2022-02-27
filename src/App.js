@@ -29,7 +29,7 @@ export default class App extends Component {
           <Route path='vehicles/:vehicleId' element={<DetailVehicle />} /> */}
           <Route path='characters' element={<CharacterList />} />
           <Route path='characters/:id' element={<CharacterDetail history={this.history} />} />
-          <Route path='reservation' element={<Reservation />} />
+          <Route path='vehicles/reservation/:vehicleId' element={<Reservation history={this.history} />} />
         </Routes>
       </BrowserRouter>
     )
