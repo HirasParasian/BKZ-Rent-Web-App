@@ -4,8 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import history1 from "../assets/images/history1.png"
 import history2 from '../assets/images/history2.png'
-import car2 from '../assets/images/car2.png'
-import car3 from '../assets/images/car3.png'
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 
 
@@ -13,6 +12,30 @@ export const History = () => {
 
     const [history, setHistory] = useState([])
     const [page, setPage] = useState({})
+
+    const getNextData = async (url, replace = false) => {
+        try {
+            // setErrorMsg(null)
+            const { data } = await axios.get(url)
+            console.log(data.pageInfo)
+            if (replace) {
+                setHistory(data.results)
+            } else {
+                setHistory([
+                    ...data.results
+                ])
+            }
+            setPage(data.pageInfo)
+        } catch (e) {
+            if (e.message.includes('404')) {
+                // setErrorMsg('Data not found!')
+                setHistory([])
+                setPage({
+                    next: null
+                })
+            }
+        }
+    }
 
     useEffect(() => {
         getHistory()
@@ -122,8 +145,8 @@ export const History = () => {
                             <h5 className="text-center pb-4">New Arrival</h5>
                             {history.map((data, idx) => {
                                 return (
-                                    <div className=" mb-4">
-                                        <div className="position-relative">
+                                    <div className=" mb-4" key={String(data.vehicleId)}>
+                                        <div className="position-relative " >
                                             <img src={data.image} alt="" className="src img-fluid img-arrival rounded" />
                                             <form className="text-img-2">
                                                 <button type="submit" className="btn head">{data.name} </button>
@@ -134,8 +157,8 @@ export const History = () => {
                                 )
                             })}
                             <div className="text-center">
-                                <h5>View More</h5>
-                                <i className="fa-solid fa-angle-down fa-2xl"></i>
+                                {page.prev !== null && <button onClick={() => getNextData(page.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                                {page.next !== null && <button onClick={() => getNextData(page.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                             </div>
                         </div>
                     </div>
