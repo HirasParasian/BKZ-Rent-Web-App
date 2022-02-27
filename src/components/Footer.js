@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../assets/images/logo.png'
+import Logo from '../assets/images/logo-bkz.png'
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 
 export default class Footer extends Component {
@@ -9,7 +9,7 @@ export default class Footer extends Component {
                 <div className="row text">
                     <div className="col">
                         <div>
-                            <img className="logo-bkz" src="../assets/images/logo-bkz.png" alt="Logo" />
+                            <img className="logo-bkz" src={Logo} alt="Logo" />
                         </div>
                         <div className="description">Plan and book your perfect trip with expert advice, travel tips for vehicle information
                             from us</div>
