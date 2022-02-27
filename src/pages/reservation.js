@@ -9,6 +9,7 @@ export const Reservation = (props) => {
 
     const [vehicle, setVehicle] = useState({})
     const { vehicleId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getDataComponent(vehicleId)
@@ -22,6 +23,9 @@ export const Reservation = (props) => {
         } catch (e) {
 
         }
+    }
+    const goToDetail = (dataID) => {
+        navigate(`/payment/${dataID}`)
     }
 
     return (
@@ -75,7 +79,7 @@ export const Reservation = (props) => {
                     </div>
                     <div className="col-xl-12">
                         <div className='d-grid gap-2'>
-                            <button type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
+                            <button  onClick={() => goToDetail(vehicleId)}  type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
                         </div>
                     </div>
                 </div>
