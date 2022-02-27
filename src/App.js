@@ -4,8 +4,9 @@ import History from './pages/History'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profil from './pages/Profil'
-import Reservation from './pages/Reservation'
+import Payment from './pages/Payment'
 import VehicleType from './pages/VehicleType'
+import Reservation from './pages/Reservation'
 import VehicleDetail from './pages/VehicleDetail'
 import CharacterList from './pages/CharacterList'
 import CharacterDetail from './pages/CharacterDetail'
@@ -29,6 +30,7 @@ export default class App extends Component {
           <Route path='vehicles/:vehicleId' element={<DetailVehicle />} /> */}
           <Route path='characters' element={<CharacterList />} />
           <Route path='characters/:id' element={<CharacterDetail history={this.history} />} />
+          <Route path='payment' element={<Payment />} />
           <Route path='vehicles/reservation/:vehicleId' element={<Reservation history={this.history} />} />
         </Routes>
       </BrowserRouter>
