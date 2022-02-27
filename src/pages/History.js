@@ -2,18 +2,43 @@ import React, { useState, useEffect } from 'react'
 import { default as axios } from 'axios'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import history1 from "../assets/images/history1.png"
-import history2 from '../assets/images/history2.png'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+var moment = require('moment');
 
 
 
 export const History = () => {
 
-    const [history, setHistory] = useState([])
+    const [arrival, setArrival] = useState([])
     const [page, setPage] = useState({})
+    const [history, setHistory] = useState([])
+    const [pageHistory, setPageHistory] = useState({})
 
     const getNextData = async (url, replace = false) => {
+        try {
+            // setErrorMsg(null)
+            const { data } = await axios.get(url)
+            console.log(data.pageInfo)
+            if (replace) {
+                setArrival(data.results)
+            } else {
+                setArrival([
+                    ...data.results
+                ])
+            }
+            setPage(data.pageInfo)
+        } catch (e) {
+            if (e.message.includes('404')) {
+                // setErrorMsg('Data not found!')
+                setArrival([])
+                setPage({
+                    next: null
+                })
+            }
+        }
+    }
+
+    const getNextDataHistory = async (url, replace = false) => {
         try {
             // setErrorMsg(null)
             const { data } = await axios.get(url)
@@ -25,12 +50,12 @@ export const History = () => {
                     ...data.results
                 ])
             }
-            setPage(data.pageInfo)
+            setPageHistory(data.pageInfo)
         } catch (e) {
             if (e.message.includes('404')) {
                 // setErrorMsg('Data not found!')
                 setHistory([])
-                setPage({
+                setPageHistory({
                     next: null
                 })
             }
@@ -38,14 +63,22 @@ export const History = () => {
     }
 
     useEffect(() => {
+        getArrival()
         getHistory()
     }, [])
 
-    const getHistory = async () => {
+    const getArrival = async () => {
         const { data } = await axios.get('http://localhost:5000/vehicles?sort=createdAt&limit=2')
-        setHistory(data.results)
+        setArrival(data.results)
         setPage(data.pageInfo)
     }
+    const getHistory = async () => {
+        const { data } = await axios.get('http://localhost:5000/history?search=&page=&limit=2')
+        setHistory(data.results)
+        setPageHistory(data.pageInfo)
+
+    }
+
 
     return (
         <>
@@ -104,46 +137,38 @@ export const History = () => {
                         <div className="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
                             <p>A Week Ago</p>
                         </div>
-                        <div className="my-3 mx-5 d-flex ">
-                            <div className="ms-3 width-img-history for-img-history d-flex ">
-                                <img src={history1} alt="" className="src" />
-                            </div>
-                            <div className="mx-auto for-medium-history-text">
-                                <p><b>Vespa Matic</b></p>
-                                <p>Jan 18 to 21 2021</p>
-                                <p><b>Prepayment : Rp. 245.000</b></p>
-                                <p className="text-success">Has been returned</p>
-                            </div>
-                            <div className=" d-flex for-check-history mt-5">
-                                <input className="form-check-input" type="checkbox" />
-                            </div>
-                        </div>
-                        <div className="my-3 mx-5 d-flex ">
-                            <div className="ms-3 width-img-history for-img-history d-flex ">
-                                <img src={history2} alt="" className="src" />
-                            </div>
-                            <div className="mx-auto for-medium-history-text">
-                                <p><b>Vespa Matic</b></p>
-                                <p>Jan 18 to 21 2021</p>
-                                <p><b>Prepayment : Rp. 245.000</b></p>
-                                <p className="text-success">Has been returned</p>
-                            </div>
-                            <div className=" d-flex for-check-history mt-5">
-                                <input className="form-check-input" type="checkbox" />
-                            </div>
-                        </div>
+                        {history.map((data, idx) => {
+                            // let date = data.rentStartDate
+                            // let day = ;
+                            // console.log(day)
+                            return (
+                                <div className="my-3 mx-5 d-flex ">
+                                    <div className="ms-3 width-img-history for-img-history d-flex ">
+                                        <img src={data.image} alt="" className="src rounded" />
+                                    </div>
+                                    <div className="mx-auto for-medium-history-text">
+                                        <p><b>{data.vehicle}</b></p>
+                                        <p>{moment(data.rentStartDate).format("MM-DD-YY")} to {moment(data.rentEndDate).format("MM-DD-YY")}</p>
+                                        <p><b>Prepayment : Rp. {data.prepayment}</b></p>
+                                        <p className="text-success">Has been returned</p>
+                                    </div>
+                                    <div className=" d-flex for-check-history mt-5">
+                                        <input className="form-check-input" type="checkbox" />
+                                    </div>
+                                </div>
+                            )
+                        })}
                         <div className="my-5 mx-5 d-flex ">
                             <div className="mx-auto">
                                 <button className="btn bg-brown bg-brown-size"><b>Delete selected item</b></button>
                             </div>
                         </div>
-
                     </div>
 
                     <div className="col-xl-3 mb-5 d-none d-xl-block d-xxl-block">
                         <div className="border border-2 border-secondary text-center pt-4 ">
                             <h5 className="text-center pb-4">New Arrival</h5>
-                            {history.map((data, idx) => {
+                            {arrival.map((data, idx) => {
                                 return (
                                     <div className=" mb-4" key={String(data.vehicleId)}>
                                         <div className="position-relative " >
