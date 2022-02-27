@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import logo from '../assets/images/logo-bkz.png'
+import Profile from '../assets/images/profile.png'
 import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
@@ -21,7 +22,7 @@ export default class Navbar extends Component {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item nav-menu-before">
-                                <Link className="nav-link" to="/">History</Link>
+                                <Link className="nav-link" to="/history">History</Link>
                             </li>
                             <li className="nav-item dropdown nav-menu-before">
                                 <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -29,13 +30,13 @@ export default class Navbar extends Component {
                                     Vehicle Type
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="/">Vehicle Type</Link></li>
-                                    <li><Link className="dropdown-item" to="/">View More Detail</Link></li>
+                                    <li><Link className="dropdown-item" to="/vehicletype">Vehicle Type</Link></li>
+                                    <li><Link className="dropdown-item" to="/viewmoredetail">View More Detail</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><Link className="dropdown-item" to="/">Reservation</Link></li>
-                                    <li><Link className="dropdown-item" to="/">Payment</Link></li>
+                                    <li><Link className="dropdown-item" to="/reservation">Reservation</Link></li>
+                                    <li><Link className="dropdown-item" to="/payment">Payment</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item nav-menu-before">
@@ -50,7 +51,7 @@ export default class Navbar extends Component {
                             </div>
                             <div className="img-profile-login">
                                 <Link className="" to="/">
-                                    <img src="/" alt="Avatar Logo" className=" rounded-pill" />
+                                    <img src={Profile} alt="Avatar Logo" className=" rounded-pill" />
                                 </Link>
                             </div>
                         </form>
