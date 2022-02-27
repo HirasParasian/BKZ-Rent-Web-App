@@ -20,6 +20,7 @@ export const CharacterList = () => {
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams();
 
+
   useEffect(() => {
     const name = searchParams.get('name')
     const type = searchParams.get('type')
@@ -154,12 +155,14 @@ export const CharacterList = () => {
     const type = event.target.elements["type"].value
     setSearchParams({ name, type })
     await getNextData(url(name, type), true)
+    // navigate(`/vehicles?search=${name}&category=${type}`, { replace: true })
+    searchclick = true
   }
 
   const goToDetail = (vehicleId) => {
     navigate(`/vehicles/${vehicleId}`)
   }
-
+  let searchclick = false
   return (
 
     <><Navbar />
@@ -170,7 +173,7 @@ export const CharacterList = () => {
               <input name="search" type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
               <select name='type' className='form-select bg-transparent  form-control'>
-                <option value='' style={{ display: 'none' }}>Select a Gender</option>
+                <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>
                 <option value="3">Car</option>
@@ -209,87 +212,89 @@ export const CharacterList = () => {
               })}
             </div>
           </div>
-
-          <div className='mt-5'>
-            <div className="col-md-12 d-flex ">
-              <div className='col-md-6'>
-                <h2><b> Bike</b></h2>
+          {searchclick === false &&
+            <div className='mt-5'>
+              <div className="col-md-12 d-flex ">
+                <div className='col-md-6'>
+                  <h2><b> Bike</b></h2>
+                </div>
+                <div className='col-md-6 d-flex justify-content-end'>
+                  {pageBike.prev !== null && <button onClick={() => getNextDataBike(pageBike.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageBike.next !== null && <button onClick={() => getNextDataBike(pageBike.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                </div>
               </div>
-              <div className='col-md-6 d-flex justify-content-end'>
-                {pageBike.prev !== null && <button onClick={() => getNextDataBike(pageBike.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                {pageBike.next !== null && <button onClick={() => getNextDataBike(pageBike.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
-              </div>
-            </div>
-            <div className="row">
-              {bike.map((data, idx) => {
-                return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
-                    <div className='position-relative mb-2 '>
-                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
-                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
-                        <div>{data.name}</div>
-                        <div>{data.location}</div>
+              <div className="row">
+                {bike.map((data, idx) => {
+                  return (
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                      <div className='position-relative mb-2 '>
+                        <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                        <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                          <div>{data.name}</div>
+                          <div>{data.location}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+                  )
+                })}
+              </div>
+            </div>}
 
-          <div className='mt-5'>
-            <div className="col-md-12 d-flex ">
-              <div className='col-md-6'>
-                <h2><b> Motorbike</b></h2>
+          {searchclick === false &&
+            <div className='mt-5'>
+              <div className="col-md-12 d-flex ">
+                <div className='col-md-6'>
+                  <h2><b> Motorbike</b></h2>
+                </div>
+                <div className='col-md-6 d-flex justify-content-end'>
+                  {pageMotor.prev !== null && <button onClick={() => getNextDataMotor(pageMotor.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageMotor.next !== null && <button onClick={() => getNextDataMotor(pageMotor.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                </div>
               </div>
-              <div className='col-md-6 d-flex justify-content-end'>
-                {pageMotor.prev !== null && <button onClick={() => getNextDataMotor(pageMotor.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                {pageMotor.next !== null && <button onClick={() => getNextDataMotor(pageMotor.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
-              </div>
-            </div>
-            <div className="row">
-              {motor.map((data, idx) => {
-                return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
-                    <div className='position-relative mb-2 '>
-                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
-                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
-                        <div>{data.name}</div>
-                        <div>{data.location}</div>
+              <div className="row">
+                {motor.map((data, idx) => {
+                  return (
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                      <div className='position-relative mb-2 '>
+                        <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                        <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                          <div>{data.name}</div>
+                          <div>{data.location}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+                  )
+                })}
+              </div>
+            </div>}
 
-          <div className='mt-5'>
-            <div className="col-md-12 d-flex ">
-              <div className='col-md-6'>
-                <h2><b> Cars</b></h2>
+          {searchclick === false &&
+            <div className='mt-5'>
+              <div className="col-md-12 d-flex ">
+                <div className='col-md-6'>
+                  <h2><b> Cars</b></h2>
+                </div>
+                <div className='col-md-6 d-flex justify-content-end'>
+                  {pageCars.prev !== null && <button onClick={() => getNextDataCars(pageCars.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageCars.next !== null && <button onClick={() => getNextDataCars(pageCars.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                </div>
               </div>
-              <div className='col-md-6 d-flex justify-content-end'>
-                {pageCars.prev !== null && <button onClick={() => getNextDataCars(pageCars.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                {pageCars.next !== null && <button onClick={() => getNextDataCars(pageCars.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
-              </div>
-            </div>
-            <div className="row">
-              {cars.map((data, idx) => {
-                return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
-                    <div className='position-relative mb-2 '>
-                      <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
-                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
-                        <div>{data.name}</div>
-                        <div>{data.location}</div>
+              <div className="row">
+                {cars.map((data, idx) => {
+                  return (
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                      <div className='position-relative mb-2 '>
+                        <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                        <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                          <div>{data.name}</div>
+                          <div>{data.location}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+                  )
+                })}
+              </div>
+            </div>}
         </div>
       </div>
       <Footer />
