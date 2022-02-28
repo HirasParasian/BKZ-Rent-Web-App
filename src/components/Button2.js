@@ -1,4 +1,5 @@
 import React from "react"
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
 class Button2 extends React.Component {
     state = {
@@ -15,13 +16,15 @@ class Button2 extends React.Component {
 
     render() {
         return (
-            <div className="d-flex">
-                <button disabled={this.state.count === 0} className="btn btn-info" onClick={this.kurang}>
-                    -
+            <div className="d-flex d-grid ms-4 justify-content-center align-item-center my-5">
+                <button disabled={this.state.count === 0} className="btn bg-brown rounded btn-circle d-flex justify-content-center align-item-center" onClick={this.kurang}>
+                    <FaMinus />
                 </button>
-                <div> {this.state.count} </div>
-                <button className="btn btn-info" onClick={this.tambah}>
-                    +
+                <button disabled className="btn d-flex justify-content-center align-item-center" >
+                    <h4>{this.state.count}</h4>
+                </button>
+                <button className="btn bg-brown ms-4  rounded btn-circle d-flex justify-content-center align-item-center" onClick={this.tambah}>
+                    <FaPlus />
                 </button>
             </div>
         );
