@@ -23,20 +23,20 @@ export const CharacterList = () => {
 
 
   useEffect(() => {
-    const name = searchParams.get('name')
-    const type = searchParams.get('type')
+    // const name = searchParams.get('name')
+    // const type = searchParams.get('type')
 
-    if (name || type) {
-      const url = (name, gender) => `url?search=${name}&category=${type}`
-      document.getElementById('search').elements['search'].value = name
-      document.getElementById('type').elements['type'].value = type
-      getNextData(url(name, type), true)
-    } else {
-      getPopularInTown()
-      getCars()
-      getBike()
-      getMotor()
-    }
+    // if (name || type) {
+    //   const url = (name, gender) => `url?search=${name}&category=${type}`
+    //   document.getElementById('search').elements['search'].value = name
+    //   document.getElementById('type').elements['type'].value = type
+    //   getNextData(url(name, type), true)
+    // } else {
+    getPopularInTown()
+    getCars()
+    getBike()
+    getMotor()
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -62,6 +62,8 @@ export const CharacterList = () => {
     setMotor(data.results)
     setPageMotor(data.pageInfo)
   }
+
+
   const getNextData = async (url, replace = false) => {
     try {
       setErrorMsg(null)
@@ -150,31 +152,35 @@ export const CharacterList = () => {
       }
     }
   }
+  let searchclick = false
   const onSearch = async (event) => {
+
+    searchclick = true
     event.preventDefault();
     const url = (name, type) => `http://localhost:5000/vehicles?search=${name}&category=${type}`
     const name = event.target.elements["search"].value
     const type = event.target.elements["type"].value
     setSearchParams({ name, type })
     await getNextData(url(name, type), true)
-    // navigate(`/vehicles?search=${name}&category=${type}`, { replace: true })
-    searchclick = true
+    console.log(url)
+    navigate(`/search`, { replace: true })
   }
+
 
   const goToDetail = (vehicleId) => {
     navigate(`/vehicles/${vehicleId}`)
   }
-  let searchclick = false
+
   return (
 
     <><Navbar />
       <header>
         <div className="row">
           <div className="col-xl-12 d-flex for-margin-search ">
-            <form id='search' onSubmit={onSearch} className="input-group mb-3 rounded mx-auto button-type-name ">
-              <input name="search" type="text" className="btn-search-type form-control bg-transparent "
+            <form id='search' to='/search' onSubmit={onSearch} className="input-group mb-3 rounded mx-auto button-type-name ">
+              <input name="search" onClick={onSearch} type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <select name='type' className='form-select bg-transparent  form-control'>
+              <select onClick={onSearch} name='type' className='form-select bg-transparent  form-control'>
                 <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>
@@ -214,7 +220,7 @@ export const CharacterList = () => {
               })}
             </div>
           </div>
-          {searchclick === false &&
+          {
             <div className='mt-5'>
               <div className="col-md-12 d-flex ">
                 <div className='col-md-6'>
@@ -242,7 +248,7 @@ export const CharacterList = () => {
               </div>
             </div>}
 
-          {searchclick === false &&
+          {
             <div className='mt-5'>
               <div className="col-md-12 d-flex ">
                 <div className='col-md-6'>
@@ -270,7 +276,7 @@ export const CharacterList = () => {
               </div>
             </div>}
 
-          {searchclick === false &&
+          {
             <div className='mt-5'>
               <div className="col-md-12 d-flex ">
                 <div className='col-md-6'>
