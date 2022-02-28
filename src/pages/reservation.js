@@ -50,8 +50,8 @@ export const Reservation = (props) => {
                         </div>
                         <div className="col-xl-6 ms-5">
                             <div>
-                                <h2><b>Fixie - Gray Only </b> </h2>
-                                <h5 className="text-secondary"><b>Yogyakarta</b></h5><br />
+                                <h2><b>{vehicle?.name} </b> </h2>
+                                <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
                                 <h5 className="text-danger"><b>No Prepayment</b></h5>
                                 <br />
                                 <div className="d-flex">
