@@ -707,14 +707,10 @@ nav{
 .form-contact{
   margin-bottom: 10px;
 }
-.form-button-profile{
-  margin-top: 90px;
-  margin-bottom: 100px;
-}
+
 
 .btn-profile-cancel{
   background-color: rgba(203, 203, 212, 0.27);
-  width: 322px;
   height: 89px;
   font-weight: 900;
   font-size: 24px;
@@ -722,17 +718,18 @@ nav{
 }
 
 .btn-profile-edit-password{
-  width: 322px;
   height: 89px;
   background-color: #393939;
   font-weight: 900;
   font-size: 24px;
   color: #FFEDDB;
 }
+.img-profile-thumbnail{
+  height: 200px;
+}
 
 .btn-profile-save{
   background-color:#EDCDBB;
-  width: 322px;
   height: 89px;
   font-weight: 900;
   font-size: 24px;
@@ -1050,24 +1047,20 @@ display: none;
   }
 
   .btn-profile-cancel{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
   
   .btn-profile-edit-password{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
   
   .btn-profile-save{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
   .btn-profile-save{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
@@ -1215,19 +1208,16 @@ display: none;
     display: none;
   }
   .btn-profile-cancel{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
   
   .btn-profile-edit-password{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
   
   .btn-profile-save{
-    width: 120px;
     height: 30px;
     font-size: 12px;
   }
@@ -1348,19 +1338,16 @@ display: none;
     text-align: center;
   }
   .btn-profile-cancel{
-    width: 150px;
     height: 40px;
     font-size: 12px;
   }
   
   .btn-profile-edit-password{
-    width: 150px;
     height: 40px;
     font-size: 12px;
   }
   
   .btn-profile-save{
-    width: 150px;
     height: 40px;
     font-size: 12px;
   }
@@ -1472,19 +1459,17 @@ display: none;
 /***** X-Large devices (large desktops, 1200px and up) *****/
 @media (min-width: 993px) and (max-width: 1199.98px) { 
   .btn-profile-cancel{
-    width: 250px;
     height: 60px;
     font-size: 18px;
   }
   
   .btn-profile-edit-password{
-    width: 250px;
+
     height: 60px;
     font-size: 18px;
   }
   
   .btn-profile-save{
-    width: 250px;
     height: 60px;
     font-size: 18px;
   }

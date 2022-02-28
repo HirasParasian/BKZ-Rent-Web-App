@@ -50,7 +50,7 @@ export default class Navbar extends Component {
                                 </Link>
                             </div>
                             <div className="img-profile-login">
-                                <Link className="" to="/">
+                                <Link className="" to="/profil">
                                     <img src={Profile} alt="Avatar Logo" className=" rounded-pill" />
                                 </Link>
                             </div>
