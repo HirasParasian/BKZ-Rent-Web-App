@@ -40,10 +40,7 @@ img .logo-bkz{
   color: black;
   
 }
-.margin-reserv{
-  margin-top: 70px;
-  margin-bottom: 50px;
-}
+
 span.span-reserv{
   font-size: 24px;
   color: black;
@@ -110,7 +107,7 @@ footer{
 }
 
 footer.footer .row.text {
-  margin-bottom: 78px;
+  padding-bottom: 78px;
   margin-left: 120px;
   padding-top: 69px;
   margin-right: 120px;
@@ -124,7 +121,7 @@ footer.footer ul {
 
 footer.footer .description {
   margin-top: 26px;
-  margin-bottom: 53px;
+  padding-bottom: 53px;
   width: 300px;
 }
 
@@ -360,8 +357,8 @@ img .logo-bkz{
 }
 
 nav.navbar{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 /* .nav-about-before{
   margin-right: 46px;
@@ -464,15 +461,11 @@ header.header-home .header-content span{
   border-radius: 6px;
   width: 190px;
 }
-.reservation-date{
-  margin-top: 30px;
-}
+
 .form-date-reserv{
-  margin-top: 17px;
   color: black(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 6px;
-  width: 320px;
 }
 
 header.header-home .header-content .search-vehicles{
@@ -496,8 +489,6 @@ element.style {
 
 .main .popular{
   font-family: 'Playfair Display', serif;
-  margin-left:144px;
-  margin-right: 120px;
   margin-bottom: 55px;
 }
 
@@ -802,7 +793,6 @@ hr{
   font-size: 36px;
 }
 .payment-img{
-  width: 452px;
   height: 317px;
 }
 
@@ -813,37 +803,28 @@ hr{
 }
 
 .quantity-payment{
-  width: 452px;
   height: 107px;
   text-align: center;
 }
 
 .quantity-date{
-  width: 681px;
   height: 107px;
   text-align: center;
 }
 
 .quantity-detail{
   height: 245px;
-  width: 452px;
-  padding-left: 65px;
-  padding-top: 35px;
 }
 
 .quantity-identity{
-  width: 681px;
   height: 245px;
   padding-left: 65px;
   padding-top: 70px;
 }
 
 .quantity-code{
-  width: 481px;
   height: 80px;
   text-align: left;
-  padding-top: 20px;
-  padding-left: 42px;
   font-size: 24px;
   font-family: 'Playfair Display', serif;
 }
@@ -865,7 +846,6 @@ hr{
 }
 
 .form-select-payment{
-  width: 398px;
   height: 80px;
   border-color: grey;
 }
@@ -927,9 +907,6 @@ hr{
 }
 .arrow-filter{
   padding-left: 50px;
-}
-.container-payment{
-  margin-left: 144px;
 }
 @media (max-width: 500px) {
   .header-login .header-content .header-right {
@@ -1034,8 +1011,6 @@ display: none;
   }
   .main .popular{
     font-family: 'Playfair Display', serif;
-    margin-left:unset;
-    margin-right: 120px;
     margin-bottom: 55px;
   }
 }
@@ -1101,42 +1076,19 @@ display: none;
   .label-payment{
     margin-left:100px;
   }
-  .quantity-code{
-    margin-left:50px;
-    width: 400px;
-  }
-  .form-select-payment{
-    margin-left:50px;
-    width: 400px;
-    
-  }
+
   .quantity-identity{
-    width: 400px;
     height: 245px;
-    margin-left:50px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
   .quantity-detail{
-    width: 400px;
     height: 245px;
-    margin-left:50px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
   .quantity-date{
     margin-left:50px;  
-    width: 400px;
     margin-top: 10px;
   }
   .quantity-payment{
     margin-left:50px;  
-    width: 400px;
-  }
-  .media-center{
-    margin-left:  0px;  
   }
   .btn-pay-before{
     margin-left: 80px;
@@ -1253,16 +1205,8 @@ display: none;
   .label-payment{
     margin-left:150px;
   }
-  .quantity-code{
-    margin-left:100px;
-  }
-  .form-select-payment{
-    margin-left:100px ;
-    width: 480px;
-    
-  }
+
   .quantity-identity{
-    width: 480px;
     height: 245px;
     margin-left:100px;
     margin-top: 10px;
@@ -1270,25 +1214,10 @@ display: none;
     padding-top: 30px;
   }
   .quantity-detail{
-    width: 480px;
     height: 245px;
-    margin-left:100px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
-  .quantity-date{
-    margin-left:100px;  
-    width: 480px;
-    margin-top: 10px;
-  }
-  .quantity-payment{
-    margin-left:100px;  
-    width: 480px;
-  }
-  .media-center{
-    margin-left:100px;  
-  }
+
+
   .btn-pay-before{
     margin-left: 100px;
   }
@@ -1392,42 +1321,14 @@ display: none;
   .label-payment{
     margin-left:300px;
   }
-  .quantity-code{
-    margin-left:200px;
-  }
-  .form-select-payment{
-    margin-left:200px;
-    width: 480px;
-    
-  }
+
   .quantity-identity{
-    width: 480px;
     height: 245px;
-    margin-left:200px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
   .quantity-detail{
-    width: 480px;
     height: 245px;
-    margin-left:200px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
-  .quantity-date{
-    margin-left:200px;  
-    width: 480px;
-    margin-top: 10px;
-  }
-  .quantity-payment{
-    margin-left:200px;  
-    width: 480px;
-  }
-  .media-center{
-    margin-left:200px;  
-  }
+
   .btn-pay-before{
     margin-left: 100px;
   }
@@ -1486,42 +1387,14 @@ display: none;
   .label-payment{
     margin-left:300px;
   }
-  .quantity-code{
-    margin-left:200px;
-  }
-  .form-select-payment{
-    margin-left:200px;
-    width: 480px;
-    
-  }
+
   .quantity-identity{
-    width: 480px;
     height: 245px;
-    margin-left:200px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
   .quantity-detail{
-    width: 480px;
     height: 245px;
-    margin-left:200px;
-    margin-top: 10px;
-    padding-left: 65px;
-    padding-top: 30px;
   }
-  .quantity-date{
-    margin-left:200px;  
-    width: 480px;
-    margin-top: 10px;
-  }
-  .quantity-payment{
-    margin-left:200px;  
-    width: 480px;
-  }
-  .media-center{
-    margin-left:200px;  
-  }
+
   .btn-pay-before{
     margin-left: 100px;
   }
@@ -1536,10 +1409,7 @@ display: none;
 
 /***** XX-Large devices (larger desktops, 1400px and up) *****/
 @media  (min-width: 1200px) and (max-width: 1420px) { 
-  .form-select-payment{
-  margin-left: 285px;
-  width: 480px;
-  }
+
   .next-index i{
     position: absolute;
     color:#BF9270;
