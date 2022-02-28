@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Button2 from '../components/Button2'
+
 
 export const Reservation = (props) => {
 
@@ -32,7 +34,7 @@ export const Reservation = (props) => {
         <> <Navbar />
             <div className="container">
                 <div className="row">
-                    <div className="margin-reserv">
+                    <div className="my-5">
                         <a href="/" className="href text-decoration-none">
                             <i className="reserv-back fa-solid fa-chevron-left"></i>
                             <span className="span-reserv">Reservation</span>
@@ -44,40 +46,36 @@ export const Reservation = (props) => {
 
             <div className="container">
                 <div className="row">
+                    <div className='d-block d-sm-none col-xl-12 px-5 py-5'>
+                        <img src={vehicle?.image} alt={vehicle?.name} className="img-fluid img-thumbnail inline-block" />
+                    </div>
                     <div className='d-flex'>
-                        <div className="col-xl-6 mx-5 ">
-                            <img src={vehicle?.image} alt={vehicle?.name} className="img-fluid" />
+                        <div className="col d-none d-sm-block ">
+                            <img src={vehicle?.image} alt={vehicle?.name} className="img-fluid img-thumbnail inline-block" />
                         </div>
-                        <div className="col-xl-6 ms-5">
-                            <div>
-                                <h2><b>{vehicle?.name} </b> </h2>
-                                <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
-                                <h5 className="text-danger"><b>No Prepayment</b></h5>
-                                <br />
-                                <div className="d-flex">
-                                    <button type="button" className="btn btn-secondary rounded btn-circle"><i
-                                        className="fa-solid fa-minus"></i></button>
-                                    <button type="button" className="btn bg-transparent btn-circle"><b>2</b></button>
-                                    <button type="button" className="btn btn-warning rounded btn-circle"><i className="fa-solid fa-plus"></i></button>
+                        <div className="col  px-5 ">
+                            <h2><b>{vehicle?.name} </b> </h2>
+                            <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
+                            <h5 className="text-danger"><b>No Prepayment</b></h5>
+                            <br />
+                            <Button2 />
+                            <div className="d-grid gap-2 px-1">
+                                <label htmlFor="Reservation"> Reservation Date : </label>
+                                <div className="mb-3 ">
+                                    <input type="date" placeholder="Date" className="form-control form-select" />
                                 </div>
-                                <div className="col-xl-12 reservation-date">
-                                    <label htmlFor="Reservation"> Reservation Date : </label>
-                                    <div className="mb-3 ">
-                                        <input type="date" placeholder="Date" className="form-control form-select form-date-reserv" />
-                                    </div>
-                                    <div className="mb-3">
-                                        <select className="form-select form-date-reserv mx-9">
-                                            <option className="d-none">Location</option>
-                                            <option value="Bekasi">Bekasi</option>
-                                            <option value="Bandung">Bandung</option>
-                                            <option value="Bogor">Bogor</option>
-                                        </select>
-                                    </div>
+                                <div className="mb-3">
+                                    <select className="form-select">
+                                        <option className="d-none">Location</option>
+                                        <option value="Bekasi">Bekasi</option>
+                                        <option value="Bandung">Bandung</option>
+                                        <option value="Bogor">Bogor</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-12">
+                    <div className="col-xl-12 mt-5">
                         <div className='d-grid gap-2'>
                             <button onClick={() => goToDetail(vehicleId)} type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
                         </div>
