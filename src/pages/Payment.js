@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 export const Payment = (props) => {
     const [vehicle, setVehicle] = useState({})
@@ -26,25 +27,23 @@ export const Payment = (props) => {
 
     return (
         <><Navbar />
-            <div className="container-payment">
-                <div className=" my-2 media-center">
+            <div className="container">
+                <div className=" my-2 ">
                     <div className="row">
-                        <div className="margin-reserv">
-                            <a href="/" className="text-decoration-none href">
-                                <i className="reserv-back fa-solid fa-chevron-left"></i>
-                                <span className="span-reserv">Payment</span>
-                            </a>
-                        </div>
+                        <a href="/" className="text-decoration-none href">
+                            <span className="span-reserv"><FaChevronLeft /></span>
+                            <span className="span-reserv">Payment</span>
+                        </a>
                     </div>
                 </div>
 
 
-                <div className=" my-2 media-center">
+                <div className=" my-2">
                     <div className="row">
-                        <div className="col-xl-5">
-                            <img src={vehicle?.image} alt={vehicle?.name} className="payment-img src mt-1" />
+                        <div className="col-xl-5 my-3">
+                            <img src={vehicle?.image} alt={vehicle?.name} className="payment-img img-fluid img-thumbnail src my-1" />
                         </div>
-                        <div className="col-xl-7">
+                        <div className="col-xl-7 my-3">
                             <h2><b>{vehicle?.name} </b> </h2>
                             <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
                             <h5 className="text-danger"><b>No Prepayment</b></h5><br /><br />
@@ -56,23 +55,23 @@ export const Payment = (props) => {
 
                 <div className=" my-5 ">
                     <div className="row">
-                        <div className="col-xl-5">
+                        <div className="col-xl-5 d-grid my-2">
                             <form action="">
                                 <fieldset disabled="disabled">
                                     <div>
                                         <input type="text" id="disabledTextInput"
-                                            className="bg-transparent border-2 border-secondary form-control quantity-payment"
+                                            className="bg-transparent border-2 border-secondary form-control"
                                             placeholder="Quantity : 2 Bikes" />
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
-                        <div className="col-xl-7">
+                        <div className="col-xl-7 d-grid my-2">
                             <form action="">
                                 <fieldset disabled="disabled">
                                     <div>
                                         <input type="text" id="disabledTextInput"
-                                            className="bg-transparent border-2 border-secondary form-control quantity-date"
+                                            className="bg-transparent border-2 border-secondary form-control"
                                             placeholder="Reservation Date    :     Jan 18 - 20 2021" />
                                     </div>
                                 </fieldset>
@@ -82,7 +81,7 @@ export const Payment = (props) => {
                 </div>
                 <div className=" my-5 ">
                     <div className="row">
-                        <div className="col-xl-5">
+                        <div className="col-xl-5 d-grid my-2">
                             <form action="">
                                 <fieldset disabled="disabled">
                                     <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-detail">
@@ -94,7 +93,7 @@ export const Payment = (props) => {
                                 </fieldset>
                             </form>
                         </div>
-                        <div className="col-xl-7">
+                        <div className="col-xl-7 d-grid my-2">
                             <form action="">
                                 <fieldset disabled="disabled">
                                     <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-identity">
@@ -110,12 +109,12 @@ export const Payment = (props) => {
 
                 <div className=" my-5 ">
                     <div className="row">
-                        <div className="d-grid col-xl-3 d-flex text-center">
+                        <div className="d-grid col-xl-3 d-flex text-center my-2">
                             <label className="label-payment" htmlFor=""><br />
                                 <h2 className="fw-bold ">Payment Code : </h2>
                             </label>
                         </div>
-                        <div className="col-xl my-2">
+                        <div className="col-xl my-2 d-grid">
                             <div
                                 className="d-grid bg-transparent position-relative  fw-bold border-2 border-secondary form-control quantity-code">
                                 <label className=" text-dark" htmlFor="">#FG1209878YZS </label><br />
@@ -123,7 +122,7 @@ export const Payment = (props) => {
                                 </button>
                             </div>
                         </div>
-                        <div className="col-xl">
+                        <div className="col-xl my-2">
                             <div className="mb-3 d-grid">
                                 <select className="form-select bg-transparent border-2 form-select-payment mx-9">
                                     <option className="d-none">Select Payment</option>
