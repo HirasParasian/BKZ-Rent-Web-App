@@ -11,6 +11,7 @@ export const VehicleDetail = (props) => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         getDataComponent(vehicleId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -24,8 +25,8 @@ export const VehicleDetail = (props) => {
 
         }
     }
-    const goToDetail = (dataID) => {
-        navigate(`/vehicles/reservation/${dataID}`)
+    const goToDetail = (vehicleId) => {
+        navigate(`/vehicles/reservation/${vehicleId}`)
     }
     return (
         <>
