@@ -3,7 +3,8 @@ import Layout from '../components/Layout'
 import Button2 from '../components/Button2'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
-import { FaPlus, FaMinus, FaHeart } from 'react-icons/fa'
+import {FaHeart } from 'react-icons/fa'
+const { APP_URL } = process.env
 
 export const VehicleDetail = (props) => {
     const [vehicle, setVehicle] = useState({})
