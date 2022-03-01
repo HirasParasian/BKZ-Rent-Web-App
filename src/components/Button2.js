@@ -16,7 +16,7 @@ class Button2 extends React.Component {
 
     render() {
         return (
-            <div className="d-flex d-grid ms-4 justify-content-center align-item-center my-5">
+            <div className="d-flex d-grid ms-4 justify-content-center align-item-center my-3">
                 <button disabled={this.state.count === 0} className="btn bg-brown rounded btn-circle d-flex justify-content-center align-item-center" onClick={this.kurang}>
                     <FaMinus />
                 </button>
