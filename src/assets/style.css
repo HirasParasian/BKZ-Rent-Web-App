@@ -264,7 +264,9 @@ img .logo-bkz{
   width: 100px;
   height: 100px;
 }
-
+.logo-bkz{
+  height: 100px;
+}
 .btn-detail-fav{
   background-color: #BF9270;
   color: #FFEDDB;

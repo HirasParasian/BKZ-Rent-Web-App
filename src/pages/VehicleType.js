@@ -7,7 +7,7 @@ import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 
 
-export const CharacterList = () => {
+export const VehicleType = () => {
   const [popularInTown, setPopularInTown] = useState([])
   const [cars, setCars] = useState([])
   const [motor, setMotor] = useState([])
@@ -310,4 +310,4 @@ export const CharacterList = () => {
   )
 }
 
-export default CharacterList
+export default VehicleType

@@ -8,7 +8,7 @@ export default class Footer extends Component {
             <footer className="footer">
                 <div className="row text">
                     <div className="col">
-                        <div>
+                        <div className="logo-bkz">
                             <img className="logo-bkz" src={Logo} alt="Logo" />
                         </div>
                         <div className="description">Plan and book your perfect trip with expert advice, travel tips for vehicle information
