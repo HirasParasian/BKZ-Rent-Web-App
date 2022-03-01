@@ -43,8 +43,8 @@ export default class Navbar extends Component {
                             </li>
                         </ul>
                         <form className="d-flex justify-content-center">
-                            <a href="../views/login.html"><button type="button" className="btn-login btn btn-info"> Login</button></a>
-                            <a href="../views/signup.html"><button type="button" className="btn-register btn btn-info">Register</button></a>
+                            <a href="/login"><button type="button" className="btn-login btn btn-info"> Login</button></a>
+                            <a href="/signup"><button type="button" className="btn-register btn btn-info">Register</button></a>
                         </form>
                     </div>
                 </div>
