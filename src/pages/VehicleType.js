@@ -193,11 +193,11 @@ export const CharacterList = () => {
       </header>
 
       <div className="main">
-        <div className="popular container mt-5">
+        <div className="container mt-5 ">
           <div className='mt-5'>
             <div className="row">
-              <div className="col-md-12 d-flex ">
-                <div className='col-md-6'>
+              <div className="d-flex ">
+                <div className='col-md-6 '>
                   <h2><b> Popular in town</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
@@ -207,7 +207,7 @@ export const CharacterList = () => {
               </div>
               {popularInTown.map((data, idx) => {
                 return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3'>
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                     <div className='position-relative mb-2 '>
                       <img className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
                       <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
@@ -234,7 +234,7 @@ export const CharacterList = () => {
               <div className="row">
                 {bike.map((data, idx) => {
                   return (
-                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
                         <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
                         <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
@@ -262,7 +262,7 @@ export const CharacterList = () => {
               <div className="row">
                 {motor.map((data, idx) => {
                   return (
-                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5 d-flex'>
                       <div className='position-relative mb-2 '>
                         <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
                         <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
@@ -290,7 +290,7 @@ export const CharacterList = () => {
               <div className="row">
                 {cars.map((data, idx) => {
                   return (
-                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3'>
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
                         <img className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
                         <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>

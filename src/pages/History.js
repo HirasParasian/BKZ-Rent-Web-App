@@ -142,7 +142,7 @@ export const History = () => {
                             // let day = ;
                             // console.log(day)
                             return (
-                                <div className="my-3 mx-5 d-flex ">
+                                <div className="my-3 mx-5 d-flex " key={String(data.vehicleId)}>
                                     <div className="ms-3 width-img-history for-img-history d-flex ">
                                         <img src={data.image} alt="" className="src rounded" />
                                     </div>
@@ -170,7 +170,7 @@ export const History = () => {
                             <h5 className="text-center pb-4">New Arrival</h5>
                             {arrival.map((data, idx) => {
                                 return (
-                                    <div className=" mb-4" key={String(data.vehicleId)}>
+                                    <div className=" mb-4" key={String(Math.random() * (9999 - 1000) + 1000)}>
                                         <div className="position-relative " >
                                             <img src={data.image} alt="" className="src img-fluid img-arrival rounded" />
                                             <form className="text-img-2">

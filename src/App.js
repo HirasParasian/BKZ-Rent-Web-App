@@ -17,9 +17,7 @@ import { unstable_HistoryRouter as HistoryRouter, BrowserRouter, Route, Routes }
 
 
 export default class App extends Component {
-  componentDidMount() {
-    console.log(this.props)
-  }
+
   history = createBrowserHistory()
   render() {
     return (
