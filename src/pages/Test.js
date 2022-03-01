@@ -7,7 +7,7 @@ import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 
 
-export const CharacterList = () => {
+export const Search = () => {
     const [popularInTown, setPopularInTown] = useState([])
     const [page, setPage] = useState({})
 
@@ -100,9 +100,9 @@ export const CharacterList = () => {
                             </div>
                             {popularInTown.map((data, idx) => {
                                 return (
-                                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3'>
+                                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                                         <div className='position-relative mb-2 '>
-                                            <img className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
+                                            <img className='img-thumbnail img-search img-fluid' src={data.image} alt={data.name} />
                                             <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                                                 <div>{data.name}</div>
                                                 <div>{data.location}</div>
@@ -120,4 +120,4 @@ export const CharacterList = () => {
     )
 }
 
-export default CharacterList
+export default Search
