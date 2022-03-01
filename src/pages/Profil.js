@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
-import { FaPlus, FaMinus, FaHeart } from 'react-icons/fa'
+import { BsPencil } from 'react-icons/bs'
 
 
 export const Profil = (props) => {
@@ -42,8 +42,7 @@ export const Profil = (props) => {
                     <div className="col-12 d-flex justify-content-center mt-5">
                         <div className="position-relative">
                             <img className=" rounded-circle img-thumbnail img-fluid img-profile-thumbnail" src={user?.images} alt="" />
-                            <button className="rounded-circle bg-warning border-0 button-edit-profile"><i
-                                className="fa-solid fa-pencil"></i></button>
+                            <button className="rounded-circle bg-warning border-0 button-edit-profile"><BsPencil /></button>
                         </div>
                     </div>
                     <div className="col-12 d-flex justify-content-center">
