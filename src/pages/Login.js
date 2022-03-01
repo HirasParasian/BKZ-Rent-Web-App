@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { FcGoogle } from 'react-icons/fc'
+import Logo from '../assets/images/logo-bkz.png'
+import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 
 export default class Login extends Component {
     state = {
@@ -53,8 +56,7 @@ export default class Login extends Component {
                                         <h2><span className="hr-sect">or try another way</span></h2>
                                     </div>
                                     <div>
-                                        <button type="button" className="btn-google btn btn-info"><img src="../assets/images/logo-google.png"
-                                            alt="Google" /> Login With Google</button>
+                                        <button type="button" className="btn-google btn btn-info"><FcGoogle />  Login With Google</button>
                                     </div>
                                     <div>
                                         <button type="button" className="btn-signup btn btn-info">Sign Up</button>
@@ -62,7 +64,7 @@ export default class Login extends Component {
                                     </div>
                                     <div className="footer2 container">
                                         <div className="img">
-                                            <img className="logofooter2" src="../assets/images/logo.png" alt="Logo" />
+                                            <img className="logofooter2 logo-bkz " src={Logo} alt="Logo" />
                                         </div>
                                         <div className="descripton2">
                                             <p>
@@ -75,11 +77,11 @@ export default class Login extends Component {
                                         <div>©2020 Vehicle Rental Center. All rights reserved</div>
 
                                         <div className="link-social">
-                                            <i className="fa-brands fa-twitter"></i>
-                                            <i className="fa-brands fa-facebook-f"></i>
-                                            <i className="fa-brands fa-instagram"></i>
-                                            <i className="fa-brands fa-linkedin-in"></i>
-                                            <i className="fa-brands fa-youtube"></i>
+                                            <FaTwitter />
+                                            <FaFacebookF />
+                                            <FaInstagram />
+                                            <FaLinkedinIn />
+                                            <FaYoutube />
                                         </div>
                                     </div>
                                 </div>
