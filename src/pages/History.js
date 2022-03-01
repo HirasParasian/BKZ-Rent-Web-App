@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from "react-helmet";
 import { default as axios } from 'axios'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 var moment = require('moment');
+
 
 
 
@@ -83,6 +85,11 @@ export const History = () => {
     return (
         <>
             <Navbar />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>History | Planet BKZ Rent</title>
+                <link rel="canonical" href="/" />
+            </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="col-xl-9">

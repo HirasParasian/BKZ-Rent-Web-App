@@ -3,8 +3,10 @@ import Layout from '../components/Layout'
 import Button2 from '../components/Button2'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
-import {FaHeart } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
+import { Helmet } from "react-helmet";
 const { APP_URL } = process.env
+
 
 export const VehicleDetail = (props) => {
     const [vehicle, setVehicle] = useState({})
@@ -33,6 +35,11 @@ export const VehicleDetail = (props) => {
     return (
         <>
             <Layout>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Vehicle Detail | Planet BKZ Rent</title>
+                    <link rel="canonical" href="/" />
+                </Helmet>
                 <div className='container'>
                     <div className='row my-5'>
                         <div className="col-xl-6 detail-left">

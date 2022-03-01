@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import { default as axios } from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { Helmet } from "react-helmet";
 
 
 
@@ -67,6 +68,11 @@ export const Search = () => {
     return (
 
         <><Navbar />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Search | Planet BKZ Rent</title>
+                <link rel="canonical" href="/" />
+            </Helmet>
             <header>
                 <div className="row">
                     <div className="col-xl-12 d-flex for-margin-search ">

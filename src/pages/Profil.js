@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
+import { Helmet } from "react-helmet";
 import { BsPencil } from 'react-icons/bs'
 
 
@@ -34,6 +35,11 @@ export const Profil = (props) => {
     return (
         <>
             <Navbar />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Profile | Planet BKZ Rent</title>
+                <link rel="canonical" href="/" />
+            </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="col-12">

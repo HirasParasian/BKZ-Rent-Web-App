@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { default as axios } from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Helmet } from "react-helmet";
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 
@@ -173,7 +174,13 @@ export const Homepage = () => {
 
   return (
 
+
     <><Navbar />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Planet BKZ Rent</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <header class="header-home">
         <div class="header-content">
           <div class="">

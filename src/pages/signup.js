@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import Logo from '../assets/images/logo-bkz.png'
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
+import { Helmet } from "react-helmet";
 
 export default class signup extends Component {
     render() {
         return (
             <>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Sign Up | Planet BKZ Rent</title>
+                    <link rel="canonical" href="/" />
+                </Helmet>
                 <header className="header-login">
                     <div className="header-content">
                         <div className="row">

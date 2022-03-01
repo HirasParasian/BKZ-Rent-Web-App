@@ -4,6 +4,7 @@ import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
+import { Helmet } from "react-helmet";
 
 
 export const Reservation = (props) => {
@@ -32,6 +33,11 @@ export const Reservation = (props) => {
 
     return (
         <> <Navbar />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Reservation | Planet BKZ Rent</title>
+                <link rel="canonical" href="/" />
+            </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="my-5">

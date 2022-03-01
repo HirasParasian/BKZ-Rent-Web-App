@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { useParams, useNavigate } from 'react-router-dom'
+import { Helmet } from "react-helmet";
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -27,6 +28,11 @@ export const Payment = (props) => {
 
     return (
         <><Navbar />
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Payment | Planet BKZ Rent</title>
+                <link rel="canonical" href="/" />
+            </Helmet>
             <div className="container">
                 <div className=" my-2 ">
                     <div className="row">
