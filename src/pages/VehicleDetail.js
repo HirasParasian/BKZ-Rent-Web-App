@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
+import Button2 from '../components/Button2'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import { FaPlus, FaMinus, FaHeart } from 'react-icons/fa'
@@ -35,7 +36,7 @@ export const VehicleDetail = (props) => {
                     <div className='row my-5'>
                         <div className="col-xl-6 detail-left">
                             <img src={vehicle?.image} alt={vehicle?.name} className="img-detail-vehicle" />
-                            <div>
+                            <div className='my-5'>
                                 <a href="../views/index-after-login.html"><button type="button" className="btn-detail-vehicle btn btn-info">Chat
                                     Admin</button></a>
                             </div>
@@ -53,9 +54,7 @@ export const VehicleDetail = (props) => {
                                     <br /><br />
                                 </div>
                                 <div className="d-flex">
-                                    <button type="button" className="btn d-flex justify-content-center align-items-center btn-secondary btn-circle"><FaMinus /></button>
-                                    <button type="button" className="btn d-flex justify-content-center align-items-center bg-transparent btn-circle"><b>2</b></button>
-                                    <button type="button" className="btn d-flex justify-content-center align-items-center btn-warning btn-circle"><FaPlus /></button>
+                                    <Button2 />
                                     <h4 className="d-flex align-items-center justify-content-center"><b> Rp. {vehicle?.price}/day</b></h4>
                                 </div>
                                 <div className="d-flex">
