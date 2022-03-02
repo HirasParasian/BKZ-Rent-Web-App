@@ -173,17 +173,17 @@ export const History = () => {
                     </div>
 
                     <div className="col-xl-3 mb-5 d-none d-xl-block d-xxl-block">
-                        <div className="border border-2 border-secondary text-center pt-4 ">
+                        <div className="border border-2 border-secondary text-center py-2 px-3 ">
                             <h5 className="text-center pb-4">New Arrival</h5>
                             {arrival.map((data, idx) => {
                                 return (
-                                    <div className=" mb-4" key={String(Math.random() * (9999 - 1000) + 1000)}>
-                                        <div className="position-relative " >
-                                            <img src={data.image} alt="" className="src img-fluid img-arrival rounded" />
-                                            <form className="text-img-2">
-                                                <button type="submit" className="btn head">{data.name} </button>
-                                                <button type="submit" className="btn">{data.location}</button>
-                                            </form>
+                                    <div className="mb-4" key={String(Math.random() * (9999 - 1000) + 1000)}>
+                                        <div className='position-relative mb-2 '>
+                                            <img id="img-object-home" className=' img-thumbnail  img-001 img-fluid' src={data.image} alt={data.name} />
+                                            <div className='position-absolute bottom-0 start-0  px-3 py-2 text-img1 col-3 d-grid'>
+                                                <div>{data.name}</div>
+                                                <div>{data.location}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 )
