@@ -231,9 +231,8 @@ display: none;
 .btn-detail-vehicle{
   background-color: #BF9270;
   color: #FFEDDB;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 900;
-  width: 470px;
   height: 79px;
   border-radius: 10px;
   border: none;
@@ -241,7 +240,7 @@ display: none;
 .btn-pay-now{
   background-color: #BF9270;
   color: #FFEDDB;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 900;
   height: 70px;
   border-radius: 10px;
@@ -251,9 +250,8 @@ display: none;
 .btn-detail-reserv{
   background-color:#FFCD61;
   color: #FFEDDB;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 900;
-  width: 370px;
   height: 79px;
   border-radius: 10px;
   border: none;
@@ -774,20 +772,25 @@ hr{
   margin: 120px 120px;
 }
 
-.img-detail-vehicle{
-  width: 470px;
-  height: 370px;
-  margin-bottom: 30px;
-}
 
 .img-detail-vehicle2{
   width: 696px;
   height: 616px;
   margin-bottom: 30px;
 }
-.detail-left{
-  margin-bottom: 30px;
+.btn-info:hover{
+  background-color:#EDCDBB;
 }
+.dropdown-menu{
+  background-color: #BF9270;
+}
+.border-brown{
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 34px;
+}
+
 .btn-circle {
   width: 45px;
   height: 45px;
