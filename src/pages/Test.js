@@ -92,7 +92,7 @@ export const Search = () => {
             </header>
 
             <div className="main">
-                <div className="popular container mt-5">
+                <div className="container mt-5">
                     <div className='mt-5'>
                         <div className="row">
                             <div className="col-md-12 d-flex ">
@@ -108,7 +108,7 @@ export const Search = () => {
                                 return (
                                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                                         <div className='position-relative mb-2 '>
-                                            <img className='img-thumbnail img-search img-fluid' src={data.image} alt={data.name} />
+                                            <img id="img-object-home" className='img-thumbnail img-search img-fluid' src={data.image} alt={data.name} />
                                             <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                                                 <div>{data.name}</div>
                                                 <div>{data.location}</div>
