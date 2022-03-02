@@ -182,45 +182,35 @@ export const Homepage = () => {
         <link rel="canonical" to="/" />
       </Helmet>
       <header class="header-home">
-        <div class="header-content">
-          <div class="">
-            <div>
-              <h1 class="h1-home">Explore and Travel</h1>
-            </div>
-            <div>
-              <p class="h1-home">Vehicle Finder</p>
-            </div>
-            <div>
+        <div class="header-content ">
+          <div class="container">
+            <div className='mb-5'>
+              <h1 class="h1-home mb-5">Explore and Travel</h1>
+              <p class="h1-home mt-5">Vehicle Finder</p>
               <span class="border-top border-2"></span>
             </div>
             <div>
-              <div class="m-4">
+              <div class="row">
                 <form action="/examples/actions/confirmation.php" method="post">
-                  <div>
-                    <div class="mb-3 col-6 d-inline-flex">
-                      <input type="email" class="form-type-vehicle form-control"
-                        placeholder="Type the vehicle (ex. motorbike" />
-                    </div>
+                  <div class=" col-12 col-xl-6 d-inline-flex d-grid ">
+                    <input type="email" class="form-control border-brown2 py-3"
+                      placeholder="Type the vehicle (ex. motorbike" />
                   </div>
                   <div class="d-flex">
-                    <div class="col-3 d-inline-flex">
-                      <div class="mb-3">
-                        <select class="form-select form-location-home mx-9">
-                          <option class="d-none">Location</option>
-                          <option value="Bekasi">Bekasi</option>
-                          <option value="Bandung">Bandung</option>
-                          <option value="Bogor">Bogor</option>
-                        </select>
-                      </div>
+                    <div class="col-6 col-xl-3 d-inline-flex d-grid mt-1">
+                      <select class="form-select mx-9 py-3 border-brown2">
+                        <option class="d-none">Location</option>
+                        <option value="Bekasi">Bekasi</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Bogor">Bogor</option>
+                      </select>
                     </div>
-                    <div class="col-3 d-inline-flex">
-                      <div class="mb-3  date-home-picker">
-                        <input id="datepicker" type="text" placeholder="Date" class="form-control form-date-home me-auto" />
-                      </div>
+                    <div class="col-6 col-xl-3 d-grid ms-1 mt-1">
+                      <input type="date" placeholder="Date" class="form-control me-auto py-3 border-brown2" />
                     </div>
                   </div>
                   <div class="">
-                    <button type="button" class=" search-vehicles btn  " aria-expanded="false">
+                    <button type="button" class="bg-brown btn-info border-0 btn  " aria-expanded="false">
                       Search
                     </button>
                   </div>

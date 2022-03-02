@@ -101,7 +101,7 @@ export const History = () => {
                                 <button className='bg-search me-2'><FaSearch /></button>
                             </div>
                             <div className="mb-3 cover-filter rounded border-brown border-0">
-                                <Link className="nav-link filter-history  form-select " to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link filter-history border-0 bg-transparent form-select " to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
                                 </Link>

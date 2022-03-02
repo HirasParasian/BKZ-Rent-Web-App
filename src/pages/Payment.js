@@ -55,7 +55,7 @@ export const Payment = (props) => {
                             <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
                             <h5 className="text-danger"><b>No Prepayment</b></h5><br /><br />
                             <h4 className="code-payment">#FG1209878YZS</h4>
-                            <button className="btn btn-copy btn-info fw-bold" type="button">Copy Booking Code</button>
+                            <button className="btn btn-copy border-0 btn-info fw-bold" type="button">Copy Booking Code</button>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ export const Payment = (props) => {
                             <div
                                 className="d-grid bg-transparent position-relative  fw-bold border-2 border-secondary form-control quantity-code">
                                 <label className=" text-dark" htmlFor="">#FG1209878YZS </label><br />
-                                <button className="btn btn-copy-copy btn-info fw-bold" type="button">Copy
+                                <button className="btn btn-copy-copy border-0 btn-info fw-bold" type="button">Copy
                                 </button>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ export const Payment = (props) => {
                         </div>
                         <div className="col-xl-12 mt-5 mb-5">
                             <div className="d-grid gap-2">
-                                <button className="btn-lg btn-pay-before btn-primary me-5" type="button">Pay before : 59:30</button>
+                                <button className="btn-lg  border-0 btn-info me-5" type="button">Pay before : 59:30</button>
                             </div>
                         </div>
                     </div>

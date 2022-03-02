@@ -420,54 +420,24 @@ header.header-home .header-content{
 }
 
 header.header-home .header-content h1 {
-  font-size: 64px;
+  font-size: 3rem;
   width: 356px;
   font-family: 'Playfair Display', serif;
   text-align: left;
   font-weight: bold;
   line-height: 80px;
   padding-top: 69px;
-  margin-left:121px;
 }
 header.header-home .header-content p{
-  margin-left:121px;
-  margin-top: 74px;
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
 
 }
 header.header-home .header-content span{
-  margin-left:121px;
-  margin-top: 17px;
   padding-left: 33px;
 }
 
 
-.form-type-vehicle{
-  margin-left:83px;
-  margin-top: 48px;
-  margin-bottom: 34px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-  width: 476px;
-}
-.form-location-home{
-  margin-left:83px;
-  margin-top: 17px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-  /* width: 200px; */
-}
-
-.form-date-home{
-  margin-top: 17px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 6px;
-  width: 190px;
-}
 
 .form-date-reserv{
   color: black(255, 255, 255, 0.5);
@@ -475,14 +445,6 @@ header.header-home .header-content span{
   border-radius: 6px;
 }
 
-header.header-home .header-content .search-vehicles{
-  margin-left:83px;
-  margin-top: 51px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color:#BF9270;
-  border-radius: 6px;
-  width: 120px;
-}
 
 .btn-check:focus+.btn, .btn:focus{
   box-shadow: unset;
@@ -790,6 +752,20 @@ hr{
   /* box-shadow: 0 0 0 0.25rem rgba(227, 183, 160 / 25%); */
   border-color: #BF9270;
 }
+.btn-check:active+.btn-info:focus, .btn-check:checked+.btn-info:focus, .btn-info.active:focus, .btn-info:active:focus, .show>.btn-info.dropdown-toggle:focus{
+  box-shadow: 0 0 0 0.4rem rgba(227, 183, 160,0.25);
+  /* box-shadow: 0 0 0 0.25rem rgba(227, 183, 160 / 25%); */
+  border-color: #BF9270;
+}
+.btn-check:active+.btn-info, .btn-check:checked+.btn-info, .btn-info.active, .btn-info:active, .show>.btn-info.dropdown-toggle{
+  background-color: #EDCDBB;
+}
+.dropdown-item.active, .dropdown-item:active{
+  background-color: #EDCDBB;
+}
+.dropdown-item.active, .dropdown-item:hover{
+  background-color: #EDCDBB;
+}
 .nav-link{
   color: #BF9270;
 }
@@ -798,6 +774,12 @@ hr{
 }
 .border-brown{
   background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 34px;
+}
+.border-brown2{
+  background: rgba(237, 205, 187, 0.5);
   border: none;
   border-radius: 10px;
   margin-bottom: 34px;
@@ -878,15 +860,19 @@ hr{
   border-color: grey;
 }
 
-.btn-pay-before{
-  background-color: #BF9270;
-  border-color: #EDCDBB;
-}
 
 .filter-history{
   color: #393939;
 }
-
+.form-check-input:checked{
+  background-color: #BF9270;
+  border-color: #BF9270;
+}
+.form-check-input:focus{
+  box-shadow: 0 0 0 0.4rem rgba(227, 183, 160,0.25);
+  /* box-shadow: 0 0 0 0.25rem rgba(227, 183, 160 / 25%); */
+  border-color: #BF9270;
+}
 .ul-for-filter{
   background-color: #EDCDBB;
   color: #393939;
@@ -1030,13 +1016,13 @@ display: none;
 
 /***** Small devices (landscape phones, 576px and up) *****/
 @media (max-width: 576px){
-  .h1-home{
+  /* .h1-home{
     display: none;
-  }
+  } */
   .main .popular h2{
     font-family: 'Playfair Display', serif;
     margin-bottom: 55px;
-    font-size: 24px;
+    font-size: 1rem;
   }
   .main .popular{
     font-family: 'Playfair Display', serif;
