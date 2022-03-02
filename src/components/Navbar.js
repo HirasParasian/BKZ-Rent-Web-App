@@ -8,7 +8,7 @@ import { BsEnvelope } from 'react-icons/bs'
 export const Navbar = () => {
     return (
         <nav className="navbar ms-auto navbar-expand-lg navbar-light bg-transparent">
-            <div className="container ">
+            <div className="container">
                 <div className='d-flex'>
                     <div>
                         <Link className="navbar-brand" to="/">
@@ -50,7 +50,7 @@ export const Navbar = () => {
                             <Link className="nav-link" to="#" tabIndex="-1">About</Link>
                         </li>
                     </ul>
-                    <form className="d-flex justify-content-center">
+                    <form className="d-flex ms-auto justify-content-end">
                         <div type="button" class="btn position-relative">
                             <BsEnvelope size={30} color="#BF9270" />
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
