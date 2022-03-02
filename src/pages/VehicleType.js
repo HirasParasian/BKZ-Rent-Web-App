@@ -215,7 +215,7 @@ export const VehicleType = () => {
                 return (
                   <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                     <div className='position-relative mb-2 '>
-                      <img id="img-object" className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
+                      <img id="img-object-home" className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
                       <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                         <div>{data.name}</div>
                         <div>{data.location}</div>
@@ -242,7 +242,7 @@ export const VehicleType = () => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
-                        <img id="img-object" className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                        <img id="img-object-home" className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
                         <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                           <div>{data.name}</div>
                           <div>{data.location}</div>
@@ -270,7 +270,7 @@ export const VehicleType = () => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5 d-flex'>
                       <div className='position-relative mb-2 '>
-                        <img id="img-object" className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
+                        <img id="img-object-home" className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
                         <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                           <div>{data.name}</div>
                           <div>{data.location}</div>
@@ -298,8 +298,8 @@ export const VehicleType = () => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
-                        <img id="img-object" className=' img-thumbnail img-001 img-fluid' src={data.image} alt={data.name} />
-                        <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                        <img id="img-object-home" className=' img-thumbnail  img-001 img-fluid' src={data.image} alt={data.name} />
+                        <div className='position-absolute bottom-0 start-0  px-3 py-2 text-img1 col-3 d-grid'>
                           <div>{data.name}</div>
                           <div>{data.location}</div>
                         </div>
