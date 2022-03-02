@@ -776,6 +776,23 @@ hr{
 .btn-info:hover{
   background-color:#EDCDBB;
 }
+.btn-info{
+  background-color:#BF9270;
+}
+.border-secondary{
+  border-color:#EDCDBB;
+}
+.nav-link:focus, .nav-link:hover{
+  color: #BF9270;
+}
+.form-select:focus,.form-control:focus{
+  box-shadow: 0 0 0 0.4rem rgba(227, 183, 160,0.25);
+  /* box-shadow: 0 0 0 0.25rem rgba(227, 183, 160 / 25%); */
+  border-color: #BF9270;
+}
+.nav-link{
+  color: #BF9270;
+}
 .dropdown-menu{
   background-color: #BF9270;
 }
@@ -784,6 +801,10 @@ hr{
   border: none;
   border-radius: 10px;
   margin-bottom: 34px;
+}
+.bg-search{
+  background: rgba(255, 255, 255, 0.0);
+  border:none
 }
 
 .btn-circle {
@@ -893,6 +914,7 @@ hr{
   width: 260.13px;
   height: 340.35px;
   margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .for-text-history{

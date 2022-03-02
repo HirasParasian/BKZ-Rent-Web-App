@@ -76,10 +76,10 @@ export const Search = () => {
             <header>
                 <div className="row">
                     <div className="col-xl-12 d-flex for-margin-search ">
-                        <form id='search' onSubmit={onSearch} className="input-group mb-3 rounded mx-auto button-type-name ">
+                        <form id='search' onSubmit={onSearch} className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
                             <input name="search" type="text" className="btn-search-type form-control bg-transparent "
                                 placeholder="Search vehicle (ex. cars, cars name)" />
-                            <select name='type' className='form-select bg-transparent  form-control'>
+                            <select name='type' className='form-select bg-transparent  form-control border-end-0 border-top-0 border-bottom-0 text-secondary'>
                                 <option value='' style={{ display: 'none' }}>Select Category</option>
                                 <option value="1">Bike</option>
                                 <option value="2">Motorbike</option>

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { default as axios } from 'axios'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight, FaChevronLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 var moment = require('moment');
 
@@ -95,14 +95,13 @@ export const History = () => {
                 <div className="row">
                     <div className="col-xl-9">
                         <div className="d-flex">
-                            <div className="input-group mb-3 rounded mx-auto button-type-name2 ">
-                                <input type="text" className=" form-control bg-transparent " placeholder="Search History" />
-                                <button className="btn " type="button" id="button-addon2"><i
-                                    className="fa-solid fa-magnifying-glass"></i></button>
-
+                            <div className="input-group mb-3 rounded mx-auto button-type-name2 border-brown ">
+                                <input name="search" type="text" className="btn-search-type form-control bg-transparent "
+                                    placeholder="Search History" />
+                                <button className='bg-search me-2'><FaSearch /></button>
                             </div>
-                            <div className="mb-3 cover-filter rounded">
-                                <Link className="nav-link filter-history" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            <div className="mb-3 cover-filter rounded border-brown border-0">
+                                <Link className="nav-link filter-history  form-select " to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
                                 </Link>
@@ -124,19 +123,19 @@ export const History = () => {
                         <div className="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
                             <p>Today</p>
                         </div>
-                        <div className="my-3 mx-5 d-flex">
-                            <div className="mx-auto for-text-history border-bottom border-secondary d-flex ">
-                                <p className="">Please finish your payment for vespa for Vespa Rental Jogja </p>
-                                <i className=" ms-auto fa-solid fa-chevron-right"></i>
+                        <div className="my-3 mx-5 d-flex ">
+                            <div className="mx-auto text-secondary  for-text-history border-bottom border-secondary d-flex ">
+                                <p>Please finish your payment for vespa for Vespa Rental Jogja </p>
+                                <p className='ms-auto'><FaChevronRight /></p>
                             </div>
-                            <div className=" d-flex for-check-history">
+                            <div className=" d-flex text-secondary for-check-history">
                                 <input className="form-check-input" type="checkbox" />
                             </div>
                         </div>
                         <div className="my-3 mx-5 d-flex">
-                            <div className="mx-auto for-text-history border-bottom border-secondary d-flex ">
-                                <p className="">Your payment has been confirmed! </p>
-                                <i className=" ms-auto fa-solid fa-chevron-right"></i>
+                            <div className="mx-auto text-secondary for-text-history border-bottom border-secondary d-flex ">
+                                <p>Your payment has been confirmed! </p>
+                                <p className='ms-auto'><FaChevronRight /></p>
                             </div>
                             <div className=" d-flex for-check-history">
                                 <input className="form-check-input" type="checkbox" />
@@ -152,7 +151,7 @@ export const History = () => {
                             return (
                                 <div className="my-3 mx-5 d-flex " key={String(data.vehicleId)}>
                                     <div className="ms-3 width-img-history for-img-history d-flex ">
-                                        <img src={data.image} alt="" className="src rounded" />
+                                        <img id="img-object" src={data.image} alt="" className="src rounded" />
                                     </div>
                                     <div className="mx-auto for-medium-history-text">
                                         <p><b>{data.vehicle}</b></p>
@@ -166,9 +165,9 @@ export const History = () => {
                                 </div>
                             )
                         })}
-                        <div className="my-5 mx-5 d-flex ">
-                            <div className="mx-auto">
-                                <button className="btn bg-brown bg-brown-size"><b>Delete selected item</b></button>
+                        <div className="my-5 mx-5">
+                            <div className="d-grid">
+                                <button className="btn btn-info border-0 py-3 bg-brown"><b>Delete selected item</b></button>
                             </div>
                         </div>
                     </div>

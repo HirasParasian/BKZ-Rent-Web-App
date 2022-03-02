@@ -186,7 +186,7 @@ export const VehicleType = () => {
             <form id='search' to='/search' onSubmit={onSearch} className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
               <input name="search" onClick={onSearch} type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <select onClick={onSearch} name='type' className='form-select bg-transparent text-secondary border-0 border-start2  form-control'>
+              <select onClick={onSearch} name='type' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
                 <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>
