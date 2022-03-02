@@ -101,15 +101,13 @@ export const Payment = (props) => {
                             </form>
                         </div>
                         <div className="col-xl-7 d-grid my-2">
-                            <form action="">
-                                <fieldset disabled="disabled">
-                                    <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-identity">
-                                        <label className="text-dark" htmlFor="">Identity : </label><br />
-                                        <label className="text-secondary pt-4" htmlFor="">Samantha Doe (+6290987682)</label><br />
-                                        <label className="text-secondary pt-1" htmlFor="">samanthadoe@mail.com</label><br />
-                                    </div>
-                                </fieldset>
-                            </form>
+                            <fieldset disabled="disabled">
+                                <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-identity">
+                                    <label className="text-dark" htmlFor="">Identity : </label><br />
+                                    <label className="text-secondary pt-4" htmlFor="">Samantha Doe (+6290987682)</label><br />
+                                    <label className="text-secondary pt-1" htmlFor="">samanthadoe@mail.com</label><br />
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </div>
@@ -121,26 +119,21 @@ export const Payment = (props) => {
                                 <h2 className="fw-bold ">Payment Code : </h2>
                             </label>
                         </div>
-                        <div className="col-xl my-2 d-grid">
-                            <div
-                                className="d-grid bg-transparent position-relative  fw-bold border-2 border-secondary form-control quantity-code">
-                                <label className=" text-dark" htmlFor="">#FG1209878YZS </label><br />
-                                <button className="btn btn-copy-copy border-0 btn-info fw-bold" type="button">Copy
-                                </button>
+                        <div className="col-xl my-2 d-grid ">
+                            <div className="form-control border-2 py-4 border-secondary border rounded bg-transparent d-grid d-flex align-self-center justify-content-center">
+                                <h4 className=''>#FG1209878YZS<button className='ms-4 bg-brown border-0 rounded'><span className="badge"> Copy</span></button></h4>
                             </div>
                         </div>
-                        <div className="col-xl my-2">
-                            <div className="mb-3 d-grid">
-                                <select className="form-select bg-transparent border-2 form-select-payment mx-9">
-                                    <option className="d-none">Select Payment</option>
-                                    <option value="Bekasi">Cash</option>
-                                    <option value="Bandung">Transfer</option>
-                                </select>
-                            </div>
+                        <div className="col-xl my-2 d-grid">
+                            <select className="form-select form-control bg-transparent border-2 border-secondary form-select-payment py-4">
+                                <option className="d-none">Select Payment</option>
+                                <option value="Bekasi">Cash</option>
+                                <option value="Bandung">Transfer</option>
+                            </select>
                         </div>
                         <div className="col-xl-12 mt-5 mb-5">
-                            <div className="d-grid gap-2">
-                                <button className="btn-lg  border-0 btn-info me-5" type="button">Pay before : 59:30</button>
+                            <div className="d-grid">
+                                <button className="btn-lg  border-0 btn-info " type="button">Pay before : 59:30</button>
                             </div>
                         </div>
                     </div>
