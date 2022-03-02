@@ -36,12 +36,12 @@ export const Reservation = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Reservation | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="my-5">
-                        <Link href="/" className="href text-decoration-none">
+                        <Link to="/" className="href text-decoration-none">
                             <i className="reserv-back fa-solid fa-chevron-left"></i>
                             <span className="span-reserv">Reservation</span>
                         </Link>

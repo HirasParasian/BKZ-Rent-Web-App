@@ -12,7 +12,7 @@ export default class signup extends Component {
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Sign Up | Planet BKZ Rent</title>
-                    <link rel="canonical" href="/" />
+                    <link rel="canonical" to="/" />
                 </Helmet>
                 <header className="header-login">
                     <div className="header-content">
@@ -37,7 +37,7 @@ export default class signup extends Component {
                                             <button type="button" className="btn-login btn btn-info">SignUp</button>
                                         </div>
                                         <div>
-                                            <p className="forgot"><Link className="text-dark" href="forgot-password.html">Forgot password?</Link></p>
+                                            <p className="forgot"><Link className="text-dark" to="forgot-password.html">Forgot password?</Link></p>
                                         </div>
                                         <div>
                                             <h2><span className="hr-sect">or try another way</span></h2>
@@ -48,7 +48,7 @@ export default class signup extends Component {
                                         </div>
                                         <div>
                                             <button type="button" className="btn-signup btn btn-info">Sign Up</button>
-                                            <p className="signupnow">Already Have an Account ? <Link className="text-light" href="#">Login Now</Link></p>
+                                            <p className="signupnow">Already Have an Account ? <Link className="text-light" to="#">Login Now</Link></p>
                                         </div>
                                         <div className="footer2 container">
                                             <div className="img">

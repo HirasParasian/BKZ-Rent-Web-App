@@ -35,7 +35,7 @@ export const Profil = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Profile | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <div className="container">
                 <div className="row">

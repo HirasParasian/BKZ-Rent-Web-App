@@ -178,7 +178,7 @@ export const VehicleType = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Vehicle Type | Planet BKZ Rent</title>
-        <link rel="canonical" href="/" />
+        <link rel="canonical" to="/" />
       </Helmet>
       <header>
         <div className="row">

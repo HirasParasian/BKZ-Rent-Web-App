@@ -32,12 +32,12 @@ export const Payment = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Payment | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <div className="container">
                 <div className=" my-2 ">
                     <div className="row">
-                        <Link href="/" className="text-decoration-none href">
+                        <Link to="/" className="text-decoration-none href">
                             <span className="span-reserv"><FaChevronLeft /></span>
                             <span className="span-reserv">Payment</span>
                         </Link>

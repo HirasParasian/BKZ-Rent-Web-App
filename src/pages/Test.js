@@ -71,7 +71,7 @@ export const Search = () => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Search | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <header>
                 <div className="row">

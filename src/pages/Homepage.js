@@ -179,7 +179,7 @@ export const Homepage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home | Planet BKZ Rent</title>
-        <link rel="canonical" href="/" />
+        <link rel="canonical" to="/" />
       </Helmet>
       <header class="header-home">
         <div class="header-content">

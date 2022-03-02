@@ -33,7 +33,7 @@ export default class Login extends Component {
             <><Helmet>
                 <meta charSet="utf-8" />
                 <title>Login | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
                 <header className="header-login vh-100">
                     <div className="header-content">
@@ -52,11 +52,11 @@ export default class Login extends Component {
                                             <input type="password" onChange={(e) => this.setState({ password: e.target.value })} placeholder="Password" />
                                         </div>
                                         <div>
-                                            <Link href="#"><button onClick={this.onLogin} type="button" value="Submit"
+                                            <Link to="#"><button onClick={this.onLogin} type="button" value="Submit"
                                                 className="btn-login btn btn-info">Login</button></Link>
                                         </div>
                                         <div>
-                                            <p className="forgot"><Link className="text-light" href="forgot-password.html">Forgot password?</Link></p>
+                                            <p className="forgot"><Link className="text-light" to="forgot-password.html">Forgot password?</Link></p>
                                         </div>
                                         <div>
                                             <h2><span className="hr-sect">or try another way</span></h2>
@@ -66,7 +66,7 @@ export default class Login extends Component {
                                         </div>
                                         <div>
                                             <button type="button" className="btn-signup btn btn-info">Sign Up</button>
-                                            <p className="signupnow">Dont Have Account ? <Link className="text-light" href="#">SignUp Now</Link></p>
+                                            <p className="signupnow">Dont Have Account ? <Link className="text-light" to="#">SignUp Now</Link></p>
                                         </div>
                                         <div className="footer2 container">
                                             <div className="img">

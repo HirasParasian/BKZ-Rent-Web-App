@@ -38,7 +38,7 @@ export const VehicleDetail = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Vehicle Detail | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <div className='container'>
                 <div className='row my-5'>
@@ -76,7 +76,7 @@ export const VehicleDetail = (props) => {
                                 className="btn-detail-reserv  btn btn-info">Reservation</button>
                         </div>
                         <div className="col-2  d-grid">
-                            <Link href="/"><button type="button" className="btn-detail-fav btn btn-info">
+                            <Link to="/"><button type="button" className="btn-detail-fav btn btn-info">
                                 <FaHeart /></button></Link>
                         </div>
                     </div>

@@ -89,7 +89,7 @@ export const History = () => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>History | Planet BKZ Rent</title>
-                <link rel="canonical" href="/" />
+                <link rel="canonical" to="/" />
             </Helmet>
             <div className="container">
                 <div className="row">
@@ -102,22 +102,22 @@ export const History = () => {
 
                             </div>
                             <div className="mb-3 cover-filter rounded">
-                                <Link className="nav-link filter-history" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link filter-history" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
                                 </Link>
                                 <ul className="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" href="/">Type</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Type</Link></li>
                                     <hr className="dropdown-divider" />
-                                    <li><Link className="dropdown-item" href="/">Date Added</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Date Added</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><Link className="dropdown-item" href="/">Name</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Name</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><Link className="dropdown-item" href="/">Favorite Product</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Favorite Product</Link></li>
                                 </ul>
                             </div>
                         </div>
