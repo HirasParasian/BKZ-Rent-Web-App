@@ -181,36 +181,36 @@ export const Homepage = () => {
         <title>Home | Planet BKZ Rent</title>
         <link rel="canonical" to="/" />
       </Helmet>
-      <header class="header-home">
-        <div class="header-content ">
-          <div class="container">
+      <header className="header-home">
+        <div className="header-content ">
+          <div className="container">
             <div className='mb-5'>
-              <h1 class="h1-home mb-5">Explore and Travel</h1>
-              <p class="h1-home mt-5">Vehicle Finder</p>
-              <span class="border-top border-2"></span>
+              <h1 className="h1-home mb-5">Explore and Travel</h1>
+              <p className="h1-home mt-5">Vehicle Finder</p>
+              <span className="border-top border-2"></span>
             </div>
             <div>
-              <div class="row">
+              <div className="row">
                 <form action="/examples/actions/confirmation.php" method="post">
-                  <div class=" col-12 col-xl-6 d-inline-flex d-grid ">
-                    <input type="email" class="form-control border-brown2 py-3"
+                  <div className=" col-12 col-xl-6 d-inline-flex d-grid ">
+                    <input type="email" className="form-control border-brown2 py-3 "
                       placeholder="Type the vehicle (ex. motorbike" />
                   </div>
-                  <div class="d-flex">
-                    <div class="col-6 col-xl-3 d-inline-flex d-grid mt-1">
-                      <select class="form-select mx-9 py-3 border-brown2">
-                        <option class="d-none">Location</option>
+                  <div className="d-flex">
+                    <div className="col-6 col-xl-3 d-inline-flex d-grid mt-1 ">
+                      <select className="form-select mx-9 py-3 border-brown2">
+                        <option className="d-none">Location</option>
                         <option value="Bekasi">Bekasi</option>
                         <option value="Bandung">Bandung</option>
                         <option value="Bogor">Bogor</option>
                       </select>
                     </div>
-                    <div class="col-6 col-xl-3 d-grid ms-1 mt-1">
-                      <input type="date" placeholder="Date" class="form-control me-auto py-3 border-brown2" />
+                    <div className="col-6 col-xl-3 d-grid ms-1 mt-1">
+                      <input type="date" placeholder="Date" className="form-control me-auto py-3 border-brown2" />
                     </div>
                   </div>
-                  <div class="">
-                    <button type="button" class="bg-brown btn-info border-0 btn  " aria-expanded="false">
+                  <div className="col-xl-2 col-6 d-grid">
+                    <button type="button" className="py-3 radius-search bg-brown btn-info border-0 btn  " aria-expanded="false">
                       Search
                     </button>
                   </div>
@@ -238,7 +238,7 @@ export const Homepage = () => {
                 return (
                   <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                     <div className='position-relative mb-2 '>
-                      <img id="img-object" className='img-thumbnail  img-fluid' src={data.image} alt={data.name} />
+                      <img id="img-object-home" className='img-thumbnail  img-fluid' src={data.image} alt={data.name} />
                       <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
                         <div>{data.name}</div>
                         <div>{data.location}</div>
