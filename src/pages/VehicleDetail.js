@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import { FaHeart } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
-const { APP_URL } = process.env
+// const { APP_URL } = process.env
 
 export const VehicleDetail = (props) => {
     const [vehicle, setVehicle] = useState({})
@@ -76,8 +76,8 @@ export const VehicleDetail = (props) => {
                                 className="btn-detail-reserv  btn btn-info">Reservation</button>
                         </div>
                         <div className="col-2  d-grid">
-                            <a href="/"><button type="button" className="btn-detail-fav btn btn-info">
-                                <FaHeart /></button></a>
+                            <Link href="/"><button type="button" className="btn-detail-fav btn btn-info">
+                                <FaHeart /></button></Link>
                         </div>
                     </div>
                 </div>

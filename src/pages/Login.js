@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { Helmet } from "react-helmet";
 import Logo from '../assets/images/logo-bkz.png'
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
     state = {
@@ -51,11 +52,11 @@ export default class Login extends Component {
                                             <input type="password" onChange={(e) => this.setState({ password: e.target.value })} placeholder="Password" />
                                         </div>
                                         <div>
-                                            <a href="#"><button onClick={this.onLogin} type="button" value="Submit"
-                                                className="btn-login btn btn-info">Login</button></a>
+                                            <Link href="#"><button onClick={this.onLogin} type="button" value="Submit"
+                                                className="btn-login btn btn-info">Login</button></Link>
                                         </div>
                                         <div>
-                                            <p className="forgot"><a className="text-light" href="forgot-password.html">Forgot password?</a></p>
+                                            <p className="forgot"><Link className="text-light" href="forgot-password.html">Forgot password?</Link></p>
                                         </div>
                                         <div>
                                             <h2><span className="hr-sect">or try another way</span></h2>
@@ -65,7 +66,7 @@ export default class Login extends Component {
                                         </div>
                                         <div>
                                             <button type="button" className="btn-signup btn btn-info">Sign Up</button>
-                                            <p className="signupnow">Dont Have Account ? <a className="text-light" href="#">SignUp Now</a></p>
+                                            <p className="signupnow">Dont Have Account ? <Link className="text-light" href="#">SignUp Now</Link></p>
                                         </div>
                                         <div className="footer2 container">
                                             <div className="img">

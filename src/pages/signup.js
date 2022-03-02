@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc'
 import Logo from '../assets/images/logo-bkz.png'
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom'
 
 export default class signup extends Component {
     render() {
@@ -36,7 +37,7 @@ export default class signup extends Component {
                                             <button type="button" className="btn-login btn btn-info">SignUp</button>
                                         </div>
                                         <div>
-                                            <p className="forgot"><a className="text-dark" href="forgot-password.html">Forgot password?</a></p>
+                                            <p className="forgot"><Link className="text-dark" href="forgot-password.html">Forgot password?</Link></p>
                                         </div>
                                         <div>
                                             <h2><span className="hr-sect">or try another way</span></h2>
@@ -47,7 +48,7 @@ export default class signup extends Component {
                                         </div>
                                         <div>
                                             <button type="button" className="btn-signup btn btn-info">Sign Up</button>
-                                            <p className="signupnow">Already Have an Account ? <a className="text-light" href="#">Login Now</a></p>
+                                            <p className="signupnow">Already Have an Account ? <Link className="text-light" href="#">Login Now</Link></p>
                                         </div>
                                         <div className="footer2 container">
                                             <div className="img">

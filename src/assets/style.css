@@ -484,8 +484,6 @@ header.header-home .header-content .search-vehicles{
   width: 120px;
 }
 
-element.style {
-}
 .btn-check:focus+.btn, .btn:focus{
   box-shadow: unset;
 }
@@ -509,9 +507,6 @@ element.style {
   position: relative;
   text-align: center;
   color: white;
-}
-.img-001{
-  
 }
 .text-img1{
   position: absolute;

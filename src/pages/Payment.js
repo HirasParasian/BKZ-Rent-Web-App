@@ -5,7 +5,8 @@ import { Helmet } from "react-helmet";
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { FaChevronLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 export const Payment = (props) => {
     const [vehicle, setVehicle] = useState({})
@@ -36,10 +37,10 @@ export const Payment = (props) => {
             <div className="container">
                 <div className=" my-2 ">
                     <div className="row">
-                        <a href="/" className="text-decoration-none href">
+                        <Link href="/" className="text-decoration-none href">
                             <span className="span-reserv"><FaChevronLeft /></span>
                             <span className="span-reserv">Payment</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

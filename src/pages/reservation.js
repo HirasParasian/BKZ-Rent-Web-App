@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
 import { Helmet } from "react-helmet";
-
+import { Link } from 'react-router-dom'
 
 export const Reservation = (props) => {
 
@@ -41,10 +41,10 @@ export const Reservation = (props) => {
             <div className="container">
                 <div className="row">
                     <div className="my-5">
-                        <a href="/" className="href text-decoration-none">
+                        <Link href="/" className="href text-decoration-none">
                             <i className="reserv-back fa-solid fa-chevron-left"></i>
                             <span className="span-reserv">Reservation</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

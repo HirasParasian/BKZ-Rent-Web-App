@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { default as axios } from 'axios'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { Helmet } from "react-helmet";
-import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
 
 

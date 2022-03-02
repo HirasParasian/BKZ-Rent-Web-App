@@ -1,15 +1,12 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import React, { useEffect, useState } from 'react'
-import Layout from '../components/Layout'
-import { useParams, useNavigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import { Helmet } from "react-helmet";
 import { BsPencil } from 'react-icons/bs'
 
 
 export const Profil = (props) => {
-    const url = "http://localhost:5000/users?userId=34"
 
     const [user, setUser] = useState({})
     const userId = 34

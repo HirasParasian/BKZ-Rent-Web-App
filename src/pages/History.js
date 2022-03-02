@@ -4,6 +4,7 @@ import { default as axios } from 'axios'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 var moment = require('moment');
 
 
@@ -101,22 +102,22 @@ export const History = () => {
 
                             </div>
                             <div className="mb-3 cover-filter rounded">
-                                <a className="nav-link filter-history" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                <Link className="nav-link filter-history" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Filter <i className="arrow-filter fa-solid fa-angle-down"></i>
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu ul-for-filter orange-200" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="/">Type</a></li>
+                                    <li><Link className="dropdown-item" href="/">Type</Link></li>
                                     <hr className="dropdown-divider" />
-                                    <li><a className="dropdown-item" href="/">Date Added</a></li>
+                                    <li><Link className="dropdown-item" href="/">Date Added</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><a className="dropdown-item" href="/">Name</a></li>
+                                    <li><Link className="dropdown-item" href="/">Name</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><a className="dropdown-item" href="/">Favorite Product</a></li>
+                                    <li><Link className="dropdown-item" href="/">Favorite Product</Link></li>
                                 </ul>
                             </div>
                         </div>
