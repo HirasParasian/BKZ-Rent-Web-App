@@ -479,7 +479,7 @@ header.header-home .header-content span{
   border: solid 5px #EDCDBB;
   border-bottom: 0;
   border-left: 0;
-  height: 18%;
+  height: fit-content;
   width: fit-content;
 }
 .img-thumbnail{

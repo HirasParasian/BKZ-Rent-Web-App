@@ -5,64 +5,54 @@ import { default as axios } from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
+import { connect, useSelector } from 'react-redux'
+import { getPopularInTown, filterVehicles, getCars, getMotors, getBikes } from '../redux/actions/popularInTown'
+import Skeleton from 'react-loading-skeleton'
 
 
 
-export const VehicleType = () => {
-  const [popularInTown, setPopularInTown] = useState([])
-  const [cars, setCars] = useState([])
-  const [motor, setMotor] = useState([])
-  const [bike, setBike] = useState([])
-  const [page, setPage] = useState({})
-  const [pageCars, setPageCars] = useState({})
-  const [pageBike, setPageBike] = useState({})
-  const [pageMotor, setPageMotor] = useState({})
+export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMotors, getBikes }) => {
+  //PopularInTown
+  const { popularInTown: popular } = useSelector(state => state)
   // eslint-disable-next-line no-unused-vars
-  const [errorMsg, setErrorMsg] = useState(null)
+  const [popularInTown, setPopularInTown] = useState([])
+  const [page, setPage] = useState({})
+
+
+  //Cars
+  const { cars: car } = useSelector(state => state)
+  // eslint-disable-next-line no-unused-vars
+  const [cars, setCars] = useState([])
+  const [pageCars, setPageCars] = useState({})
+
+
+  //Motors
+  const { motors: motor } = useSelector(state => state)
+  // eslint-disable-next-line no-unused-vars
+  const [motors, setMotors] = useState([])
+  const [pageMotors, setPageMotors] = useState({})
+
+
+  //Bikes
+  const { bikes: bike } = useSelector(state => state)
+  // eslint-disable-next-line no-unused-vars
+  const [bikes, setBikes] = useState([])
+  const [pageBikes, setPageBikes] = useState({})
+
+
+
   const navigate = useNavigate()
+  // eslint-disable-next-line no-unused-vars
   let [searchParams, setSearchParams] = useSearchParams();
+  const [errorMsg, setErrorMsg] = useState(null)
 
 
   useEffect(() => {
-    // const name = searchParams.get('name')
-    // const type = searchParams.get('type')
-
-    // if (name || type) {
-    //   const url = (name, gender) => `url?search=${name}&category=${type}`
-    //   document.getElementById('search').elements['search'].value = name
-    //   document.getElementById('type').elements['type'].value = type
-    //   getNextData(url(name, type), true)
-    // } else {
     getPopularInTown()
     getCars()
-    getBike()
-    getMotor()
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getMotors()
+    getBikes()
   }, [])
-
-  const getPopularInTown = async () => {
-    const { data } = await axios.get('http://localhost:5000/vehicles/popularintown?location')
-    setPopularInTown(data.results)
-    setPage(data.pageInfo)
-  }
-  const getCars = async () => {
-    const { data } = await axios.get('http://localhost:5000/vehicles?category=3')
-    setCars(data.results)
-    setPageCars(data.pageInfo)
-    console.log(data.results)
-  }
-
-  const getBike = async () => {
-    const { data } = await axios.get('http://localhost:5000/vehicles?category=1')
-    setBike(data.results)
-    setPageBike(data.pageInfo)
-  }
-  const getMotor = async () => {
-    const { data } = await axios.get('http://localhost:5000/vehicles?category=2')
-    setMotor(data.results)
-    setPageMotor(data.pageInfo)
-  }
 
 
   const getNextData = async (url, replace = false) => {
@@ -92,18 +82,18 @@ export const VehicleType = () => {
       setErrorMsg(null)
       const { data } = await axios.get(url)
       if (replace) {
-        setBike(data.results)
+        setBikes(data.results)
       } else {
-        setBike([
+        setBikes([
           ...data.results
         ])
       }
-      setPageBike(data.pageInfo)
+      setPageBikes(data.pageInfo)
     } catch (e) {
       if (e.message.includes('404')) {
         setErrorMsg('Data not found!')
-        setBike([])
-        setPageBike({
+        setBikes([])
+        setPageBikes({
           next: null
         })
       }
@@ -114,18 +104,18 @@ export const VehicleType = () => {
       setErrorMsg(null)
       const { data } = await axios.get(url)
       if (replace) {
-        setMotor(data.results)
+        setMotors(data.results)
       } else {
-        setMotor([
+        setMotors([
           ...data.results
         ])
       }
-      setPageMotor(data.pageInfo)
+      setPageMotors(data.pageInfo)
     } catch (e) {
       if (e.message.includes('404')) {
         setErrorMsg('Data not found!')
-        setMotor([])
-        setPageMotor({
+        setMotors([])
+        setPageMotors({
           next: null
         })
       }
@@ -211,19 +201,25 @@ export const VehicleType = () => {
                   {page.next !== null && <button onClick={() => getNextData(page.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                 </div>
               </div>
-              {popularInTown.map((data, idx) => {
-                return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
-                    <div className='position-relative mb-2 '>
-                      <img id="img-object-home" className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
-                      <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
-                        <div>{data.name}</div>
-                        <div>{data.location}</div>
+              {popular.isLoading &&
+                <Skeleton height={150} containerClassName='row' count={8} wrapper={({ children }) => (<div className='col-md-3'>{children}</div>)} />
+              }
+              {
+                popular.popularInTown.map((data, idx) => {
+                  return (
+                    <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
+                      <div className='position-relative mb-2 '>
+                        <img id="img-object-home" className='img-thumbnail img-fluid' src={data.image} alt={data.name} />
+                        <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>
+                          <div>{data.name}</div>
+                          <div>{data.location}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })
+              }
+
             </div>
           </div>
           {
@@ -233,12 +229,12 @@ export const VehicleType = () => {
                   <h2><b> Bike</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {pageBike.prev !== null && <button onClick={() => getNextDataBike(pageBike.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {pageBike.next !== null && <button onClick={() => getNextDataBike(pageBike.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageBikes.prev !== null && <button onClick={() => getNextDataBike(pageBikes.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageBikes.next !== null && <button onClick={() => getNextDataBike(pageBikes.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                 </div>
               </div>
               <div className="row">
-                {bike.map((data, idx) => {
+                {bike.bikes.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
@@ -261,12 +257,12 @@ export const VehicleType = () => {
                   <h2><b> Motorbike</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {pageMotor.prev !== null && <button onClick={() => getNextDataMotor(pageMotor.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {pageMotor.next !== null && <button onClick={() => getNextDataMotor(pageMotor.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageMotors.prev !== null && <button onClick={() => getNextDataMotor(pageMotors.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageMotors.next !== null && <button onClick={() => getNextDataMotor(pageMotors.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                 </div>
               </div>
               <div className="row">
-                {motor.map((data, idx) => {
+                {motor.motors.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5 d-flex'>
                       <div className='position-relative mb-2 '>
@@ -294,7 +290,7 @@ export const VehicleType = () => {
                 </div>
               </div>
               <div className="row">
-                {cars.map((data, idx) => {
+                {car.cars.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
@@ -316,4 +312,8 @@ export const VehicleType = () => {
   )
 }
 
-export default VehicleType
+const mapStateToProps = state => ({ popularInTown: state.popularInTown, cars: state.cars, bikes: state.bikes, motors: state.motors })
+
+const mapDispatchToProps = { getPopularInTown, filterVehicles, getCars, getMotors, getBikes }
+
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleType)
