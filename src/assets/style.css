@@ -66,7 +66,6 @@ span.span-reserv{
 
 .header-forgot .header-content form div input {
   height: 79px;
-  width: 447px;
   border: none;
   border-radius: 10px;
   text-align: center;
@@ -191,7 +190,6 @@ display: none;
 
 .header-login .header-content .header-right form div input {
   background: rgba(255, 255, 255, 0.5);
-  width: 489px;
   height: 79px;
   border: none;
   border-radius: 10px;
@@ -220,10 +218,9 @@ display: none;
 .header-login .header-content .header-right form div button.btn-login {
   background-color: #BF9270;
   color: #FFEDDB;
-  font-size: 24px;
+  font-size: 1.5rem;
+  height: 80px;
   font-weight: 900;
-  width: 489px;
-  height: 79px;
   border-radius: 10px;
   border: none;
   margin-top: 57px;
@@ -296,7 +293,6 @@ img .logo-bkz{
   color: #BF9270;
   font-size: 24px;
   font-weight: 900;
-  width: 489px;
   height: 79px;
   border-radius: 10px;
   border: none;
@@ -309,7 +305,6 @@ img .logo-bkz{
   color: #FFEDDB;
   font-size: 24px;
   font-weight: 900;
-  width: 490px;
   height: 79px;
   border-radius: 10px;
   border: none;
@@ -963,7 +958,6 @@ display: none;
   color: #FFEDDB;
   font-size: 12px;
   font-weight: 900;
-  width: 317px;
   height: 51px;
   border-radius: 10px;
   border: none;
@@ -971,7 +965,6 @@ display: none;
 
 .header-login .header-content .header-right form div input {
   background: rgba(255, 255, 255, 0.5);
-  width: 317px;
   height: 51px;
   border: none;
   border-radius: 10px;

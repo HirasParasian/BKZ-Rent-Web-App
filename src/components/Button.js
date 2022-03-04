@@ -1,23 +1,12 @@
-// import React from "react"
+import React from 'react'
 
-// class Button extends React.Component {
-//     state = {
-//         count: 0
-//     };
+export const Button = ({ children, block, padding, variant = 'info', ...rest }) => {
+    return (
+        < div className={block ? `d-grid ${padding ? padding : 'px-5'}` : `d-inline-block ${padding ? padding : 'px-5'}`} >
+            <button type="button" className={`btn btn-${variant}`} {...rest}>{children}</button>
+        </div >
 
-//     render() {
-//         return (
-//             <div>
-//                 <button onClick={() => this.setState({ count: this.state.count - 1 })}>
-//                     -
-//                 </button>
-//                 <div>{this.state.count}</div>
-//                 <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-//                     +
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
+    )
+}
 
-// export default Button
+export default Button

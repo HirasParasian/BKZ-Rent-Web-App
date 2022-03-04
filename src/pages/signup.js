@@ -4,6 +4,8 @@ import Logo from '../assets/images/logo-bkz.png'
 import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
+import InputForm from '../components/InputForm'
+import Button from '../components/Button'
 
 export default class signup extends Component {
     render() {
@@ -24,30 +26,14 @@ export default class signup extends Component {
                                     <h1>Sign Up</h1>
                                     <span>LET’S EXPLORE THE WORLD</span>
                                     <div>
-                                        <div>
-                                            <input type="text" placeholder="Name" />
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Email" />
-                                        </div>
-                                        <div>
-                                            <input type="password" placeholder="Password" />
-                                        </div>
-                                        <div>
-                                            <button type="button" className="btn-login btn btn-info">SignUp</button>
-                                        </div>
-                                        <div>
+                                        <div className='form-control bg-transparent'>
+                                            <InputForm placeholder='Name' />
+                                            <InputForm placeholder='Username' />
+                                            <InputForm placeholder='Email' />
+                                            <Button block='d-grid px-5' variant='info btn btn-login'>Sign Up</Button>
                                             <p className="forgot"><Link className="text-dark" to="forgot-password.html">Forgot password?</Link></p>
-                                        </div>
-                                        <div>
                                             <h2><span className="hr-sect">or try another way</span></h2>
-                                        </div>
-                                        <div>
-                                            <button type="button" className="btn-google btn btn-info"><FcGoogle />   SignUp
-                                                With Google</button>
-                                        </div>
-                                        <div>
-                                            <button type="button" className="btn-signup btn btn-info">Sign Up</button>
+                                            <Button block='d-grid px-5' variant='info btn btn-google'><FcGoogle /> Sign Up With Google</Button>
                                             <p className="signupnow">Already Have an Account ? <Link className="text-light" to="#">Login Now</Link></p>
                                         </div>
                                         <div className="footer2 container">
