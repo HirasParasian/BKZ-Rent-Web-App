@@ -51,11 +51,11 @@ export const Navbar = () => {
                         </li>
                     </ul>
                     <form className="d-flex ms-auto justify-content-end">
-                        <div type="button" class="btn position-relative">
+                        <div type="button" className="btn position-relative">
                             <BsEnvelope size={30} color="#BF9270" />
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 99
-                                <span class="visually-hidden">unread messages</span>
+                                <span className="visually-hidden">unread messages</span>
                             </span>
                         </div>
                         <div className="img-profile-login">

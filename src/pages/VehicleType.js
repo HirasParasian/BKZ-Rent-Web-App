@@ -6,45 +6,25 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { connect, useSelector } from 'react-redux'
-import { getPopularInTown, filterVehicles, getCars, getMotors, getBikes } from '../redux/actions/popularInTown'
+import { getPopularInTown, filterVehicles, getCars, getMotors, getBikes, getPopularNext } from '../redux/actions/popularInTown'
 import Skeleton from 'react-loading-skeleton'
 
 
 
 export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMotors, getBikes }) => {
   //PopularInTown
-  const { popularInTown: popular } = useSelector(state => state)
+  const { popularInTown: popular, cars: car, motors: motor, bikes: bike } = useSelector(state => state)
   // eslint-disable-next-line no-unused-vars
-  const [popularInTown, setPopularInTown] = useState([])
-  const [page, setPage] = useState({})
-
-
-  //Cars
-  const { cars: car } = useSelector(state => state)
-  // eslint-disable-next-line no-unused-vars
+  let [popularInTown, setPopularInTown] = useState([])
   const [cars, setCars] = useState([])
-  const [pageCars, setPageCars] = useState({})
-
-
-  //Motors
-  const { motors: motor } = useSelector(state => state)
-  // eslint-disable-next-line no-unused-vars
   const [motors, setMotors] = useState([])
-  const [pageMotors, setPageMotors] = useState({})
-
-
-  //Bikes
-  const { bikes: bike } = useSelector(state => state)
-  // eslint-disable-next-line no-unused-vars
   const [bikes, setBikes] = useState([])
-  const [pageBikes, setPageBikes] = useState({})
 
 
 
   const navigate = useNavigate()
   // eslint-disable-next-line no-unused-vars
   let [searchParams, setSearchParams] = useSearchParams();
-  const [errorMsg, setErrorMsg] = useState(null)
 
 
   useEffect(() => {
@@ -55,107 +35,15 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
   }, [])
 
 
-  const getNextData = async (url, replace = false) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      if (replace) {
-        setPopularInTown(data.results)
-      } else {
-        setPopularInTown([
-          ...data.results
-        ])
-      }
-      setPage(data.pageInfo)
-    } catch (e) {
-      if (e.message.includes('404')) {
-        setErrorMsg('Data not found!')
-        setPopularInTown([])
-        setPage({
-          next: null
-        })
-      }
-    }
+  const getNextDataPopular = async (url) => {
+    popularInTown = [getPopularNext(url)]
   }
-  const getNextDataBike = async (url, replace = false) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      if (replace) {
-        setBikes(data.results)
-      } else {
-        setBikes([
-          ...data.results
-        ])
-      }
-      setPageBikes(data.pageInfo)
-    } catch (e) {
-      if (e.message.includes('404')) {
-        setErrorMsg('Data not found!')
-        setBikes([])
-        setPageBikes({
-          next: null
-        })
-      }
-    }
-  }
-  const getNextDataMotor = async (url, replace = false) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      if (replace) {
-        setMotors(data.results)
-      } else {
-        setMotors([
-          ...data.results
-        ])
-      }
-      setPageMotors(data.pageInfo)
-    } catch (e) {
-      if (e.message.includes('404')) {
-        setErrorMsg('Data not found!')
-        setMotors([])
-        setPageMotors({
-          next: null
-        })
-      }
-    }
-  }
-  const getNextDataCars = async (url, replace = false) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      if (replace) {
-        setCars(data.results)
-      } else {
-        setCars([
-          ...data.results
-        ])
-      }
-      setPageCars(data.pageInfo)
-    } catch (e) {
-      if (e.message.includes('404')) {
-        setErrorMsg('Data not found!')
-        setCars([])
-        setPageCars({
-          next: null
-        })
-      }
-    }
-  }
-  let searchclick = false
-  const onSearch = async (event) => {
 
-    searchclick = true
+  const onSearch = async (event) => {
     event.preventDefault();
-    const url = (name, type) => `http://localhost:5000/vehicles?search=${name}&category=${type}`
-    const name = event.target.elements["search"].value
-    const type = event.target.elements["type"].value
-    setSearchParams({ name, type })
-    await getNextData(url(name, type), true)
-    console.log(url)
     navigate(`/search`, { replace: true })
   }
+
 
 
   const goToDetail = (vehicleId) => {
@@ -197,8 +85,8 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   <h2><b> Popular in town</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {page.prev !== null && <button onClick={() => getNextData(page.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {page.next !== null && <button onClick={() => getNextData(page.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {popular.pageInfo.prev !== null && <button onClick={() => getNextDataPopular(popular.pageInfo.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {popular.pageInfo.prev !== null && <button onClick={() => getNextDataPopular(popular.pageInfo.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                 </div>
               </div>
               {popular.isLoading &&
@@ -222,7 +110,7 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
 
             </div>
           </div>
-          {
+          {/* {
             <div className='mt-5'>
               <div className="col-md-12 d-flex ">
                 <div className='col-md-6'>
@@ -304,7 +192,7 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   )
                 })}
               </div>
-            </div>}
+            </div>} */}
         </div>
       </div>
       <Footer />

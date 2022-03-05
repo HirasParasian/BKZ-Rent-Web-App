@@ -22,10 +22,16 @@ export const getMotors = () => {
 export const getBikes = () => {
     return {
         type: 'GET_BIKES',
-        payload: axios.get(`${REACT_APP_URL}/vehicles?category=2`)
+        payload: axios.get(`${REACT_APP_URL}/vehicles?category=1`)
     }
 }
+export const getPopularNext = (url) => {
+    return {
+        type: 'GET_POPULAR_IN_TOWN',
+        payload: axios.get(`${url}`)
 
+    }
+}
 console.log(REACT_APP_URL)
 export const filterVehicles = (name, gender) => {
     // const params = new URLSearchParams()

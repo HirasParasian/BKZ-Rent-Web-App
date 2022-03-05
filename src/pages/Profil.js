@@ -38,7 +38,7 @@ export const Profil = (props) => {
                 <link rel="canonical" to="/" />
             </Helmet>
             <div className="container">
-                <div className="row">
+                <div className='row'>
                     <div className="col-12">
                         <h4 className="profile-text">Profile</h4>
                     </div>
@@ -99,6 +99,8 @@ export const Profil = (props) => {
                             </div>
                         </form>
                     </div>
+                </div>
+                <div className='row'>
                     <div className="col-12">
                         <label className="profile-contacts" htmlFor="Contacts">Identity</label>
                         <div className="row">
@@ -116,19 +118,17 @@ export const Profil = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="d-flex justify-content-between my-5">
-                            <div className="col-xl-4  d-grid gap-2">
-                                <button type="button" className=" btn btn-profile-save btn-sm btn-lg btn-md "> Save Change
-                                </button>
-                            </div>
-                            <div className="col-xl-4  d-grid gap-2 mx-3">
-                                <button type="button" className=" btn btn-profile-edit-password"> Edit Password </button>
-                            </div>
-                            <div className="col-xl-4  d-grid gap-2 ">
-                                <button type="button" className=" btn  btn-profile-cancel"> Cancel </button>
-                            </div>
-                        </div>
+                </div>
+                <div className="my-5 row">
+                    <div className="col-12 col-lg-4 col-xl-4 d-grid my-1 mx-auto">
+                        <button type="button" className=" btn btn-profile-save btn-sm btn-lg btn-md "> Save Change
+                        </button>
+                    </div>
+                    <div className="col-12 col-lg-4 col-xl-4 d-grid my-1 mx-auto">
+                        <button type="button" className=" btn btn-profile-edit-password"> Edit Password </button>
+                    </div>
+                    <div className="col-12 col-lg-4 col-xl-4  d-grid my-1 mx-auto">
+                        <button type="button" className=" btn  btn-profile-cancel"> Cancel </button>
                     </div>
                 </div>
             </div>

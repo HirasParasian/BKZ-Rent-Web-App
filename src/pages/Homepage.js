@@ -185,7 +185,7 @@ export const Homepage = () => {
         <div className="header-content ">
           <div className="container">
             <div className='mb-5'>
-              <h1 className="h1-home mb-5">Explore and Travel</h1>
+              <h1 className="mb-5">Explore and Travel</h1>
               <p className="h1-home mt-5">Vehicle Finder</p>
               <span className="border-top border-2"></span>
             </div>
@@ -236,7 +236,7 @@ export const Homepage = () => {
               </div>
               {popularInTown.map((data, idx) => {
                 return (
-                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
+                  <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-12 col-md-6 col-xl-3 my-5'>
                     <div className='position-relative mb-2 '>
                       <img id="img-object-home" className='img-thumbnail  img-fluid' src={data.image} alt={data.name} />
                       <div className='position-absolute bottom-0 start-0 px-3 py-2 text-img1'>

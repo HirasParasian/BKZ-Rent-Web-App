@@ -42,40 +42,39 @@ export const VehicleDetail = (props) => {
             </Helmet>
             <div className='container'>
                 <div className='row my-5'>
-                    <div className="col-6">
+                    <div className="col-12 col-xl-6">
                         <div className='rounded'>
                             <img id="img-object" src={vehicle?.image} alt={vehicle?.name} className=" img-detail-vehicle pe-4" />
                         </div>
                     </div>
-                    <div className="col-6">
-                        <div>
-                            <h2><b>{vehicle?.name} - </b> {vehicle?.location}</h2>
-                            <h5 className="text-success"><b>Available</b></h5>
-                            <h5 className="text-danger"><b>No Prepayment</b></h5>
-                            <br />
-                            <div>
-                                <p>Capacity : 1 Person</p>
-                                <p>Type : Bike </p>
-                                <p>Reservation Before 2 PM</p>
-
-                            </div>
-                            <div className="d-flex">
+                    <div className="col-12 col-xl-6">
+                        <h2><b>{vehicle?.name} - </b> {vehicle?.location}</h2>
+                        <div className="d-flex row align-items-center my-5">
+                            <div className="col-12 col-xl-6 ">
+                                <div className='d-flex flex-column align-items-center mb-5'>
+                                    <h5 className="text-success"><b>Available</b></h5>
+                                    <h5 className="text-danger"><b>No Prepayment</b></h5>
+                                    <p>Capacity : 1 Person</p>
+                                    <p>Type : Bike </p>
+                                    <p>Reservation Before 2 PM</p>
+                                </div>
                                 <Button2 />
-                                <h4 className="d-flex align-items-center justify-content-center"><b> Rp. {vehicle?.price}/day</b></h4>
                             </div>
-
+                            <div className="col-12 col-xl-6 d-flex align-items-center justify-content-center">
+                                <h4 ><b> Rp. {vehicle?.price}/day</b></h4>
+                            </div>
                         </div>
                     </div>
-                    <div className='d-flex justify-content-between'>
-                        <div className='my-5 col-xl-6 col-md-12 pe-5  d-grid'>
+                    <div className='mx-auto d-flex justify-content-between row my-5'>
+                        <div className='col-xl-6 col-12 d-grid my-1'>
                             <button type="button" className="btn-detail-vehicle btn btn-info">Chat
                                 Admin</button>
                         </div>
-                        <div className="col-4 d-grid">
+                        <div className="col-xl-5 col-12 d-grid my-1">
                             <button onClick={() => goToDetail(vehicleId)} type="button"
                                 className="btn-detail-reserv  btn btn-info">Reservation</button>
                         </div>
-                        <div className="col-2  d-grid">
+                        <div className="col-xl-1 col-12  d-grid my-1">
                             <Link to="/"><button type="button" className="btn-detail-fav btn btn-info">
                                 <FaHeart /></button></Link>
                         </div>
