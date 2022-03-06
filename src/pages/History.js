@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 var moment = require('moment');
-
+const { REACT_APP_URL } = process.env
 
 
 
@@ -71,12 +71,12 @@ export const History = () => {
     }, [])
 
     const getArrival = async () => {
-        const { data } = await axios.get('http://localhost:5000/vehicles?sort=createdAt&limit=2')
+        const { data } = await axios.get(`${REACT_APP_URL}/vehicles?sort=createdAt&limit=2`)
         setArrival(data.results)
         setPage(data.pageInfo)
     }
     const getHistory = async () => {
-        const { data } = await axios.get('http://localhost:5000/history?search=&page=&limit=2')
+        const { data } = await axios.get(`${REACT_APP_URL}/history?search=&page=&limit=2`)
         setHistory(data.results)
         setPageHistory(data.pageInfo)
 

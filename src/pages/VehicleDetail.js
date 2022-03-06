@@ -6,9 +6,13 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import { FaHeart } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
-// const { APP_URL } = process.env
+import { useDispatch, useSelector } from 'react-redux'
+import { increment, decrement } from '../redux/actions/counter'
+const { REACT_APP_URL } = process.env
 
 export const VehicleDetail = (props) => {
+    const auth = useSelector(state => state.auth)
+    const counter = useSelector(state => state.counter)
     const [vehicle, setVehicle] = useState({})
     const { vehicleId } = useParams()
     const navigate = useNavigate()
@@ -22,7 +26,7 @@ export const VehicleDetail = (props) => {
 
     const getDataComponent = async (vehicleId) => {
         try {
-            const { data } = await getData(`http://localhost:5000/vehicles/id?vehicleId=${vehicleId}`, props.history)
+            const { data } = await getData(`${REACT_APP_URL}/vehicles/id?vehicleId=${vehicleId}`, props.history)
 
             setVehicle(data.results[0])
         } catch (e) {
@@ -32,6 +36,14 @@ export const VehicleDetail = (props) => {
     const goToDetail = (vehicleId) => {
         navigate(`/vehicles/reservation/${vehicleId}`)
     }
+    const dispatch = useDispatch()
+    // const onIncrement = () => {
+    //     dispatch(increment())
+    // }
+
+    // const onDecrement = () => {
+    //     dispatch(decrement())
+    // }
     return (
         <>
             <Navbar />

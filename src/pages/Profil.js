@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { getData } from '../helpers/http'
 import { Helmet } from "react-helmet";
 import { BsPencil } from 'react-icons/bs'
+const { REACT_APP_URL } = process.env
 
 
 export const Profil = (props) => {
@@ -19,7 +20,7 @@ export const Profil = (props) => {
 
     const getDataComponent = async (userId) => {
         try {
-            const { data } = await getData(`http://localhost:5000/users?userId=${userId}`, props.history)
+            const { data } = await getData(`${REACT_APP_URL}/users?userId=${userId}`, props.history)
             setUser(data.results[0])
             console.log(data.results[0])
         } catch (e) {

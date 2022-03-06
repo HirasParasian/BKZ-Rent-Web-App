@@ -5,7 +5,7 @@ import { default as axios } from 'axios'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
-
+const { REACT_APP_URL } = process.env
 
 
 export const Search = () => {
@@ -23,7 +23,7 @@ export const Search = () => {
     }, [])
 
     const getPopularInTown = async () => {
-        const { data } = await axios.get('http://localhost:5000/vehicles?limit=8')
+        const { data } = await axios.get(`${REACT_APP_URL}/vehicles?limit=8`)
         setPopularInTown(data.results)
         setPage(data.pageInfo)
     }

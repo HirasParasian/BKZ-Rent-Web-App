@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
+const { REACT_APP_URL } = process.env
 
 export const Reservation = (props) => {
 
@@ -20,7 +21,7 @@ export const Reservation = (props) => {
 
     const getDataComponent = async (vehicleId) => {
         try {
-            const { data } = await getData(`http://localhost:5000/vehicles/id?vehicleId=${vehicleId}`, props.history)
+            const { data } = await getData(`${REACT_APP_URL}/vehicles/id?vehicleId=${vehicleId}`, props.history)
 
             setVehicle(data.results[0])
         } catch (e) {

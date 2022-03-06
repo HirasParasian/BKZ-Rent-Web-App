@@ -6,48 +6,150 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { connect, useSelector } from 'react-redux'
-import { getPopularInTown, filterVehicles, getCars, getMotors, getBikes, getPopularNext } from '../redux/actions/popularInTown'
+import { getPopularInTown, filterVehicles, getCategory, getPopularNext } from '../redux/actions/vehicle'
 import Skeleton from 'react-loading-skeleton'
+const { REACT_APP_URL } = process.env
 
 
+export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) => {
+  const { vehicle } = useSelector(state => state)
 
-export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMotors, getBikes }) => {
-  //PopularInTown
-  const { popularInTown: popular, cars: car, motors: motor, bikes: bike } = useSelector(state => state)
-  // eslint-disable-next-line no-unused-vars
-  let [popularInTown, setPopularInTown] = useState([])
-  const [cars, setCars] = useState([])
-  const [motors, setMotors] = useState([])
-  const [bikes, setBikes] = useState([])
+  const [errorMsg, setErrorMsg] = useState(null)
+  const [list, setList] = useState(false)
 
+  //car list
+  const [vehicleCar, setVehicleCar] = useState([])
+  const [pageCar, setPageCar] = useState({})
 
+  //motorbike list
+  const [vehicleMotorbike, setVehicleMotorbike] = useState([])
+  const [pageMotorbike, setPageMotorbike] = useState({})
+
+  //bike list
+  const [vehicleBike, setVehicleBike] = useState([])
+  const [pageBike, setPageBike] = useState({})
+
+  //popular list
+  const [vehiclePopular, setVehiclePopular] = useState([])
+  const [pagePopular, setPagePopular] = useState({})
+
+  //vehicle list
+  const [vehicleList, setVehicleList] = useState([])
+  const [pageList, setPageList] = useState({})
 
   const navigate = useNavigate()
-  // eslint-disable-next-line no-unused-vars
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams()
 
 
   useEffect(() => {
-    getPopularInTown()
-    getCars()
-    getMotors()
-    getBikes()
+    const name = searchParams.get('name')
+    const location = searchParams.get('location')
+    const sortType = searchParams.get('sortType')
+    if (name || location || sortType) {
+      document.getElementById('search').elements['name'].value = name
+      document.getElementById('search').elements['location'].value = location
+      document.getElementById('search').elements['sortType'].value = sortType
+      const url = (name, location, sortType) => `${REACT_APP_URL}/vehicles?page=1&name=${name}&location=${location}&sortType=${sortType}`
+      getDataSearch(url(name, location, sortType))
+    } else {
+      getData()
+    }
   }, [])
 
-
-  const getNextDataPopular = async (url) => {
-    popularInTown = [getPopularNext(url)]
+  const getData = async () => {
+    const { value: { data: popular } } = await getPopularInTown()
+    const { value: { data: car } } = await getCategory('3')
+    const { value: { data: motorbike } } = await getCategory('2')
+    const { value: { data: bike } } = await getCategory('1')
+    setVehiclePopular(popular.results)
+    setVehicleCar(car.results)
+    setVehicleMotorbike(motorbike.results)
+    setVehicleBike(bike.results)
+    setPagePopular(popular.pageInfo)
+    setPageCar(car.pageInfo)
+    setPageMotorbike(motorbike.pageInfo)
+    setPageBike(bike.pageInfo)
   }
 
-  const onSearch = async (event) => {
-    event.preventDefault();
-    navigate(`/search`, { replace: true })
+  //did update
+  const getNextData = async (url, replace = false) => {
+    try {
+      setErrorMsg(null)
+      const filterBy = url.split('category=')[1]
+      const { data } = await axios.get(url)
+      if (replace) {
+        setVehicleList(data.results)
+        setPageList(data.pageInfo)
+        setList(true)
+      } else {
+        if (filterBy === '3') {
+          setVehicleCar(data.results)
+          setPageCar(data.pageInfo)
+        } else if (filterBy === '2') {
+          setVehicleMotorbike(data.results)
+          setPageMotorbike(data.pageInfo)
+        } else if (filterBy === '1') {
+          setVehicleBike(data.results)
+          setPageBike(data.pageInfo)
+        } else {
+          setVehiclePopular(data.results)
+          setPagePopular(data.pageInfo)
+        }
+      }
+    } catch (err) {
+      console.log(err)
+      if (err.message.includes('404')) {
+        setErrorMsg('Data not found!')
+        setVehicleList([])
+        setPageList({
+          next: null
+        })
+      }
+    }
   }
 
+  const getDataSearch = async (url) => {
+    try {
+      setErrorMsg(null)
+      const { data } = await axios.get(url)
+      setVehicleList(data.results)
+      setPageList(data.pageInfo)
+      setList(true)
+    } catch (err) {
+      // setErrorMsg(err.response.data.message)
+      setErrorMsg('Data not found')
+    }
+  }
 
+  // const onSearch = async (event) => {
+  //   event.preventDefault()
+  //   const name = event.target.elements['name'].value
+  //   const location = event.target.elements['location'].value
+  //   const sortType = event.target.elements['sortType'].value
+  //   setSearchParams({ name, location, sortType })
+  //   const { value: { data: search } } = await searchVehicle(name, location, sortType)
+  //   setVehicleList(search.results)
+  //   setPageList(search.pageInfo)
+  //   setList(true)
+  // }
 
-  const goToDetail = (vehicleId) => {
-    navigate(`/vehicles/${vehicleId}`)
+  const goToDetail = (id) => {
+    navigate(`/vehicles/${id}`)
+  }
+  const goToBikePages = () => {
+    window.scrollTo(0, 0)
+    navigate(`/AllBikes`)
+  }
+  const goToMotorPages = () => {
+    window.scrollTo(0, 0)
+    navigate(`/AllMotors`)
+  }
+  const goToCarPages = () => {
+    window.scrollTo(0, 0)
+    navigate(`/AllCars`)
+  }
+  const goBack = () => {
+    window.history.back()
   }
 
   return (
@@ -61,10 +163,10 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
       <header>
         <div className="row">
           <div className="col-xl-12 d-flex for-margin-search ">
-            <form id='search' to='/search' onSubmit={onSearch} className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
-              <input name="search" onClick={onSearch} type="text" className="btn-search-type form-control bg-transparent "
+            <form id='search' to='/search' onSubmit="" className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
+              <input name="search" onClick="" type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <select onClick={onSearch} name='type' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
+              <select onClick="" name='type' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
                 <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>
@@ -85,15 +187,15 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   <h2><b> Popular in town</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {popular.pageInfo.prev !== null && <button onClick={() => getNextDataPopular(popular.pageInfo.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {popular.pageInfo.prev !== null && <button onClick={() => getNextDataPopular(popular.pageInfo.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageList.prev !== null && <button onClick={() => getNextData(pagePopular.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
+                  {pageList.next !== null && <button onClick={() => getNextData(pagePopular.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
                 </div>
               </div>
-              {popular.isLoading &&
+              {/* {popular.isLoading &&
                 <Skeleton height={150} containerClassName='row' count={8} wrapper={({ children }) => (<div className='col-md-3'>{children}</div>)} />
-              }
+              } */}
               {
-                popular.popularInTown.map((data, idx) => {
+                vehiclePopular.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='d-flex flex-column flex-md-row flex-md-wrap col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
@@ -110,19 +212,18 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
 
             </div>
           </div>
-          {/* {
+          {
             <div className='mt-5'>
               <div className="col-md-12 d-flex ">
                 <div className='col-md-6'>
                   <h2><b> Bike</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {pageBikes.prev !== null && <button onClick={() => getNextDataBike(pageBikes.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {pageBikes.next !== null && <button onClick={() => getNextDataBike(pageBikes.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageBike.next !== null && <button onClick={() => goToBikePages()} className='btn '><p>View All Bike <FaChevronRight /></p></button>}
                 </div>
               </div>
               <div className="row">
-                {bike.bikes.map((data, idx) => {
+                {vehicleBike.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
@@ -145,12 +246,11 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   <h2><b> Motorbike</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {pageMotors.prev !== null && <button onClick={() => getNextDataMotor(pageMotors.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {pageMotors.next !== null && <button onClick={() => getNextDataMotor(pageMotors.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageBike.next !== null && <button onClick={() => goToMotorPages()} className='btn '><p>View All Motorbike <FaChevronRight /></p></button>}
                 </div>
               </div>
               <div className="row">
-                {motor.motors.map((data, idx) => {
+                {vehicleMotorbike.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5 d-flex'>
                       <div className='position-relative mb-2 '>
@@ -173,12 +273,11 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   <h2><b> Cars</b></h2>
                 </div>
                 <div className='col-md-6 d-flex justify-content-end'>
-                  {pageCars.prev !== null && <button onClick={() => getNextDataCars(pageCars.prev)} className='btn '><p><FaChevronLeft />View Prev </p></button>}
-                  {pageCars.next !== null && <button onClick={() => getNextDataCars(pageCars.next)} className='btn '><p>View More <FaChevronRight /></p></button>}
+                  {pageBike.next !== null && <button onClick={() => goToCarPages()} className='btn '><p>View All Cars <FaChevronRight /></p></button>}
                 </div>
               </div>
               <div className="row">
-                {car.cars.map((data, idx) => {
+                {vehicleCar.map((data, idx) => {
                   return (
                     <div onClick={() => goToDetail(data.vehicleId)} style={{ cursor: 'pointer' }} key={String(data.vehicleId)} className='col-md-3 my-5'>
                       <div className='position-relative mb-2 '>
@@ -192,7 +291,7 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
                   )
                 })}
               </div>
-            </div>} */}
+            </div>}
         </div>
       </div>
       <Footer />
@@ -202,6 +301,6 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCars, getMoto
 
 const mapStateToProps = state => ({ popularInTown: state.popularInTown, cars: state.cars, bikes: state.bikes, motors: state.motors })
 
-const mapDispatchToProps = { getPopularInTown, filterVehicles, getCars, getMotors, getBikes }
+const mapDispatchToProps = { getPopularInTown, getCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VehicleType)

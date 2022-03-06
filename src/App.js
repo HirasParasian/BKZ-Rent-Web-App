@@ -5,6 +5,9 @@ import Profil from './pages/Profil'
 import History from './pages/History'
 import Payment from './pages/Payment'
 import Homepage from './pages/Homepage'
+import AllBikes from './pages/AllBikes'
+import AllCars from './pages/AllCars'
+import AllMotors from './pages/AllMotors'
 import React, { useEffect } from 'react'
 import VehicleType from './pages/VehicleType'
 import Reservation from './pages/Reservation'
@@ -41,6 +44,9 @@ export const App = () => {
         <Route path='signup' element={<Signup />} />
         <Route path='profil' element={<Profil />} />
         <Route path='history' element={<History />} />
+        <Route path='AllBikes' element={<AllBikes />} />
+        <Route path='AllCars' element={<AllCars />} />
+        <Route path='AllMotors' element={<AllMotors />} />
         <Route path='vehicletype' element={<VehicleType />} />
         <Route path='payment/:vehicleId' element={<Payment history={history} />} />
         <Route path='vehicles/:vehicleId' element={<VehicleDetail history={history} />} />
