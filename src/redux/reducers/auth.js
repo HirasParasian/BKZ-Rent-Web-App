@@ -19,7 +19,9 @@ const auth = (state = initialState, action) => {
             state.isLoading = false
             state.isError = false
             state.token = data.results
-            window.localStorage.setItem('token', state.token)
+            if (!window.localStorage.getItem('token')) {
+                window.localStorage.setItem('token', state.token)
+            }
             return { ...state }
         }
         case 'AUTH_LOGIN_REJECTED': {

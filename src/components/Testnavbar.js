@@ -18,29 +18,32 @@ export const Navbar = () => {
         }
     }, [])
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+        <nav className="fixed-top navbar ms-auto navbar-expand-lg navbar-light bg-transparent">
             <div className="container">
                 <div className='d-flex'>
-                    <Link className="navbar-brand " to="/">
-                        <img src={logo} alt="Avatar Logo"
-                            className="w-25 rounded-pill" />
-                    </Link>
-                    <div className='align-self-center justify-content-end'>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <div>
+                        <Link className="navbar-brand" to="/">
+                            <img src={logo} alt="Avatar Logo"
+                                className="w-25 rounded-pill" />
+                        </Link>
+                    </div>
+                    <div className='align-self-center'>
+                        <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
                 </div>
-                <div className="center-navbar collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className=" ms-auto navbar-nav ">
-                        <li className="nav-item my-auto mx-auto">
-                            <Link className="nav-link active mx-2" aria-current="page" to="/">Home</Link>
+                <div className="center-navbar collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className=" navbar-nav ms-auto mb-lg-0">
+                        <li className="nav-item nav-menu-before">
+                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
-                        <li className="nav-item my-auto mx-auto">
-                            <Link className="nav-link mx-2" to="/history">History</Link>
+                        <li className="nav-item nav-menu-before">
+                            <Link className="nav-link" to="/history">History</Link>
                         </li>
-                        <li className="nav-item my-auto mx-auto dropdown">
-                            <Link className="nav-link dropdown-toggle mx-2" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        <li className="nav-item dropdown nav-menu-before">
+                            <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Vehicle Type
                             </Link>
@@ -54,11 +57,11 @@ export const Navbar = () => {
                                 <li><Link className="dropdown-item" to="/payment">Payment</Link></li>
                             </ul>
                         </li>
-                        <li className="nav-item my-auto mx-auto">
-                            <Link className="nav-link mx-2" to="#" tabIndex="-1">About</Link>
+                        <li className="nav-item nav-menu-before">
+                            <Link className="nav-link" to="#" tabIndex="-1">About</Link>
                         </li>
                         {auth.token &&
-                            <li className="nav-item dropdown mx-auto">
+                            <li className="nav-item dropdown nav-menu-before">
                                 <div className="nav-link dropdown-toggle img-profile-login" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <Link className="" to="/profil">
@@ -95,13 +98,9 @@ export const Navbar = () => {
                             </li>
                         }
                         {auth.token === null &&
-                            <li className="d-flex justify-content-center row d-grid">
-                                <div className='col-6 d-flex justify-content-end'>
-                                    <a href="/login"><button type="button" className="btn-login btn btn-info"> Login</button></a>
-                                </div>
-                                <div className='col-6 d-flex justify-content-start'>
-                                    <a href="/signup"><button type="button" className="ms-1 btn-register btn btn-info">Register</button></a>
-                                </div>
+                            <li className="d-flex justify-content-center">
+                                <a href="/login"><button type="button" className="btn-login btn btn-info"> Login</button></a>
+                                <a href="/signup"><button type="button" className="btn-register btn btn-info">Register</button></a>
                             </li>
                         }
                     </ul>

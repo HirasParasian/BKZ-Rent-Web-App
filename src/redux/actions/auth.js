@@ -14,15 +14,15 @@ export const login = (username, password) => {
 export const getDataUser = (token) => {
     return ({
         type: 'AUTH_USERDATA',
-        payload: http(token).get('/users?userId=')
+        payload: http(token).get('/profile')
     })
 }
 
-export const userEdit = (data, id) => {
+export const userEdit = (data, userId) => {
     const param = new URLSearchParams(data)
 
     return ({
         type: 'AUTH_USERDATA',
-        payload: http().patch(`users/profile/:${id}`, param)
+        payload: http().patch(`users/profile/:${userId}`, param)
     })
 }
