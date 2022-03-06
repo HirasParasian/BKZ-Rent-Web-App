@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo from '../assets/images/logo-bkz.png'
 import Profile from '../assets/images/profile.png'
 import { Link } from 'react-router-dom'
 import { BsEnvelope } from 'react-icons/bs'
+import Button from '../components/Button'
+import { useDispatch, useSelector } from 'react-redux'
+import { getDataUser } from '../redux/actions/auth'
 
 
 export const Navbar = () => {
+    const auth = useSelector(state => state.auth)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (auth.token) {
+            dispatch(getDataUser(auth.token))
+        }
+    }, [])
     return (
         <nav className="navbar ms-auto navbar-expand-lg navbar-light bg-transparent">
             <div className="container">
@@ -63,6 +74,9 @@ export const Navbar = () => {
                                 <img src={Profile} alt="Avatar Logo" className=" rounded-pill" />
                             </Link>
                         </div>
+                        {auth.token &&
+                            <Button onClick={() => dispatch({ type: 'AUTH_LOGOUT' })} block='d-grid px-5' variant='info btn btn-login'>Logout</Button>
+                        }
                     </form>
                 </div>
             </div>
