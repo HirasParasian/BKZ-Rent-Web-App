@@ -1,35 +1,52 @@
-import Test                     from './pages/Test'
-import Login                    from './pages/Login'
-import Signup                   from './pages/Signup'
-import Profil                   from './pages/Profil'
-import History                  from './pages/History'
-import Payment                  from './pages/Payment'
-import Homepage                 from './pages/Homepage'
-import React, { Component }     from 'react'
-import VehicleType              from './pages/VehicleType'
-import Reservation              from './pages/Reservation'
+import Test from './pages/Test'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import Profil from './pages/Profil'
+import History from './pages/History'
+import Payment from './pages/Payment'
+import Homepage from './pages/Homepage'
+import React, { useEffect } from 'react'
+import VehicleType from './pages/VehicleType'
+import Reservation from './pages/Reservation'
 import { createBrowserHistory } from 'history'
-import VehicleDetail            from './pages/VehicleDetail'
+import VehicleDetail from './pages/VehicleDetail'
 import { unstable_HistoryRouter as HistoryRouter, Route, Routes } from 'react-router-dom'
-export default class App extends Component {
+import { useDispatch } from 'react-redux'
+import { getDataUser } from './redux/actions/auth'
 
-  history = createBrowserHistory()
-  render() {
-    return (
-      <HistoryRouter history={this.history}>
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='search' element={<Test />} />
-          <Route path='login' element={<Login />} />
-          <Route path='signup' element={<Signup />} />
-          <Route path='profil' element={<Profil />} />
-          <Route path='history' element={<History />} />
-          <Route path='vehicletype' element={<VehicleType />} />
-          <Route path='payment/:vehicleId' element={<Payment history={this.history} />} />
-          <Route path='vehicles/:vehicleId' element={<VehicleDetail history={this.history} />} />
-          <Route path='vehicles/reservation/:vehicleId' element={<Reservation history={this.history} />} />
-        </Routes>
-      </HistoryRouter>
-    )
-  }
+export const App = () => {
+  const history = createBrowserHistory({ window })
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      dispatch({
+        type: 'AUTH_LOGIN_FULFILLED',
+        payload: {
+          data: {
+            results: token
+          }
+        }
+      })
+      dispatch(getDataUser(token))
+    }
+  }, [])
+  return (
+    <HistoryRouter history={history}>
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='search' element={<Test />} />
+        <Route path='login' element={<Login />} />
+        <Route path='signup' element={<Signup />} />
+        <Route path='profil' element={<Profil />} />
+        <Route path='history' element={<History />} />
+        <Route path='vehicletype' element={<VehicleType />} />
+        <Route path='payment/:vehicleId' element={<Payment history={history} />} />
+        <Route path='vehicles/:vehicleId' element={<VehicleDetail history={history} />} />
+        <Route path='vehicles/reservation/:vehicleId' element={<Reservation history={history} />} />
+      </Routes>
+    </HistoryRouter>
+  )
 }
+export default App
