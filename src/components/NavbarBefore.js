@@ -42,10 +42,10 @@ export default class Navbar extends Component {
                                 <Link className="nav-link" to="/About" tabindex="-1">About</Link>
                             </li>
                         </ul>
-                        <form className="d-flex justify-content-center">
+                        <li className="d-flex justify-content-center">
                             <a href="/login"><button type="button" className="btn-login btn btn-info"> Login</button></a>
                             <a href="/signup"><button type="button" className="btn-register btn btn-info">Register</button></a>
-                        </form>
+                        </li>
                     </div>
                 </div>
             </nav>

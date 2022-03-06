@@ -9,6 +9,12 @@ img-vehicle-type-x{
 img .logo-bkz{
   width: 100px;
 }
+.dropdown-toggle::after {
+  display: none;
+}
+.dropdown-menu {
+  text-align: center;
+}
 .header-forgot {
   background-image: url(./images/header-forgot.png);
   background-repeat: no-repeat;

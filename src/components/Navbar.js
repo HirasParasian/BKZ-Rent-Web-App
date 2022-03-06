@@ -60,24 +60,50 @@ export const Navbar = () => {
                         <li className="nav-item nav-menu-before">
                             <Link className="nav-link" to="#" tabIndex="-1">About</Link>
                         </li>
-                    </ul>
-                    <form className="d-flex ms-auto justify-content-end">
-                        <div type="button" className="btn position-relative">
-                            <BsEnvelope size={30} color="#BF9270" />
-                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99
-                                <span className="visually-hidden">unread messages</span>
-                            </span>
-                        </div>
-                        <div className="img-profile-login">
-                            <Link className="" to="/profil">
-                                <img src={Profile} alt="Avatar Logo" className=" rounded-pill" />
-                            </Link>
-                        </div>
                         {auth.token &&
-                            <Button onClick={() => dispatch({ type: 'AUTH_LOGOUT' })} block='d-grid px-5' variant='info btn btn-login'>Logout</Button>
+                            <li className="nav-item dropdown nav-menu-before">
+                                <div className="nav-link dropdown-toggle img-profile-login" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <Link className="" to="/profil">
+                                        <img src={Profile} alt="Avatar Logo" className=" rounded-pill" />
+                                    </Link>
+                                </div>
+
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                    <li>
+                                        <Link className="" to="/vehicletype">
+                                            <div type="button" className="btn position-relative ">
+                                                <BsEnvelope size={30} color="#000" />
+                                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                    99
+                                                    <span className="visually-hidden">unread messages</span>
+                                                </span>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="/profil">Profile</Link>
+                                    </li>
+                                    <li>
+                                        <hr className="dropdown-divider" />
+                                    </li>
+
+                                    <li onClick={() => dispatch({ type: 'AUTH_LOGOUT' })} style={{ cursor: 'pointer' }} className="dropdown-item" to="/reservation">Logout</li>
+
+                                </ul>
+                            </li>
                         }
-                    </form>
+                        {auth.token === null &&
+                            <li className="d-flex justify-content-center">
+                                <a href="/login"><button type="button" className="btn-login btn btn-info"> Login</button></a>
+                                <a href="/signup"><button type="button" className="btn-register btn btn-info">Register</button></a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
