@@ -7,28 +7,24 @@ import Button2 from '../components/Button2'
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-const { REACT_APP_URL } = process.env
+import { setRentDuration, setReservationDate } from '../redux/actions/transaction'
 
 export const Reservation = (props) => {
     const auth = useSelector(state => state.auth)
-    const [vehicle, setVehicle] = useState({})
-    const { vehicleId } = useParams()
+    const detailVehicle = useSelector(state => state.detailVehicle.data)
     const navigate = useNavigate()
+    const { vehicleId } = useParams()
+    const transaction = useSelector(state => state.transaction)
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-        getDataComponent(vehicleId)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const getDataComponent = async (vehicleId) => {
-        try {
-            const { data } = await getData(`${REACT_APP_URL}/vehicles/id?vehicleId=${vehicleId}`, props.history)
-
-            setVehicle(data.results[0])
-        } catch (e) {
-
-        }
+    const updateRentDuration = (event) => {
+        dispatch(setRentDuration(event.target.value))
     }
+
+    const updateReservationDate = (event) => {
+        dispatch(setReservationDate(event.target.value))
+    }
+
     const goToDetail = (dataID) => {
         navigate(`/payment/${dataID}`)
     }
@@ -56,29 +52,29 @@ export const Reservation = (props) => {
             <div className="container">
                 <div className="row">
                     <div className='d-block d-sm-none col-xl-12 px-5 py-5'>
-                        <img src={vehicle?.image} alt={vehicle?.name} className="img-fluid img-thumbnail inline-block" />
+                        <img src={detailVehicle?.image} alt={detailVehicle?.name} className="img-fluid img-thumbnail inline-block" />
                     </div>
                     <div className='d-flex'>
                         <div className="col d-none d-sm-block ">
-                            <img src={vehicle?.image} alt={vehicle?.name} className="img-fluid img-thumbnail inline-block" />
+                            <img src={detailVehicle?.image} alt={detailVehicle?.name} className="img-fluid img-thumbnail inline-block" />
                         </div>
                         <div className="col  px-5 ">
-                            <h2><b>{vehicle?.name} </b> </h2>
-                            <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
+                            <h2><b>{detailVehicle?.name} </b> </h2>
+                            <h5 className="text-secondary"><b>{detailVehicle?.location}</b></h5><br />
                             <h5 className="text-danger"><b>No Prepayment</b></h5>
                             <br />
-                            <Button2 />
+                            <Button2 max={detailVehicle?.stock} />
                             <div className="d-grid gap-2 px-1">
                                 <label htmlFor="Reservation"> Reservation Date : </label>
                                 <div className="mb-3 ">
-                                    <input type="date" placeholder="Date" className="form-control form-select" />
+                                    <input type="date" defaultValue={null} onChange={updateReservationDate} placeholder="Date" className="form-control form-select" />
                                 </div>
                                 <div className="mb-3">
-                                    <select className="form-select">
-                                        <option className="d-none">Location</option>
-                                        <option value="Bekasi">Bekasi</option>
-                                        <option value="Bandung">Bandung</option>
-                                        <option value="Bogor">Bogor</option>
+                                    <select className="form-select" onChange={updateRentDuration}>
+                                        <option className="d-none">Reservation Day</option>
+                                        <option value="1">1 day</option>
+                                        <option value="2">2 Day</option>
+                                        <option value="3">3 Day</option>
                                     </select>
                                 </div>
                             </div>

@@ -5,12 +5,17 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 var moment = require('moment');
 const { REACT_APP_URL } = process.env
 
 
 
 export const History = () => {
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.auth)
+    // const [userData, setUserData] = useState({})
+    const userData = auth.userData || {}
 
     const [arrival, setArrival] = useState([])
     const [page, setPage] = useState({})
@@ -149,7 +154,7 @@ export const History = () => {
                             // let day = ;
                             // console.log(day)
                             return (
-                                <div className="my-3 mx-5 d-flex " key={String(data.vehicleId)}>
+                                <div className="my-3 mx-5 d-flex " key={String(Math.random() * (999 - 100) + 100)}>
                                     <div className="ms-3 width-img-history for-img-history d-flex ">
                                         <img id="img-object" src={data.image} alt="" className="src rounded" />
                                     </div>

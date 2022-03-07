@@ -10,6 +10,8 @@ import AllCars from './pages/AllCars'
 import AllMotors from './pages/AllMotors'
 import React, { useEffect } from 'react'
 import VehicleType from './pages/VehicleType'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 import Reservation from './pages/Reservation'
 import { createBrowserHistory } from 'history'
 import VehicleDetail from './pages/VehicleDetail'
@@ -28,7 +30,7 @@ export const App = () => {
         type: 'AUTH_LOGIN_FULFILLED',
         payload: {
           data: {
-            results: token
+            results: { token }
           }
         }
       })
@@ -44,6 +46,8 @@ export const App = () => {
         <Route path='signup' element={<Signup />} />
         <Route path='profil' element={<Profil />} />
         <Route path='history' element={<History />} />
+        <Route path='forgotpassword' element={<ForgotPassword />} />
+        <Route path='resetpassword' element={<ResetPassword />} />
         <Route path='AllBikes' element={<AllBikes />} />
         <Route path='AllCars' element={<AllCars />} />
         <Route path='AllMotors' element={<AllMotors />} />

@@ -1,31 +1,52 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 // eslint-disable-next-line no-unused-vars
 import { useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from "react-helmet";
-import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { setPaymentType } from '../redux/actions/transaction';
+import { transaction as rentTransaction } from '../redux/actions/transaction'
+
 const { REACT_APP_URL } = process.env
 
 export const Payment = (props) => {
-    const [vehicle, setVehicle] = useState({})
+
+    const [displayDate, setDisplayDate] = useState("")
+    const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
+
+    const transaction = useSelector(state => state.transaction)
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.auth)
+    const userData = auth.userData || {}
+    console.log(userData?.userId)
+    const detailVehicle = useSelector(state => state.detailVehicle.data)
+
+    const navigate = useNavigate()
     const { vehicleId } = useParams()
+    console.log(vehicleId)
+    const updatePayment = (event) => {
+        dispatch(setPaymentType(event.target.value))
+    }
+    const onPayment = () => {
 
-    useEffect(() => {
-        getDataComponent(vehicleId)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const getDataComponent = async (vehicleId) => {
-        try {
-            const { data } = await getData(`${REACT_APP_URL}/vehicles/id?vehicleId=${vehicleId}`, props.history)
-
-            setVehicle(data.results[0])
-        } catch (e) {
-
+        var endRentDate = new Date(new Date(transaction?.reservationDate).getTime() + (transaction?.rentDuration * 24 * 60 * 60 * 1000));
+        const data = {
+            userId: userData?.userId,
+            vehicleId: vehicleId,
+            quantity: transaction?.quantity,
+            rentStartDate: transaction?.reservationDate,
+            rentEndDate: endRentDate.toISOString()
         }
+        console.log(data)
+        dispatch(rentTransaction(auth?.token, data))
+        dispatch({
+            type: "CLEAR_TRANSACTION"
+        })
+        // navigate('/history')
     }
 
     return (
@@ -49,11 +70,11 @@ export const Payment = (props) => {
                 <div className=" my-2">
                     <div className="row">
                         <div className="col-xl-5 my-3">
-                            <img src={vehicle?.image} alt={vehicle?.name} className="payment-img img-fluid img-thumbnail src my-1" />
+                            <img src={detailVehicle?.image} alt={detailVehicle?.name} className="payment-img img-fluid img-thumbnail src my-1" />
                         </div>
                         <div className="col-xl-7 my-3">
-                            <h2><b>{vehicle?.name} </b> </h2>
-                            <h5 className="text-secondary"><b>{vehicle?.location}</b></h5><br />
+                            <h2><b>{detailVehicle?.name} </b> </h2>
+                            <h5 className="text-secondary"><b>{detailVehicle?.location}</b></h5><br />
                             <h5 className="text-danger"><b>No Prepayment</b></h5><br /><br />
                             <h4 className="code-payment">#FG1209878YZS</h4>
                             <button className="btn btn-copy border-0 btn-info fw-bold" type="button">Copy Booking Code</button>
@@ -69,7 +90,7 @@ export const Payment = (props) => {
                                     <div>
                                         <input type="text" id="disabledTextInput"
                                             className="bg-transparent border-2 border-secondary form-control"
-                                            placeholder="Quantity : 2 Bikes" />
+                                            placeholder={transaction.quantity} />
                                     </div>
                                 </fieldset>
                             </form>
@@ -80,7 +101,7 @@ export const Payment = (props) => {
                                     <div>
                                         <input type="text" id="disabledTextInput"
                                             className="bg-transparent border-2 border-secondary form-control"
-                                            placeholder="Reservation Date    :     Jan 18 - 20 2021" />
+                                            placeholder={transaction.reservationDate} />
                                     </div>
                                 </fieldset>
                             </form>
@@ -94,9 +115,8 @@ export const Payment = (props) => {
                                 <fieldset disabled="disabled">
                                     <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-detail">
                                         <label className="text-dark" htmlFor="">Order Details : </label><br />
-                                        <label className="text-secondary pt-4" htmlFor="">1 Bike : Rp. 78.000</label><br />
-                                        <label className="text-secondary pt-1" htmlFor="">1 Bike : Rp. 78.000</label><br />
-                                        <label className="text-dark pt-5" htmlFor="">Total : Rp. 156.000 </label>
+                                        <label className="text-secondary pt-4" htmlFor="">{transaction.quantity} Bike : Rp. {detailVehicle?.price}</label><br />
+                                        <label className="text-dark pt-5" htmlFor="">Total : Rp. {transaction.quantity * detailVehicle?.price} </label>
                                     </div>
                                 </fieldset>
                             </form>
@@ -105,8 +125,8 @@ export const Payment = (props) => {
                             <fieldset disabled="disabled">
                                 <div className="bg-transparent fw-bold border-2 border-secondary form-control quantity-identity">
                                     <label className="text-dark" htmlFor="">Identity : </label><br />
-                                    <label className="text-secondary pt-4" htmlFor="">Samantha Doe (+6290987682)</label><br />
-                                    <label className="text-secondary pt-1" htmlFor="">samanthadoe@mail.com</label><br />
+                                    <label className="text-secondary pt-4" htmlFor="">{userData?.fullName} - {userData?.mobileNumber}</label><br />
+                                    <label className="text-secondary pt-1" htmlFor="">{userData?.email}</label><br />
                                 </div>
                             </fieldset>
                         </div>
@@ -126,15 +146,15 @@ export const Payment = (props) => {
                             </div>
                         </div>
                         <div className="col-xl my-2 d-grid">
-                            <select className="form-select form-control bg-transparent border-2 border-secondary form-select-payment py-4">
+                            <select onChange={updatePayment} className="form-select form-control bg-transparent border-2 border-secondary form-select-payment py-4">
                                 <option className="d-none">Select Payment</option>
-                                <option value="Bekasi">Cash</option>
-                                <option value="Bandung">Transfer</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Transfer">Transfer</option>
                             </select>
                         </div>
                         <div className="col-xl-12 mt-5 mb-5">
                             <div className="d-grid">
-                                <button className="btn-lg  border-0 btn-info " type="button">Pay before : 59:30</button>
+                                <button onClick={onPayment} className="btn-lg  border-0 btn-info " type="button">Pay before : 59:30</button>
                             </div>
                         </div>
                     </div>
