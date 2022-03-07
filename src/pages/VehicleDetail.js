@@ -3,36 +3,28 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { getData } from '../helpers/http'
 import { FaHeart } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux'
-import { increment, decrement } from '../redux/actions/counter'
+import { getDetailVehicle } from '../redux/actions/detailVehicle'
 const { REACT_APP_URL } = process.env
 
 export const VehicleDetail = (props) => {
     const auth = useSelector(state => state.auth)
-    const counter = useSelector(state => state.counter)
-    const [vehicle, setVehicle] = useState({})
-    const { vehicleId } = useParams()
+    // const counter = useSelector(state => state.counter)
+    const detailVehicle = useSelector(state => state.detailVehicle.data)
+    console.log(detailVehicle)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-
+    const { vehicleId } = useParams()
     useEffect(() => {
         window.scrollTo(0, 0)
-        getDataComponent(vehicleId)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        dispatch(getDetailVehicle(vehicleId))
     }, [])
 
-    const getDataComponent = async (vehicleId) => {
-        try {
-            const { data } = await getData(`${REACT_APP_URL}/vehicles/id?vehicleId=${vehicleId}`, props.history)
 
-            setVehicle(data.results[0])
-        } catch (e) {
 
-        }
-    }
     const goToDetail = (vehicleId) => {
         navigate(`/vehicles/reservation/${vehicleId}`)
     }
@@ -49,11 +41,11 @@ export const VehicleDetail = (props) => {
                 <div className='row my-5'>
                     <div className="col-12 col-xl-6">
                         <div className='rounded'>
-                            <img id="img-object" src={vehicle?.image} alt={vehicle?.name} className=" img-detail-vehicle pe-4" />
+                            <img id="img-object" src={detailVehicle?.image} alt={detailVehicle?.name} className=" img-detail-vehicle pe-4" />
                         </div>
                     </div>
                     <div className="col-12 col-xl-6">
-                        <h2><b>{vehicle?.name} - </b> {vehicle?.location}</h2>
+                        <h2><b>{detailVehicle?.name} - </b> {detailVehicle?.location}</h2>
                         <div className="d-flex row align-items-center my-5">
                             <div className="col-12 col-xl-6 ">
                                 <div className='d-flex flex-column align-items-center mb-5'>
@@ -63,10 +55,10 @@ export const VehicleDetail = (props) => {
                                     <p>Type : Bike </p>
                                     <p>Reservation Before 2 PM</p>
                                 </div>
-                                <Button2 />
+                                <Button2 max={detailVehicle?.stock} />
                             </div>
                             <div className="col-12 col-xl-6 d-flex align-items-center justify-content-center">
-                                <h4 ><b> Rp. {vehicle?.price}/day</b></h4>
+                                <h4 ><b> Rp. {detailVehicle?.price}/day</b></h4>
                             </div>
                         </div>
                     </div>

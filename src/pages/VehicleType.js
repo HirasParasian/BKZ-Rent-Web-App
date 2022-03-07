@@ -170,7 +170,7 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) =
             <form id='search' onSubmit={goSearch} to='/search' className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
               <input name="name" onClick={goSearch} type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <select onClick="" name='category' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
+              <select name='category' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
                 <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>
