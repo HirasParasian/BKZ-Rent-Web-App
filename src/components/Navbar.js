@@ -20,17 +20,17 @@ export const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
             <div className="container">
-                <div className='d-flex'>
-                    <Link className="navbar-brand " to="/">
-                        <img src={logo} alt="Avatar Logo"
-                            className="w-25 rounded-pill" />
-                    </Link>
-                    <div className='align-self-center justify-content-end'>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
+
+                <Link className="navbar-brand " to="/">
+                    <img src={logo} alt="Avatar Logo"
+                        className="rounded-pill" width={"50"} />
+                </Link>
+                <div className='align-self-center justify-content-end'>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
                 </div>
+
                 <div className="center-navbar collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className=" ms-auto navbar-nav ">
                         <li className="nav-item my-auto mx-auto">
@@ -46,12 +46,12 @@ export const Navbar = () => {
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><Link className="dropdown-item" to="/vehicletype">Vehicle Type</Link></li>
-                                <li><Link className="dropdown-item" to="/viewmoredetail">View More Detail</Link></li>
                                 <li>
                                     <hr className="dropdown-divider" />
                                 </li>
-                                <li><Link className="dropdown-item" to="/reservation">Reservation</Link></li>
-                                <li><Link className="dropdown-item" to="/payment">Payment</Link></li>
+                                <li><Link className="dropdown-item" to="/AllBikes">Bike</Link></li>
+                                <li><Link className="dropdown-item" to="/AllMotors">Motorbike</Link></li>
+                                <li><Link className="dropdown-item" to="/AllCars">Car</Link></li>
                             </ul>
                         </li>
                         <li className="nav-item my-auto mx-auto">
