@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { connect, useSelector } from 'react-redux'
-import { getPopularInTown, filterVehicles, getCategory, getPopularNext } from '../redux/actions/vehicle'
+import { getPopularInTown, filterVehicles, getCategory, searchVehicle } from '../redux/actions/vehicle'
 import Skeleton from 'react-loading-skeleton'
 const { REACT_APP_URL } = process.env
 
@@ -42,18 +42,17 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) =
 
 
   useEffect(() => {
-    const name = searchParams.get('name')
-    const location = searchParams.get('location')
-    const sortType = searchParams.get('sortType')
-    if (name || location || sortType) {
-      document.getElementById('search').elements['name'].value = name
-      document.getElementById('search').elements['location'].value = location
-      document.getElementById('search').elements['sortType'].value = sortType
-      const url = (name, location, sortType) => `${REACT_APP_URL}/vehicles?page=1&name=${name}&location=${location}&sortType=${sortType}`
-      getDataSearch(url(name, location, sortType))
-    } else {
-      getData()
-    }
+    // const name = searchParams.get('name')
+    // const category = searchParams.get('category')
+
+    // // if (name || category) {
+    // //   document.getElementById('search').elements['name'].value = name
+    // //   document.getElementById('search').elements['category'].value = category
+    // //   const url = (name, category) => `${REACT_APP_URL}/vehicles?limit=12&search=${name}&category=${category}`
+    // //   getDataSearch(url(name, category))
+    // // } else {
+    getData()
+    // }
   }, [])
 
   const getData = async () => {
@@ -108,33 +107,33 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) =
     }
   }
 
-  const getDataSearch = async (url) => {
-    try {
-      setErrorMsg(null)
-      const { data } = await axios.get(url)
-      setVehicleList(data.results)
-      setPageList(data.pageInfo)
-      setList(true)
-    } catch (err) {
-      // setErrorMsg(err.response.data.message)
-      setErrorMsg('Data not found')
-    }
-  }
+  // const getDataSearch = async (url) => {
+  //   try {
+  //     setErrorMsg(null)
+  //     const { data } = await axios.get(url)
+  //     setVehicleList(data.results)
+  //     setPageList(data.pageInfo)
+  //     setList(true)
+  //   } catch (err) {
+  //     // setErrorMsg(err.response.data.message)
+  //     setErrorMsg('Data not found')
+  //   }
+  // }
 
-  // const onSearch = async (event) => {
+  // const onSearch = (event) => {
   //   event.preventDefault()
   //   const name = event.target.elements['name'].value
-  //   const location = event.target.elements['location'].value
-  //   const sortType = event.target.elements['sortType'].value
-  //   setSearchParams({ name, location, sortType })
-  //   const { value: { data: search } } = await searchVehicle(name, location, sortType)
+  //   const category = event.target.elements['category'].value
+  //   setSearchParams({ name, category })
+  //   console.log(name)
+  //   const { value: { data: search } } = searchVehicle(name, category)
   //   setVehicleList(search.results)
   //   setPageList(search.pageInfo)
   //   setList(true)
   // }
 
-  const goToDetail = (id) => {
-    navigate(`/vehicles/${id}`)
+  const goToDetail = (vehicleId) => {
+    navigate(`/vehicles/${vehicleId}`)
   }
   const goToBikePages = () => {
     window.scrollTo(0, 0)
@@ -151,6 +150,11 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) =
   const goBack = () => {
     window.history.back()
   }
+  const goSearch = () => {
+    navigate(`/search`)
+  }
+
+
 
   return (
 
@@ -163,10 +167,10 @@ export const VehicleType = ({ getPopularInTown, filterVehicles, getCategory }) =
       <header>
         <div className="row">
           <div className="col-xl-12 d-flex for-margin-search ">
-            <form id='search' to='/search' onSubmit="" className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
-              <input name="search" onClick="" type="text" className="btn-search-type form-control bg-transparent "
+            <form id='search' onSubmit={goSearch} to='/search' className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
+              <input name="name" onClick={goSearch} type="text" className="btn-search-type form-control bg-transparent "
                 placeholder="Search vehicle (ex. cars, cars name)" />
-              <select onClick="" name='type' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
+              <select onClick="" name='category' className='form-select bg-transparent text-secondary border-start border-end-0 border-top-0 border-bottom-0  form-control'>
                 <option value='' style={{ display: 'none' }}>Select Category</option>
                 <option value="1">Bike</option>
                 <option value="2">Motorbike</option>

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { getData } from '../helpers/http'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Button2 from '../components/Button2'
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 const { REACT_APP_URL } = process.env
 
 export const Reservation = (props) => {
-
+    const auth = useSelector(state => state.auth)
     const [vehicle, setVehicle] = useState({})
     const { vehicleId } = useParams()
     const navigate = useNavigate()
@@ -33,7 +34,8 @@ export const Reservation = (props) => {
     }
 
     return (
-        <> <Navbar />
+        <>{auth.token == null && <Navigate to='/login' />}
+            <Navbar />
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Reservation | Planet BKZ Rent</title>

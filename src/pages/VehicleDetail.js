@@ -36,14 +36,7 @@ export const VehicleDetail = (props) => {
     const goToDetail = (vehicleId) => {
         navigate(`/vehicles/reservation/${vehicleId}`)
     }
-    const dispatch = useDispatch()
-    // const onIncrement = () => {
-    //     dispatch(increment())
-    // }
 
-    // const onDecrement = () => {
-    //     dispatch(decrement())
-    // }
     return (
         <>
             <Navbar />

@@ -53,11 +53,13 @@ export const Search = () => {
     }
     const onSearch = async (event) => {
         event.preventDefault();
-        const url = (name, type) => `http://localhost:5000/vehicles?search=${name}&category=${type}&limit=8`
+        const url = (name, type) => `http://localhost:5000/vehicles?search=${name}&category=${type}&sort=${sort}&order=${order}&limit=8`
         const name = event.target.elements["search"].value
         const type = event.target.elements["type"].value
-        setSearchParams({ name, type })
-        await getNextData(url(name, type), true)
+        const sort = event.target.elements["sort"].value
+        const order = event.target.elements["order"].value
+        setSearchParams({ name, type, sort })
+        await getNextData(url(name, type, sort, order), true)
         // navigate(`/vehicles?search=${name}&category=${type}`, { replace: true })
     }
 
@@ -77,13 +79,24 @@ export const Search = () => {
                 <div className="row">
                     <div className="col-xl-12 d-flex for-margin-search ">
                         <form id='search' onSubmit={onSearch} className="border-brown input-group mb-3 rounded mx-auto button-type-name ">
-                            <input name="search" type="text" className="btn-search-type form-control bg-transparent "
+                            <input name="search" type="text" className="btn-search-type form-control bg-transparent col-12 col-lg-3"
                                 placeholder="Search vehicle (ex. cars, cars name)" />
-                            <select name='type' className='form-select bg-transparent  form-control border-end-0 border-top-0 border-bottom-0 text-secondary'>
+                            <select name='type' className='col-12 col-lg-3 form-select bg-transparent  form-control border-end-0 border-top-0 border-bottom-0 text-secondary'>
                                 <option value='' style={{ display: 'none' }}>Select Category</option>
                                 <option value="1">Bike</option>
                                 <option value="2">Motorbike</option>
                                 <option value="3">Car</option>
+                            </select>
+                            <select name='sort' className='col-12 col-lg-3 form-select bg-transparent  form-control border-end-0 border-top-0 border-bottom-0 text-secondary'>
+                                <option value='' style={{ display: 'none' }}>Sort By</option>
+                                <option value="createdAt">Date Created</option>
+                                <option value="name">Name</option>
+                                <option value="3">Price</option>
+                            </select>
+                            <select name='order' className='col-12 col-lg-3 form-select bg-transparent  form-control border-end-0 border-top-0 border-bottom-0 text-secondary'>
+                                <option value='' style={{ display: 'none' }}>Order By</option>
+                                <option value="ASC">ASCENDING</option>
+                                <option value="DESC">DESCENDING</option>
                             </select>
                             <button className="btn " type="submit" id="button-addon2"><FaSearch /></button>
                         </form>
