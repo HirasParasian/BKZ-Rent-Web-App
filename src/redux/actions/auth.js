@@ -27,10 +27,11 @@ export const getHistoryUser = (token) => {
 
 export const userEdit = (data, userId) => {
     const param = new URLSearchParams(data)
-
+    console.log(userId)
+    console.log(data)
     return ({
         type: 'AUTH_USERDATA',
-        payload: http().patch(`users/profile/:${userId}`, param)
+        payload: http().patch(`/users/${userId}`, param)
     })
 }
 
@@ -56,13 +57,21 @@ export const resetPassword = (code, email, password, confirmPassword) => {
     }
 }
 
-export const verifyUser = (token, code = null) => {
+export const verifyUser = (email, code) => {
     const params = new URLSearchParams()
-    if (code) {
-        params.append('code', code)
-    }
+    params.append('email', email)
+    params.append('code', code)
     return {
-        type: 'VERIFY_USER',
-        payload: http(token).post('auth/verifyUser', params)
+        type: 'VERIFY',
+        payload: http().post('auth/emailVerify', params)
+    }
+}
+export const requestVerifyUser = (email) => {
+    const params = new URLSearchParams()
+    params.append('email', email)
+    return {
+        type: 'REQUEST_VERIFY',
+        payload: http().post('auth/emailVerify', params),
+        extra: email,
     }
 }

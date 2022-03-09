@@ -45,7 +45,7 @@ export const History = () => {
             }
         }
     }
-
+ 
     const getNextDataHistory = async (url, replace = false) => {
         try {
             // setErrorMsg(null)

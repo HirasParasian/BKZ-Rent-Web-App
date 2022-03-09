@@ -26,9 +26,11 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_LOGIN_REJECTED': {
+            const { message } = action.payload.response.data.message
+            console.log(message)
             state.isLoading = false
             state.isError = true
-            state.errorMsg = 'check your email, username, and password'
+            state.errorMsg = "Check Username Or Passwor And Verify Your Account"
             return { ...state }
         }
         case 'AUTH_LOGOUT': {
@@ -51,8 +53,8 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_USERDATA_REJECTED': {
-            const { message } = action.payload.response.data
-            console.log(message)
+            const { message } = action.payload.response
+            // console.log(message)
             state.isLoading = false
             state.isError = true
             state.errorMsg = message
@@ -72,7 +74,7 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_USER_HISTORY_REJECTED': {
-            const { message } = action.payload.response.data
+            const { message } = action.payload.response
             state.isLoading = false
             state.isError = true
             state.errorMsg = message
@@ -121,19 +123,39 @@ const auth = (state = initialState, action) => {
             state.errorMsg = data.message
             return { ...state }
         }
-        case 'VERIFY_USER_PENDING': {
+        case 'VERIFY_PENDING': {
             state.error = false
             state.isLoading = true
             state.message = ''
             return { ...state }
         }
-        case 'VERIFY_USER_FULFILLED': {
+        case 'VERIFY_FULFILLED': {
+            const { data } = action.payload
+            state.isLoading = false
+            state.message = data.message
+            state.email = ''
+            return { ...state }
+        }
+        case 'VERIFY_REJECTED': {
+            const { data } = action.payload.response
+            state.isLoading = false
+            state.error = true
+            state.errorMsg = data.message
+            return { ...state }
+        }
+        case 'REQUEST_VERIFY_PENDING': {
+            state.error = false
+            state.isLoading = true
+            state.message = ''
+            return { ...state }
+        }
+        case 'REQUEST_VERIFY_FULFILLED': {
             const { data } = action.payload
             state.isLoading = false
             state.message = data.message
             return { ...state }
         }
-        case 'VERIFY_USER_REJECTED': {
+        case 'REQUEST_VERIFY_REJECTED': {
             const { data } = action.payload.response
             state.isLoading = false
             state.error = true

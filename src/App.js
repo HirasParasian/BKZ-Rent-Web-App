@@ -12,6 +12,8 @@ import React, { useEffect } from 'react'
 import VehicleType from './pages/VehicleType'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import VerifyUser from './pages/VerifyUser'
+import VerifyAccount from './pages/VerifyAccount'
 import Reservation from './pages/Reservation'
 import { createBrowserHistory } from 'history'
 import VehicleDetail from './pages/VehicleDetail'
@@ -48,6 +50,8 @@ export const App = () => {
         <Route path='history' element={<History />} />
         <Route path='forgotpassword' element={<ForgotPassword />} />
         <Route path='resetpassword' element={<ResetPassword />} />
+        <Route path='verifyuser' element={<VerifyUser />} />
+        <Route path='verifyaccount' element={<VerifyAccount />} />
         <Route path='AllBikes' element={<AllBikes />} />
         <Route path='AllCars' element={<AllCars />} />
         <Route path='AllMotors' element={<AllMotors />} />

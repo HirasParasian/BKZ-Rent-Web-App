@@ -2,22 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Navigate } from 'react-router-dom'
-import { getProfile, requestVerifyUser } from '../redux/actions/auth'
+import { verifyUser } from '../redux/actions/auth'
 
-export const VerifyUser = () => {
+export const VerifyAccount = () => {
     const auth = useSelector(state => state.auth)
     const dispatch = useDispatch()
+    console.log(auth.email)
 
-    const onRequestOTP = (event) => {
-        event.preventDefault()
-        const email = event.target.elements['email'].value
-        dispatch(requestVerifyUser(email))
-        dispatch({
-            type: "SET_EMAIL",
-            payload: { email }
-        })
+
+    const onVerify = (e) => {
+        e.preventDefault()
+        const email = auth.email
+        console.log(email)
+        const code = e.target.elements['code'].value
+        console.log(code)
+        dispatch(verifyUser(code, email))
     }
-
     return (
 
         <>
@@ -32,18 +32,20 @@ export const VerifyUser = () => {
 
                         </div>
                     </div>
+                    {
+                        auth.email &&
+                        <h1>Enter the OTP we sent to {auth.email}!</h1>
+                    }
                     <h1 className="heading">Don't worry, we got your back!</h1>
-                    <form onSubmit={(e) => onRequestOTP(e)}>
+                    <form onSubmit={(e) => onVerify(e)}>
                         <div>
-                            <input name="email" placeholder="Enter Email" type="text" />
+                            <input name="code" placeholder="Enter Code" type="text" />
                         </div>
                         <div>
-                            <button type="submit" className="button-send">Verify</button>
+                            <button type='submit' className="button-send">Verify</button>
                         </div>
                     </form>
-
                     <p className="text">
-                        <Link to="/verifyaccount">VerifyAccount</Link>
                         You will receive a link to reset your password.<br />If you havent received any link, click Resend Link
                     </p>
                 </div>
@@ -51,4 +53,4 @@ export const VerifyUser = () => {
         </>
     )
 }
-export default VerifyUser
+export default VerifyAccount

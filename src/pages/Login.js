@@ -43,11 +43,12 @@ export const Login = () => {
                             <InputForm id='username' name="username" placeholder='username' />
                             <InputForm id='password' name="password" placeholder='Password' />
                             <Button type="submit" block='d-grid px-5' variant='info btn btn-login'>Login</Button>
-                            <p className="forgot"><Link className="text-light" to="forgot-password.html">Forgot password?</Link></p>
+                            <p className="forgot"><Link className="text-light" to="/forgotpassword">Forgot password?</Link></p>
                             <h2><span className="hr-sect">or try another way</span></h2>
+                            <Link to="/verifyuser"> Verify </Link>
                             <Button block='d-grid px-5' variant='info btn btn-google'><FcGoogle />  Login With Google</Button>
-                            <Button block='d-grid px-5' variant='info btn btn-signup'>Sign Up</Button>
-                            <p className="signupnow">Dont Have Account ? <Link className="text-light" to="#">SignUp Now</Link></p>
+                            <Link to="/signup" block='d-grid px-5' variant='info btn btn-signup'>Sign Up</Link>
+                            <p className="signupnow">Dont Have Account ? <Link className="text-light" to="/signup">SignUp Now</Link></p>
                         </form>
 
                         <div className="footer2 container">
