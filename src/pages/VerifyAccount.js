@@ -2,21 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate, Navigate } from 'react-router-dom'
-import { verifyUser } from '../redux/actions/auth'
+import { verifyAccount } from '../redux/actions/auth'
 
 export const VerifyAccount = () => {
     const auth = useSelector(state => state.auth)
     const dispatch = useDispatch()
-    console.log(auth.email)
+    console.log(auth)
 
 
-    const onVerify = (e) => {
-        e.preventDefault()
-        const email = auth.email
-        console.log(email)
-        const code = e.target.elements['code'].value
+    const onVerify = (event) => {
+        event.preventDefault()
+        const email = event.target.elements['email']?.value
+        const code = event.target.elements['code']?.value
         console.log(code)
-        dispatch(verifyUser(code, email))
+        dispatch(verifyAccount(code, email))
     }
     return (
 
@@ -37,7 +36,10 @@ export const VerifyAccount = () => {
                         <h1>Enter the OTP we sent to {auth.email}!</h1>
                     }
                     <h1 className="heading">Don't worry, we got your back!</h1>
-                    <form onSubmit={(e) => onVerify(e)}>
+                    <form onSubmit={(event) => onVerify(event)}>
+                        <div>
+                            <input name="email" defaultValue={auth?.email} placeholder="Enter email" type="text" />
+                        </div>
                         <div>
                             <input name="code" placeholder="Enter Code" type="text" />
                         </div>

@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setRentDuration, setReservationDate } from '../redux/actions/transaction'
+import NumberFormat from 'react-number-format'
 
 export const Reservation = (props) => {
     const auth = useSelector(state => state.auth)
@@ -82,7 +83,7 @@ export const Reservation = (props) => {
                     </div>
                     <div className="col-xl-12 mt-5">
                         <div className='d-grid gap-2'>
-                            <button onClick={() => goToDetail(vehicleId)} type="button" className="btn-pay-now btn btn-info">Pay now : Rp. 178.000 </button>
+                            <button onClick={() => goToDetail(vehicleId)} type="button" className="btn-pay-now btn btn-info"><NumberFormat value={detailVehicle?.price * transaction.rentDuration * transaction.quantity} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></button>
                         </div>
                     </div>
                 </div>

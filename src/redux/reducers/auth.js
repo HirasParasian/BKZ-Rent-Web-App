@@ -26,11 +26,11 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_LOGIN_REJECTED': {
-            const { message } = action.payload.response.data.message
+            const { message } = action.payload.response.data
             console.log(message)
             state.isLoading = false
             state.isError = true
-            state.errorMsg = "Check Username Or Passwor And Verify Your Account"
+            state.errorMsg = message
             return { ...state }
         }
         case 'AUTH_LOGOUT': {

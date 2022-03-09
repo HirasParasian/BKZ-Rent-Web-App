@@ -7,6 +7,7 @@ import { BsPencil } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 import imgProfile from '../assets/images/profil-edward.png'
 import { userEdit } from '../redux/actions/auth'
+import Alert from '../components/Alert'
 const { REACT_APP_URL } = process.env
 
 
@@ -25,7 +26,6 @@ export const Profil = (props) => {
         const userId = auth?.userData.userId
         const gender = event.target.elements['gender'].value
         const mobileNumber = event.target.elements['mobileNumber'].value
-        // const birthDate = event.target.elements['birthDate'].value
         const displayName = event.target.elements['displayName'].value
         const address = event.target.elements['address'].value
         const data = { gender, displayName, mobileNumber, address }
@@ -44,6 +44,14 @@ export const Profil = (props) => {
             <div className="container">
                 <form onSubmit={editProfile}>
                     <div className='row'>
+                        {!auth.isError &&
+                            <Alert>{auth.errorMsg}</Alert>
+
+                        }
+                        {auth.isError &&
+                            <Alert>{auth.successMsg}</Alert>
+
+                        }
                         <div className="col-12">
                             <h4 className="profile-text">Profile</h4>
                         </div>

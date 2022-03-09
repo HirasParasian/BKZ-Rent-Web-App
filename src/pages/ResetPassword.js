@@ -12,7 +12,7 @@ export const ResetPassword = () => {
 
     const onResetPassword = (e) => {
         e.preventDefault()
-        const email = auth.email
+        const email = auth?.email
         console.log(email)
         const code = e.target.elements['code'].value
         const password = e.target.elements['password'].value

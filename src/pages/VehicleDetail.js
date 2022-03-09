@@ -7,6 +7,7 @@ import { FaHeart } from 'react-icons/fa'
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux'
 import { getDetailVehicle } from '../redux/actions/detailVehicle'
+import NumberFormat from 'react-number-format'
 const { REACT_APP_URL } = process.env
 
 export const VehicleDetail = (props) => {
@@ -58,7 +59,8 @@ export const VehicleDetail = (props) => {
                                 <Button2 max={detailVehicle?.stock} />
                             </div>
                             <div className="col-12 col-xl-6 d-flex align-items-center justify-content-center">
-                                <h4 ><b> Rp. {detailVehicle?.price}/day</b></h4>
+                                <h4 ><b><NumberFormat value={detailVehicle?.price} displayType={'text'} thousandSeparator={'.'} decimalSeparator={','} prefix={'Rp. '} ></NumberFormat></b></h4>
+
                             </div>
                         </div>
                     </div>

@@ -35,15 +35,7 @@ export const userEdit = (data, userId) => {
     })
 }
 
-export const requestResetPassword = (email) => {
-    const params = new URLSearchParams()
-    params.append('email', email)
-    return {
-        type: 'REQUEST_RESET_PASSWORD',
-        payload: http().post('auth/forgotPassword', params),
-        extra: email,
-    }
-}
+
 
 export const resetPassword = (code, email, password, confirmPassword) => {
     const params = new URLSearchParams()
@@ -57,13 +49,23 @@ export const resetPassword = (code, email, password, confirmPassword) => {
     }
 }
 
-export const verifyUser = (email, code) => {
+export const verifyAccount = (code, email) => {
     const params = new URLSearchParams()
-    params.append('email', email)
     params.append('code', code)
+    params.append('email', email)
     return {
         type: 'VERIFY',
-        payload: http().post('auth/emailVerify', params)
+        payload: http().post('auth/emailVerify2', params)
+    }
+}
+
+export const requestResetPassword = (email) => {
+    const params = new URLSearchParams()
+    params.append('email', email)
+    return {
+        type: 'REQUEST_RESET_PASSWORD',
+        payload: http().post('auth/forgotPassword', params),
+        extra: email,
     }
 }
 export const requestVerifyUser = (email) => {

@@ -38,11 +38,9 @@ img .logo-bkz{
 
 .header-forgot .header-content .header-nav i {
   font-size: 1.5rem;
-  margin-right: 76px;
 }
 .reserv-back{
   font-size: 1.5rem;
-  margin-right: 76px;
   color: black;
   
 }
@@ -115,7 +113,6 @@ footer.footer .row.text {
   padding-bottom: 78px;
   margin-left: 120px;
   padding-top: 69px;
-  margin-right: 120px;
 }
 
 footer.footer ul {
@@ -158,10 +155,10 @@ display: none;
   color: white;
 }
 
-.header-content .header-left {
+ .header-left {
   border-right: 1px solid white;
   background-image: url(../assets/images/image-login.png);
-  height: 1463px;
+  background-size: cover;
 }
 
 /***** Tulisan Login *****/
@@ -172,7 +169,9 @@ display: none;
   text-align: left;
   color: #BF9270;
 }
-
+.background-container{
+  background-color: #BF9270;
+}
 .header-login .header-content .header-left .text {
   font-weight: 700;
   size: 1.5rem;
@@ -202,16 +201,13 @@ display: none;
 .header-login .header-content .header-right form div input::placeholder {
   color: #BF9270;;
   font-size: 1.5rem;
-  padding-left: 41px;
 }
 /***** Forgot Password Login *****/
 .header-login .header-content .header-right form p.forgot {
   font-size: 1rem;
   font-weight: 700;
   text-align: left;
-  margin-top: 1.5rem;
-  margin-bottom: 49px;
-  margin-left:11.5rem;
+  color: #393939;
 }
 /***** Button Login at Login *****/
 .header-login .header-content .header-right form div button.btn-login {
@@ -292,7 +288,6 @@ img .logo-bkz{
   height: 79px;
   border-radius: 10px;
   border: none;
-  margin-top: 57px;
 }
 
 /***** Button Google at Login *****/
@@ -309,7 +304,7 @@ img .logo-bkz{
 
 /***** Garis Login *****/
 
-.hr-sect {
+/* .hr-sect {
 	display: flex;
 	flex-basis: 100%;
 	align-items: center;
@@ -320,7 +315,7 @@ img .logo-bkz{
   margin-top: 40px;
   margin-bottom: 53px;
   font-size: 1.5rem;
-}
+} */
 .hr-sect::before,
 .hr-sect::after {
 	content: "";
@@ -381,8 +376,6 @@ nav.navbar button.btn-login{
 }
 nav.navbar a.navbar img.rounded-pill{
   width:40px;
-  margin-left: 136px; 
-  margin-right: 515px;
 }
 
 nav.navbar button.btn-register{
@@ -518,20 +511,6 @@ header.header-home .header-content span{
 .text-img1 .head{
   font-weight: 700;
 }
-.testi-text-star{
-  color: #FFCD61;
-  font-size: 23px;
-  margin-top: 104px;
-  text-align: center;
-}
-
-.testi-text{
-  width: 450px;
-  margin-right: 200px;
-  margin-top: 1.5rem;
-  font-size: 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
 
 .main .popular .row h4{
   margin-top: 40px;
@@ -569,11 +548,6 @@ nav{
   margin-left: 49px;
 }
 
-.img-profile-login{
- margin-left: 40px;
- margin-right: 40px;
-}
-
 .carousel-caption{
   bottom: 0%;
   font-family: 'Playfair Display', serif;
@@ -608,9 +582,7 @@ nav{
     display: none;
   }
 
-  .header-login .header-content {
-    padding: 0 10px;
-  }
+
 }
 
   /***** For Profile *****/
@@ -921,7 +893,7 @@ hr{
   .header-login .header-content .header-right {
     background-image: url(../assets/images/login-mobile.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
   }
   .header-login .header-content .header-right form div button.btn-login {
     background-color: #BF9270;
@@ -1048,11 +1020,7 @@ display: none;
   .main .popular{
     font-family: 'Playfair Display', serif;
     margin-left:144px;
-    margin-right: 300px;
     margin-bottom: 55px;
-  }
-  .main .popular .row {
-    margin-right: 220px;
   }
   .btn-pay-now{
 
@@ -1109,7 +1077,6 @@ display: none;
   .testi-text{
     width: 250px;
     margin-left: 0px;
-    margin-right: 0px;
     margin-top: 1.5rem;
     font-size: 12px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1134,7 +1101,6 @@ display: none;
   .testi-text{
     width: 450px;
     margin-left: 0px;
-    margin-right: 0px;
     margin-top: 1.5rem;
     font-size: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1203,9 +1169,6 @@ display: none;
   }
   .center-navbar{
     text-align: center;
-  }
-  nav.navbar button.btn-register{
-    margin-right: 45px;
   }
   .container-payment{
     margin-left: 0px;
@@ -1309,9 +1272,6 @@ display: none;
     text-align: center;
   }
   
-  nav.navbar button.btn-register{
-    margin-right: 45px;
-  }
   .center-navbar{
     text-align: center;
   }

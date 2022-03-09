@@ -4,6 +4,7 @@ import vehicle from './vehicle'
 import counter from './counter'
 import detailVehicle from './detailVehicle'
 import transaction from './transaction'
+import user from './user'
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
 	vehicle,
 	counter,
 	detailVehicle,
-	transaction
+	transaction,
+	user
 
 })
 
