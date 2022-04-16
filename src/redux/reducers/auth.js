@@ -20,6 +20,7 @@ const auth = (state = initialState, action) => {
             state.isLoading = false
             state.isError = false
             state.token = data.results.token
+            console.log(data)
             if (!window.localStorage.getItem('token')) {
                 window.localStorage.setItem('token', state.token)
             }
@@ -53,7 +54,7 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_USERDATA_REJECTED': {
-            const { message } = action.payload.response
+            const { message } = action.payload
             // console.log(message)
             state.isLoading = false
             state.isError = true
@@ -74,10 +75,10 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_USER_HISTORY_REJECTED': {
-            const { message } = action.payload.response
+            const { data } = action.payload
             state.isLoading = false
             state.isError = true
-            state.errorMsg = message
+            state.errorMsg = data.message
             return { ...state }
         }
         case 'REQUEST_RESET_PASSWORD_PENDING': {

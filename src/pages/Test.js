@@ -62,8 +62,6 @@ export const Search = () => {
         await getNextData(url(name, type, sort, order), true)
         // navigate(`/vehicles?search=${name}&category=${type}`, { replace: true })
     }
-
-
     const goToDetail = (vehicleId) => {
         navigate(`/vehicles/${vehicleId}`)
     }

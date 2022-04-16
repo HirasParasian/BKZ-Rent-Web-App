@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import {getHistoryUser} from '../redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 var moment = require('moment');
 const { REACT_APP_URL } = process.env
@@ -14,6 +15,7 @@ const { REACT_APP_URL } = process.env
 export const History = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
+    const token = window.localStorage.getItem('token')
     // const [userData, setUserData] = useState({})
     const userData = auth.userData || {}
 
@@ -21,6 +23,11 @@ export const History = () => {
     const [page, setPage] = useState({})
     const [history, setHistory] = useState([])
     const [pageHistory, setPageHistory] = useState({})
+
+    useEffect(() => {
+        getArrival()
+        getHistoryUser(token)
+    }, [])
 
     const getNextData = async (url, replace = false) => {
         try {
@@ -70,23 +77,11 @@ export const History = () => {
         }
     }
 
-    useEffect(() => {
-        getArrival()
-        getHistory()
-    }, [])
-
     const getArrival = async () => {
         const { data } = await axios.get(`${REACT_APP_URL}/vehicles?sort=createdAt&limit=2`)
         setArrival(data.results)
         setPage(data.pageInfo)
     }
-    const getHistory = async () => {
-        const { data } = await axios.get(`${REACT_APP_URL}/history?search=&page=&limit=2`)
-        setHistory(data.results)
-        setPageHistory(data.pageInfo)
-
-    }
-
 
     return (
         <>
@@ -137,15 +132,6 @@ export const History = () => {
                                 <input className="form-check-input" type="checkbox" />
                             </div>
                         </div>
-                        <div className="my-3 mx-5 d-flex">
-                            <div className="mx-auto text-secondary for-text-history border-bottom border-secondary d-flex ">
-                                <p>Your payment has been confirmed! </p>
-                                <p className='ms-auto'><FaChevronRight /></p>
-                            </div>
-                            <div className=" d-flex for-check-history">
-                                <input className="form-check-input" type="checkbox" />
-                            </div>
-                        </div>
                         <div className="text-secondary col-xl-12 px-3 mx-5 mt-4 mb-5">
                             <p>A Week Ago</p>
                         </div>
@@ -156,7 +142,7 @@ export const History = () => {
                             return (
                                 <div className="my-3 mx-5 d-flex " key={String(Math.random() * (999 - 100) + 100)}>
                                     <div className="ms-3 width-img-history for-img-history d-flex ">
-                                        <img id="img-object" src={data.image} alt="" className="src rounded" />
+                                        <img id="img-object" src={data.image} alt="" className="src rounded-5" />
                                     </div>
                                     <div className="mx-auto for-medium-history-text">
                                         <p><b>{data.vehicle}</b></p>

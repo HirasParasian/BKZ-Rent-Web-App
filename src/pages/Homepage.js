@@ -41,6 +41,7 @@ export const Homepage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  
   const getPopularInTown = async () => {
     const { data } = await axios.get('http://localhost:5000/vehicles/popularintown?location')
     setPopularInTown(data.results)
