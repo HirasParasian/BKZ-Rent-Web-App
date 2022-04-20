@@ -15,6 +15,7 @@ export const Navbar = () => {
     useEffect(() => {
         if (auth.token) {
             dispatch(getDataUser(auth.token))
+            
         }
     }, [])
     return (

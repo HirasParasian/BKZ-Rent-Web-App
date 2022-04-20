@@ -7,16 +7,22 @@ import Button2 from '../components/Button2'
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { getDetailVehicle } from '../redux/actions/detailVehicle'
 import { setRentDuration, setReservationDate } from '../redux/actions/transaction'
 import NumberFormat from 'react-number-format'
 
 export const Reservation = (props) => {
     const auth = useSelector(state => state.auth)
     const detailVehicle = useSelector(state => state.detailVehicle.data)
+    console.log(detailVehicle)
     const navigate = useNavigate()
     const { vehicleId } = useParams()
     const transaction = useSelector(state => state.transaction)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        getDetailVehicle(vehicleId)
+    }, [])
 
     const updateRentDuration = (event) => {
         dispatch(setRentDuration(event.target.value))

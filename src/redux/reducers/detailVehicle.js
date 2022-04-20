@@ -14,7 +14,7 @@ const detailVehicle = (state = vehicleDetail, action) => {
         }
         case 'GET_DETAIL_VEHICLE_FULFILLED': {
             const { data } = action.payload
-            state.data = data.results
+            state.data = data.result
             state.isLoading = false
             return { ...state }
         }

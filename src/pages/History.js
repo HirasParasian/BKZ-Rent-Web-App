@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import http from '../helpers/http'
 import { Helmet } from "react-helmet";
 import { default as axios } from 'axios'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { FaChevronRight, FaChevronLeft, FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import {getHistoryUser} from '../redux/actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 var moment = require('moment');
 const { REACT_APP_URL } = process.env
@@ -15,6 +15,7 @@ const { REACT_APP_URL } = process.env
 export const History = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
+    console.log(auth)
     const token = window.localStorage.getItem('token')
     // const [userData, setUserData] = useState({})
     const userData = auth.userData || {}
@@ -26,7 +27,7 @@ export const History = () => {
 
     useEffect(() => {
         getArrival()
-        getHistoryUser(token)
+        getHistory(token)
     }, [])
 
     const getNextData = async (url, replace = false) => {
@@ -53,35 +54,21 @@ export const History = () => {
         }
     }
  
-    const getNextDataHistory = async (url, replace = false) => {
-        try {
-            // setErrorMsg(null)
-            const { data } = await axios.get(url)
-            console.log(data.pageInfo)
-            if (replace) {
-                setHistory(data.results)
-            } else {
-                setHistory([
-                    ...data.results
-                ])
-            }
-            setPageHistory(data.pageInfo)
-        } catch (e) {
-            if (e.message.includes('404')) {
-                // setErrorMsg('Data not found!')
-                setHistory([])
-                setPageHistory({
-                    next: null
-                })
-            }
-        }
-    }
 
     const getArrival = async () => {
         const { data } = await axios.get(`${REACT_APP_URL}/vehicles?sort=createdAt&limit=2`)
         setArrival(data.results)
         setPage(data.pageInfo)
     }
+
+
+    const getHistory = async () => {
+        const { data } = await axios(token).get(`${REACT_APP_URL}/myHistory`)
+        setHistory(data.results)
+        setPageHistory(data.pageInfo)
+
+    }
+    
 
     return (
         <>

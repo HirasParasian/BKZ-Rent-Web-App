@@ -6,8 +6,8 @@ export default class Footer extends Component {
     render() {
         return (
             <footer className="footer">
-                <div className="row text">
-                    <div className="col">
+                <div className=" container row text">
+                    <div className="col-md-5">
                         <div className="logo-bkz">
                             <img className="logo-bkz" src={Logo} alt="Logo" />
                         </div>

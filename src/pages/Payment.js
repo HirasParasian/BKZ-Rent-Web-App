@@ -37,7 +37,7 @@ export const Payment = (props) => {
         const data = {
             userId: userData?.userId,
             vehicleId: vehicleId,
-            quantity: transaction?.quantity,
+            qty: transaction?.quantity,
             rentStartDate: transaction?.reservationDate,
             rentEndDate: endRentDate.toISOString()
         }
