@@ -1,3 +1,43 @@
+![@hiras pds](https://user-images.githubusercontent.com/97431455/163681247-a650f96c-0282-4b68-a361-df45d681b249.png)
+
+
+<p>BKZ Rent adalah aplikasi rental kendaraan yang dibangun menggunakan React JS</p>
+
+## 📌 How To Install?
+
+- Clone This Repo
+
+```
+git clone https://github.com/HirasParasian/BKZ-Rent-Web-App/
+```
+
+
+## ✍️ BKZ RENT - Backend Repository
+
+<https://github.com/HirasParasian/BKZ-Rent-Backend>
+
+## ⛏️ Built Using
+
+    "axios": "^0.26.0",
+    "bootstrap": "^5.1.3",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-fontawesome": "^1.7.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-loading-skeleton": "^3.0.3",
+    "react-number-format": "^4.9.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^6.1.2",
+    "web-vitals": "^2.1.4"
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
