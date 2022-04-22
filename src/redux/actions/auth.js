@@ -25,15 +25,38 @@ export const getHistoryUser = (token) => {
     })
 }
 
-export const userEdit = (data, userId) => {
+export const userEdit = (data, token) => {
     const param = new URLSearchParams(data)
-    console.log(userId)
-    console.log(data)
     return ({
         type: 'AUTH_USERDATA',
-        payload: http().patch(`/users/${userId}`, param)
+        payload: http(token).patch('/profile/update', param)
     })
 }
+
+export const updateProfile = (data,token) => {
+    const formData = new FormData();
+    const {
+      images, displayName, address, mobileNumber
+    } = data;
+    if (images) {
+      formData.append('images', images);
+    }
+    if (displayName) {
+      formData.append('displayName', displayName);
+    }
+    if (address) {
+      formData.append('address', address);
+    }
+    if (mobileNumber) {
+      formData.append('mobileNumber', mobileNumber);
+    }
+  
+    return ({
+      type: 'UPDATE_PROFILE',
+      payload: http(token).patch('/profile/update', formData),
+    });
+  };
+  
 
 
 

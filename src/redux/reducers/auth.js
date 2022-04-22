@@ -2,6 +2,7 @@ const initialState = {
     token: null,
     userData: {},
     userHistory: {},
+    updated:{},
     isLoading: false,
     isError: false,
     errorMsg: ''
@@ -54,6 +55,27 @@ const auth = (state = initialState, action) => {
             return { ...state }
         }
         case 'AUTH_USERDATA_REJECTED': {
+            const { message } = action.payload
+            // console.log(message)
+            state.isLoading = false
+            state.isError = true
+            state.errorMsg = message
+            return { ...state }
+        }
+        case 'UPDATE_PROFILE_PENDING': {
+            state.isLoading = true
+            state.isError = false
+            state.errorMsg = ''
+            return { ...state }
+        }
+        case 'UPDATE_PROFILE_FULFILLED': {
+            const { data } = action.payload
+            state.isLoading = false
+            state.isError = false
+            state.updated = data.results
+            return { ...state }
+        }
+        case 'UPDATE_PROFILE_REJECTED': {
             const { message } = action.payload
             // console.log(message)
             state.isLoading = false
