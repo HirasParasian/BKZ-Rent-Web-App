@@ -11,6 +11,7 @@ import AllMotors from './pages/AllMotors'
 import React, { useEffect } from 'react'
 import VehicleType from './pages/VehicleType'
 import ForgotPassword from './pages/ForgotPassword'
+import CreateVehicle from './pages/CreateVehicle'
 import ResetPassword from './pages/ResetPassword'
 import VerifyUser from './pages/VerifyUser'
 import VerifyAccount from './pages/VerifyAccount'
@@ -56,6 +57,7 @@ export const App = () => {
         <Route path='AllCars' element={<AllCars />} />
         <Route path='AllMotors' element={<AllMotors />} />
         <Route path='vehicletype' element={<VehicleType />} />
+        <Route path='create-vehicle' element={<CreateVehicle />} />
         <Route path='payment/:vehicleId' element={<Payment history={history} />} />
         <Route path='vehicles/:vehicleId' element={<VehicleDetail history={history} />} />
         <Route path='vehicles/reservation/:vehicleId' element={<Reservation history={history} />} />
